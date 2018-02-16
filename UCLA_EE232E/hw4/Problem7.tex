@@ -1,0 +1,28 @@
+\subsection*{Problem 7}
+\paragraph{}
+Here we plot out the distribution of $\rho_{ij}$, shown in Figure \ref{fig:07hist}. On the right, Figure \ref{fig:07histb} presents a Gaussian fit to the data, with $\mu = 0.275$ and $\sigma = 0.145$. According to the problem, we set values greater than 0.3 to -1, which corresponds to, roughly, half of the distribution on the right, and regenerate the graph. Again, we compute the MST and Figure \ref{fig:07mst} presents the result. This is expected, since this time, we reassign a large edge weight to edge with high correlation coefficient, by setting their $\rho_{ij}$ to -1. This results in edges connecting nodes (stocks) from the same sector got truncated by the MST function, which results in clusters of mixtures, i.e., different colors (sectors) forming clusters.
+
+\begin{figure}[h]
+	\centering
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{07hista.png}
+		\caption{Frequency}	
+		\label{fig:07hista} 
+	\end{subfigure}%
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{07histb.png}
+		\caption{Probability Density}
+		\label{fig:07histb} 
+	\end{subfigure}
+	\caption{Distribution of Correlation Coefficient, with a Gaussian Fit}
+	\label{fig:07hist}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=.5\linewidth]{07mst.png}
+	\caption{MST by Reassigning $\rho_{ij}$}	
+	\label{fig:07mst} 
+\end{figure}

@@ -1,0 +1,49 @@
+\subsection*{Problem 8}
+\paragraph{}
+Here we implement a generative model. Notice that a vine cluster will be formed when there is a tendency to extend from leaves (nodes whose degree is 1) than internal nodes (whose degree is greater than 1), and for each node, the larger the degree, the less likely it will be gainning new ones. We apply this simple observation and construct MST with vine clusters through the following algorithm
+
+\begin{algorithm}[H]
+	\caption{Vine Cluster Generative Model}
+	\begin{algorithmic}[1]		
+		\Statex \textbf{Initialization} Initialize graph $G$ with only 1 nodes connected to each other, probability vector $P$ with unit value, and graph size $n$.
+		\Repeat
+		\State Sample a node $i$ from existing nodes based on probability vector $P$.
+		\State Add a node $j$ to the $G$.
+		\State Connect $i$ and $j$.
+		\State Append probability vector $P$ with a unit value.
+		\State change the $i^{th}$ value of $P$ to 1/(Number of neighbors of node $i$).
+		\Until Number of iteration equals to $n-1$.
+	\end{algorithmic}
+\end{algorithm}
+\paragraph{}
+Figure \ref{fig:08vc} presents several examples resulting from this model.
+
+\begin{figure}[h]
+	\centering
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{08vc1.png}
+		\caption{$n = 100$}	
+		\label{fig:08vc1} 
+	\end{subfigure}%
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{08vc2.png}
+		\caption{$n = 300$}
+		\label{fig:08vc2} 
+	\end{subfigure}
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{08vc3.png}
+		\caption{$n = 500$}	
+		\label{fig:08vc3} 
+	\end{subfigure}%
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{08vc4.png}
+		\caption{$n = 1000$}
+		\label{fig:08vc4} 
+	\end{subfigure}
+	\caption{Vine Clusters generated with different graph size $n$.}
+	\label{fig:08vc}
+\end{figure}

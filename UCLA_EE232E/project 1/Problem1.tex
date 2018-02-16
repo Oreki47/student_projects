@@ -1,0 +1,30 @@
+\subsection*{Section 1}
+\paragraph{}
+We build the graph based on the original file \textit{facebook\_combined.txt}. The graph \textit{is} connected, with a diameter $d =8$. Figure \ref{fig:a} shows the degree distribution. By observing the figure, clearly we can choose the following model,
+\begin{align*}
+y = e^{a + bx},
+\end{align*}
+\paragraph{}
+where $a$, $b$ are parameters to be fit. This is shown in Figure \ref{fig:b}, with the following model,
+\begin{align*}
+y = e^{-3.664 - 0.026x},
+\end{align*}
+\paragraph{}
+with a mean square value of $mse_{fit} = 1.065*10^{-6}$. From here we compute the average degree $m_{degree}  = 43.69$. 
+
+\begin{figure}[h]
+	\centering
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{q1a.png}
+		\caption{}		
+		\label{fig:a}
+	\end{subfigure}%
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{q1b.png}
+		\caption{}	
+		\label{fig:b}
+	\end{subfigure}
+	\caption{(a): Degree Distribution of graph $g$ without fitting curve; (b): Degree Distribution of graph $g$, in log-scale, with fitting curve marked in red }
+\end{figure}

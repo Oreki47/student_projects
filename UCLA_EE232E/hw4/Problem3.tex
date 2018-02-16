@@ -1,0 +1,11 @@
+\subsection*{Problem 3}
+\paragraph{}
+With the built-in function from \textit{igraph} we found the minimum spanning tree (MST), and colored each vertex by its sector. This is shown in Figure \ref{fig:03mst}. A clear trend can be observed from graph is stocks (nodes) belonging to the same sector tend to be connected, or form clusters. Recalled our computation of edge weight $d_{ij}$ from correlation coefficient $\rho_{ij}$. Since $\rho \in [-1, 1]$, The higher the correlation coefficient, the less the edge weight. Therefore, when computing MST, edges with low correlation are truncated and what is left are edges with high correlation coefficient. This can be explained as different stocks belonging to the same sector, to a certain extend, pertain a section-wise pattern. For example, investment behavior tend to be affected by the same economic/political factors, or investors in the same sector tend to play with similar strategies.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=.5\linewidth]{03mst.png}
+	\caption{MST by Day}	
+	\label{fig:03mst} 
+\end{figure}
+

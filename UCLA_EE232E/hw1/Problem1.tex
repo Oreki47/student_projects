@@ -1,0 +1,16 @@
+\subsection*{Problem 1}
+\subsubsection*{(a)}
+Degree distribution shown in Figure 1.
+\vspace{-12pt}
+\begin{figure} [h]
+	\centering
+	\includegraphics[scale=0.6]{hw1p1.png}
+	\caption{Degree Distribution of Random Graphs with $p = 0.01$, $p = 0.05$, $p = 0.1$.}
+\end{figure}
+\subsubsection*{(b)}
+All three networks are connected. For case $p_1 = 0.01$, diameter is not a constant and $d_1 = 5.4$ as an average over 100 instances. For cases $p_2 = 0.05$ and $p_3 = 0.1$ the diameters are $d_2 = 3$ and $d_3 =3$ respectively.
+\subsubsection*{(c)}
+We first realize such $p_c$ is in the vicinity of $ln(1000)/1000 = 0.0069$. We retrieve $p_c$ of a particular instance by setting initial value $p_c = 0.006$ with a step size $ i = 0.0001$ and check connectivity each round. With 100 instances the average $p_c = 0.065$.
+\subsubsection*{(d)}
+Analytically, $p_c = ln(n)/n = 0.0069$.
+

@@ -1,0 +1,49 @@
+\section{Chap 5}
+\subsection{Notes}
+% ----------------------------------------------------------------------
+\subsubsection{Cross-Validation}
+\xt{Leave-one-out cross-validation} tend to have less bias and variance with a boost on computational cost. 
+
+\xt{k-Fold cross-validation} can be summarized as follows.
+\begin{align*}
+\text{CV}_{(k)} = \frac{1}{k}\sum_{i=1}^{k}\text{MSE}_i.
+\end{align*}
+The advantages of k-Fold cv also include that it gives an intermediate level of bias to true test error.
+% ----------------------------------------------------------------------
+\subsubsection{Bootstrap} 
+The key of \xt{bootstrap} is that the sampling process is performed with \xt{replacement}.
+% ----------------------------------------------------------------------
+\subsection{Exercise}
+\subsubsection{Conceptual 1.}
+We begin with
+\begin{align*}
+\text{Var}(\alpha X + (1-\alpha)Y) & = \alpha^2 \sigma_X^2 + (1-\alpha)^2\sigma_Y^2  + 2\alpha(1-\alpha)\sigma_{XY} \\
+& = (\sigma_X^2 + \sigma_Y^2 - 4\sigma_{XY})\alpha^2  - 2(\sigma_Y^2 - \sigma_{XY}).
+\end{align*}
+To solve for minimum, take the first derivative and we have (5.6) in the book.
+% ----------------------------------------------------------------------
+\subsubsection{Conceptual 2.}
+(a). $(n-1)/n$.
+
+(b). $(n-1)/n$.
+
+(c). This is obvious since each draw of observation is independent and bootstrap draws with replacement.
+
+(d). $1 - 0.8^5$.
+
+(e). $1 - 0.8^{100}$.
+
+(f). $1 - 0.8^{10000}$.
+
+(g). Monotonically decreasing, with an asymptote of 0632, or $1-0.1*e$.
+
+(h). Relatively close to theoretical value. 
+
+% ----------------------------------------------------------------------
+\subsubsection{Conceptual 3.}
+(a). randomly split the train set into $k$ groups. Each time, train with $k-1$ group of data and use the hold-out group to do cross-validation. Average over $k$ times.
+
+(b). The traditional validation approach is easy to implement but may overestimate the test error (both bias and high variability); the LOOCV is just when $k=n$. This approach is very time consuming and may underestimate the test error.\\
+% ----------------------------------------------------------------------
+\subsubsection{Conceptual 4.}
+We could use bootstrap approach to accomplish such task, by repeatedly drawing samples from the original set for a number of $m$ time, with each time fitting a new model and subsequently obtaining the metric value of the estimate.

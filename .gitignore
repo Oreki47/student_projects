@@ -1,0 +1,14 @@
+# Data Files
+*.csv
+*.xlsx
+*.docx
+*.zip
+*.json
+*.aux
+*.log
+*.gz*
+*.RData
+*.Rhistory
+*.rar
+
+# 

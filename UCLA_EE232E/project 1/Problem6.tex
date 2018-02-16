@@ -1,0 +1,195 @@
+
+\subsection*{Problem 6}
+\paragraph{}
+To explore properties of personal networks' communities, we examined four common metrics that can be computed from a graph and they as listed as follow.
+\begin{itemize}
+	\item Modularity
+	\item Density
+	\item Transitivity (Clustering coefficient)
+	\item Community Size
+	\item Average Degree
+\end{itemize}
+
+\begin{figure}[t]
+	\centering
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{1fgr.png}
+		\caption{}		
+		\label{fig:1fgr}
+	\end{subfigure}%
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{1fgs.png}
+		\caption{}	
+		\label{fig:1fgs}
+	\end{subfigure}
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{1fgt.png}
+		\caption{}	
+		\label{fig:1fgt}
+\end{subfigure}
+	\caption{Personal Network of Node 1 by \text{Fast Greedy}. (a): Density, and Transitivity; (b): Community Size; (c): Average Degree}
+	\label{fig:1fg}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{1lpr.png}
+		\caption{}		
+		\label{fig:1lpr}
+	\end{subfigure}%
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{1lps.png}
+		\caption{}	
+		\label{fig:1lps}
+	\end{subfigure}
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{1lpt.png}
+		\caption{}	
+		\label{fig:1lpt}
+	\end{subfigure}
+	\caption{Personal Network of Node 1 by \text{Label Propagation}. (a): Density, and Transitivity; (b): Community Size; (c): Average Degree}
+	\label{fig:1lp}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{1wkr.png}
+		\caption{}		
+		\label{fig:1wkr}
+	\end{subfigure}%
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{1wks.png}
+		\caption{}	
+		\label{fig:1wks}
+	\end{subfigure}
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{1wkt.png}
+		\caption{}	
+		\label{fig:1wkt}
+	\end{subfigure}
+	\caption{Pattern 1: Node 1. (a): Density, and Transitivity; (b): Community Size; (c): Average Degree}
+	\label{fig:1wk}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{108wkr.png}
+		\caption{}		
+		\label{fig:108wkr}
+	\end{subfigure}%
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{108wks.png}
+		\caption{}	
+		\label{fig:108wks}
+	\end{subfigure}
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{108wkt.png}
+		\caption{}	
+		\label{fig:108wkt}
+	\end{subfigure}
+	\caption{Pattern 1: Node 108. (a): Density, and Transitivity; (b): Community Size; (c): Average Degree}
+	\label{fig:108wk}
+\end{figure}
+
+\paragraph{}
+To reduce redundancy, we avoid attaching all figure generated in this section. We placed figures in a separate folder named \text{type\_figure}.
+
+\paragraph{}
+First, we start using \textit{Fast Greedy} to identify communities. Figure \ref{fig:1fg} presents a typical case with number of communities greater than 2. We notice that for the first three indicators in Figure \ref{fig:1fgr}, they show great consistency for all 40 personal networks， while the other two presented in Figure \ref{fig:1fgs} and \ref{fig:1fgt}, they tend to be less consistent. 
+\paragraph{}
+Then, we also tried \textit{Label Propagation}, and this turned out to be the least ideal one since for smaller personal networks, it simply concludes with one community, which is very uninformative. Figure \ref{fig:1lp}. This also happens to \textit{Info Map} Algorithm and therefore we avoid repeating here.
+\paragraph{}
+Aside from that, we also examined \textit{Edge Betweenness}, which is extremely slow. As a matter of fact, such algorithm got stock and crushed with Node 108, which has 1000+ nodes in its personal network. Therefore we abandon this algorithm and did not proceed further.
+\paragraph{}
+Finally we switched on to \textit{Walk trap} detection since generally speaking it ends up with more communities than \textit{Fast Greedy}, with a speed that is comparable to \textit{Fast Greedy} and provides more consistent trends through out all 40 cases of personal network. With all considerations and comparison above, we decided to use results from \textit{Walk trap} for further analysis.
+\paragraph{}
+We examined through all 40 networks and, as discussed in Section 5, we discovered 2 general patterns. And again, we present 2 examples for each pattern. Figure \ref{fig:1wk} and \ref{fig:108wk} present the first pattern, which is a diverse community that has many clusters (sub-communities). Figure \ref{fig:1986wk} and \ref{fig:1994wk} present the second pattern, which is a simple community with only 2-3 sub-communities.
+\paragraph{}
+Throughout these two pattern it is easy to identify our Type 1 community, with which a very relatively small community size, high density and transitivity. We say they are small, despite the fact that these communities has a size of 20-30, with an average degree of 20-30. And we can easily find real-world link to it. People in these communities tend to be less sociable, with a relatively low connections, and tend to stay in their circle, forming, for instance, a core group. This corresponds to Community 4 in Figure \ref{fig:1wk}, Community 7, 8 in Figure \ref{fig:108wk}, Community 1 in Figure \ref{fig:1986wk}, and Community 2 in Figure \ref{fig:1994wk}.
+\paragraph{}
+We tend to define our type 2 as communities with large community size and high level of average degree. These are presented by Community 5 in in Figure \ref{fig:1wk}, Community 3 in Figure \ref{fig:108wk}, Community 2 in Figure \ref{fig:1986wk}, and Community 3 in Figure \ref{fig:1994wk}. These are people who are more sociable than people in type 1, which is obviously indicated by size of community and average degree. What's interesting about type 2, is that they show a completely opposite trend in density/transitivity. We first talk about such phenomenon based on theory. Then we tend to rationalize type 2 with examples.
+\paragraph{}
+Notice that in Figure \ref{fig:1986wk}, and Figure \ref{fig:1994wk}, Community 2 and 3 takes up the majority of the nodes and therefore exerting an dominant effect on computations, such as density/transitivity. This can be attributable to the core node itself, which determines the personal graph. A core node with several social groups tend to have a shunting effect on computation of density/transitivity.
+\paragraph{}
+This is expected for a diverse community, as we can rationalize as follows. Recall that we have no information of what kind(friends/coworkers/family) of community we are looking at, and what purposes(fun/self-promotion/dedicated interests) people are joining the network. For people using Facebook as a pure social network for fun, they tend to connect as many people as possible, resulting in a high level of connection and offers a low clustering effect to its group, a group formed by people of the same type, as the tend to be connected in different groups. This correspond to Community 5 in in Figure \ref{fig:1wk}, Community 3 in Figure \ref{fig:108wk}. This is what we usually see, with a large community size and high average degree, there comes a relatively low density/transitivity score.
+\paragraph{}
+On the contrary, people (core node) using Facebook for a specific purpose, for instance, connecting to their family/friend, and rarely connect to strangers, ending up with a simple community structure with a bare 2-3 sub-communities. Their density/transitivity is skewed(boosted up) by a rare connection to other circles. We therefore performed a simple analysis, and surprisingly, The core nodes with a low community size all belongs to the same network, which are listed in Table \ref{table:2}. This supports our hypothesis that these people tend to have a more specific reason using Facebook.
+
+\begin{table}[h!]
+	\centering
+	\caption{List of Core Nodes that belongs to the same network}
+	\begin{tabular}{{c}*{11}{c}}
+		\hline
+		& 1942 & 1986 & 1994 & 2048 & 2079 & 2124 & 2143 & 2207 & 2219 & 2230   \\
+		\hline
+		&2234  & 2241 & 2267 & 2348 & 2411 & 2465 & 2508 & 2544 & 2561 & 2612   \\
+		\hline
+	\end{tabular}
+	\label{table:2}
+\end{table}
+
+\begin{figure}[h]
+	\centering
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{1986wkr.png}
+		\caption{}		
+		\label{fig:1986wkr}
+	\end{subfigure}%
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{1986wks.png}
+		\caption{}	
+		\label{fig:1986wks}
+	\end{subfigure}
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{1986wkt.png}
+		\caption{}	
+		\label{fig:1986wkt}
+	\end{subfigure}
+	\caption{Pattern 2: Node 1986. (a): Density, and Transitivity; (b): Community Size; (c): Average Degree}
+	\label{fig:1986wk}
+\end{figure}
+
+
+\begin{figure}[h]
+	\centering
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{1994wkr.png}
+		\caption{}		
+		\label{fig:1994wkr}
+	\end{subfigure}%
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{1994wks.png}
+		\caption{}	
+		\label{fig:1994wks}
+	\end{subfigure}
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{1994wkt.png}
+		\caption{}	
+		\label{fig:1994wkt}
+	\end{subfigure}
+	\caption{Pattern 2: Node 1968. (a): Density, and Transitivity; (b): Community Size; (c): Average Degree}
+	\label{fig:1994wk}
+\end{figure}
+
+

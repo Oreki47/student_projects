@@ -1,0 +1,35 @@
+\subsection*{Problem 7}
+\paragraph{}
+First we examined the actual rating of these three movies. Then we implement two methods utilizing their neighbors to predict their ratings. The results is shown in Table \ref{table:5}.
+
+\subsubsection*{Model 1}
+\paragraph{}
+We start with using the average of 15 nearest neighbors of the target nodes. 
+\subsubsection*{Model 2}
+\paragraph{}
+For model 2 we used a weighted average of 15 nearest neighbors of the target nodes, which can be represented as follows.
+\begin{align*}
+R(m) = \sum_{n \in N(m)} \frac{W(n)R(n)}{E[W(n)]},
+\end{align*}
+\paragraph{}
+where $R(m)$ is the rating of the target movie $m$, $N(m)$ is the neighbors of movie $m$, $W(n)$ is the weight between movie $m$ and $n$, and $E[W(n)]$ is the expectation, or in this case, the average of the weights of movie $n$ that are neighbors of $m$.
+\paragraph{}
+We did not perform further analysis to this as the sample size is very small, i.e., only 3 movies. Ideally we may be able to find a function that fits really well to these 3 movies but such function may most likely be overfitting. Instead, we will expand our regression and prediction analysis in Problem 8 and 9, where we attempt to find fitting functions that apply to the entire dataset.
+\begin{table}[h!]
+	\centering
+	\caption{Prediction of the 3 Target Movies}
+	\begin{tabular}{{|c}*{4}{|c|}}
+		\hline
+		&Movie Name 	& Batman v Superman:     & Mission: Impossible & Minions(2015)   	\\
+		&           	& Dawn of Justice(2016)  & Rogue Nation(2015)  &               		\\
+		\hline
+		&Actual Rating  & 7.1  	                 & 7.5                 & 6.4    			\\ 
+		\hline
+		&Model1 Rating  & 6.283333		         & 6.185714            & 6.742857   		\\ 
+		\hline
+		&Model2 Rating  & 6.279793  	         & 6.273461	           & 6.828282  			\\ 	
+		\hline
+	\end{tabular}
+	\label{table:5}
+\end{table}
+

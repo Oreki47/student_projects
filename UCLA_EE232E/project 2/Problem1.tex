@@ -1,0 +1,36 @@
+\subsection*{Problem 1, 2 \& 4}
+
+\paragraph{}
+With some observation of the file, we realized that each line of the original \textit{actor\_movies.txt} and \textit{actress\_movies.txt} represents an actor/actress and all movie s/he starred in. We simply used regular expression to parse the string, then exclude actor/actress with less than 10 movies, and stored the data in a dictionary. We performed some further manipulation here we list files acquired.
+\begin{itemize}
+	\item actor\_dict.csv (Problem 3)
+	\item movie\_dict.csv (Problem 3)
+	\item actor\_movie\_dict.csv (Problem 3)
+	\item movie\_actor\_dict.csv (Problem 3)
+	\item actor\_dict\_pruned.csv (Problem 5-7)
+	\item movie\_dict\_pruned.csv (Problem 5-7)
+	\item actor\_movie\_dict\_pruned.csv (Problem 5-7)
+	\item movie\_actor\_dict\_pruned.csv (Problem 5-7)
+	\item actor\_dict\_trimmed.csv (Problem 8-9)
+	\item movie\_dict\_trimmed.csv (Problem 8-9)
+	\item actor\_movie\_dict\_trimmed.csv (Problem 8-9)
+	\item movie\_actor\_dict\_trimmed.csv (Problem 8-9)
+\end{itemize}
+\paragraph{}
+The \textit{actor\_dict} and \textit{movie\_dict} are simply numerical indexes of actor/actress and movies. With that we replace all strings with numeric values and acquired \textit{actor\_movie\_dict} and \textit{movie\_actor\_dict}, where the former presents what movies an actor/actress has starred in, and the latter stores actor/actress in a movie. These two files will be used in generating actor network.
+\paragraph{}
+This comes with two benefits and is necessary for PCs with low memory. To generate edge lists which is the prerequisite of building graphs, comparison and set operation is required. Using numerical representations and perform these tasks on top is way faster than on the original string files. Also, numeric values takes up less space and therefore require less memory when in \textit{R} operation. 
+\paragraph{}
+For smooth runs of community partitioning in \text{R}, for Problem 5-7 we generated \textit{movie\_actor\\\_dict\_pruned} and a \textit{actor\_movie\_dict\_pruned}, where movies with less than 10 and greater than 15 actors/actresses. And the two files combined will be used to generate edge list for movie network. This is because as we delete movies in \textit{movie\_actor\_dict\_pruned}, there exist movies that is in actor\_movie\_dict but not in \textit{movie\_actor\_dict\_pruned}, and if edge list were to be constructed with these two files, it would result in a lager network, with nodes that have less than 10 or greater than 15 actors/actresses. In conjunction with this, we also made \textit{actor\_dict\_pruned} and \textit{movie\_actor\_dict\_pruned}.
+\paragraph{}
+We also generate a trimmed \textit{movie\_actor\_dict\_trimmed} where movies with less than 10 actors/actresses are deleted. This file is required for Problem 8-9. Instead of using \textit{actor\\\_movie\_dict}, Using the same methodology, we acquired \textit{actor\_movie\_dict\_trimmed} based on \textit{movie\_actor\_dict\_trimmed}.
+ 
+\paragraph{}
+From here we generate the edge list of both actor and movie network as follows.
+\begin{itemize}
+	\item actor\_network.csv
+	\item movie\_network\_pruned.csv
+\end{itemize}
+Eventually, we acquired an actor network with 113043 nodes and 35467748 edges for Problem 3, a \textit{pruned} movie network with 52670 nodes and 8541550 edges for Problem 5-7. For Problem 8-9, a number of 105595 movies and a number of 113043 actors are involved.
+
+

@@ -1,0 +1,101 @@
+\subsection*{Problem 1}
+\subsubsection*{(a)}
+\paragraph{}
+This is the same as hw1 and is realized by $erdos.renyi.games()$.
+
+\subsubsection*{(b)}
+\paragraph{}
+Figure \ref{fig:a1} presents mean and standard deviation with $t = 10$ and $num\_walkers = 10000$. And Figure \ref{fig:a2} presents mean and standard deviation with $t = 20$ and $num\_walkers = 10000$. We observed that the mean and standard deviation stabilize as $t$ increases and therefore did not experiment with larger $t$.
+
+\begin{figure}[h]
+	\centering
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{hw2p1b1.png}
+		\caption{Mean}	
+	\end{subfigure}%
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{hw2p1b2.png}
+		\caption{Standard Deviation}
+	\end{subfigure}
+	\caption{Distance $\langle s(t)\rangle$, with $n = 1000,\ t = 10,\ num\_walkers = 10000$}
+	\label{fig:a1}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{hw2p1b3.png}
+		\caption{Mean}
+	\end{subfigure}%
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{hw2p1b4.png}
+		\caption{Standard Deviation}
+	\end{subfigure}
+	\caption{Distance $\langle s(t)\rangle$, with $n = 1000,\ t = 20,\ num\_walkers = 10000$}
+	\label{fig:a2}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{hw2p1b5.png}
+		\caption{Mean}
+	\end{subfigure}%
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{hw2p1b6.png}
+		\caption{Standard Deviation}
+	\end{subfigure}
+	\caption{Distance $\langle s(t)\rangle$, with $n = 100,\ t = 100,\ num\_walkers = 200$}
+	\label{fig:a3}
+\end{figure}
+
+\subsubsection*{(c)}
+\paragraph{}
+They do not share such similarities. For a random walk on graph, we compute its distance by using the shortest path of the two vertices, which is always greater than 0 and is bounded by the graph's diameter. The nonnegative property results in a non-zero mean together with the diameter upper-bound we concluded with a bounded variance of $\langle s(t)\rangle$.
+\subsubsection*{(d)}
+\paragraph{}
+Figure \ref{fig:a3} presents the case where $n = 100$. For a smaller graph where $n=100$, the graph is not connected, and with no damping involved the distribution is rather scattered. First, the random walk is dominated by the case of a two-vertex subgraph, where the walker simply commute between the two vertices. Second, some of the time the vertex is isolated and here we have the walker to stay at the point which results in a walk of zero distance (we can, of course exclude this case but it would do very little to the scattering nature). Finally, the walker initiates at a subgraph with more than two vertices, and due to the paucity of edges, the subgraph mostly has a chain-like feature. If initialized at a low degree edge, this results in walker trapped at the other end, where degree of vertices are higher and ends up in high distance and variance. A typical GCC is shown in Figure \ref{fig:a4}, and an example of such walker behavior is if it starts at $v_4$ and got trapped in blue/yellow region.
+\begin{figure} [h]
+	\centering
+	\includegraphics[scale=0.7]{hw2p1bcom.png}
+	\caption{GCC Structure}
+	\label{fig:a4}
+\end{figure}
+\paragraph{}
+Figure \ref{fig:a5} presents the case where $n = 10000$. With the case where $n = 10000$, the average distance and standard deviation are both smaller. For the case of $n = 1000$ and $n = 10000$, the diameters are $d_1 = 5$, $d_2 = 3$ and from here we can see diameter seems to have an effect on mean and standard deviation, i.e., a positive correlation.
+\begin{figure}[h]
+	\centering
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{hw2p1b7.png}
+		\caption{Mean}
+	\end{subfigure}%
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{hw2p1b8.png}
+		\caption{Standard Deviation}
+	\end{subfigure}
+	\caption{Distance $\langle s(t)\rangle$, with $n = 10000,\ t = 20,\ num\_walkers = 20000$}
+	\label{fig:a5}
+\end{figure}
+\subsubsection*{(e)}
+\paragraph{}
+Figure \ref{fig:a6} Presents the degree distribution of the random walk. Theoretically, this should follow
+\begin{align*}
+D(k) = \frac{kP(k)}{\sum_k kP(k)},
+\end{align*}
+\paragraph{}
+where $P(k)$ is the graph degree distribution. This is more lighter tailed compared to degree distribution of the figure, which shows that the walker tend to pick nodes with high degree.
+
+\begin{figure} [h!]
+	\centering
+	\includegraphics[scale=0.7]{hw2p1bdeg.png}
+	\caption{Degree distribution, with $n = 1000,\ t = 20,\ num\_walkers = 2000$}
+	\label{fig:a6}
+\end{figure}

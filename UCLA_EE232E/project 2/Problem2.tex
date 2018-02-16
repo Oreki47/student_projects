@@ -1,0 +1,68 @@
+\subsection*{Problem 3}
+\paragraph{}
+Table \ref{table:1} presents the 10 actors/actresses with highest pagerank score, and Table \ref{table:2} lists out 10 famous movie stars in the author's opinion
+
+\begin{table}[h!]
+	\centering
+	\caption{List of 10 Actor/Actress with Highest Pagerank Score}
+	\begin{tabular}{{|c|}*{3}{|c|}}
+		\hline
+		& Name 					 & Pagerank score        & \# of Movies Starred in\\
+		\hline
+		& Flowers, Bess  		 & $2.35\mathrm{e}{-4}$  & 828    \\ 
+		\hline
+		& Tatasciore, Fred       & $2.01\mathrm{e}{-4}$  & 355    \\ 
+		\hline
+		& Harris, Sam (II)       & $1.97\mathrm{e}{-4}$  & 600    \\ 
+		\hline
+		& Blum, Steve (IX)       & $1.95\mathrm{e}{-4}$  & 373    \\ 
+		\hline
+		& Miller, Harold (I)     & $1.72\mathrm{e}{-4}$  & 561    \\ 
+		\hline
+		& Jeremy, Ron    		 & $1.58\mathrm{e}{-4}$  & 637    \\ 
+		\hline
+		& Lowenthal, Yuri     	 & $1.57\mathrm{e}{-4}$  & 318   \\ 
+		\hline
+		& Phelps, Lee (I)    	 & $1.57\mathrm{e}{-4}$  & 647    \\ 
+		\hline
+		& Downes, Robin Atkin    & $1.52\mathrm{e}{-4}$  & 267    \\ 
+		\hline
+		& O'Connor, Frank (I)    & $1.47\mathrm{e}{-4}$  & 623    \\ 
+		\hline
+	\end{tabular}
+	\label{table:1}
+\end{table}
+
+\begin{table}[h!]
+	\centering
+	\caption{List of 10 Famous Actor/Actress Based on Author's Opinion}
+	\begin{tabular}{{|c|}*{3}{|c|}}
+		\hline
+		& Name 					 & Pagerank score        & \# of Movies Starred in\\
+		\hline 
+		& Hanks, Tom  		     & $5.21\mathrm{e}{-5}$  & 80    \\ 
+		\hline 
+		& DiCaprio, Leonardo     & $3.15\mathrm{e}{-5}$  & 49    \\ 
+		\hline
+		& Freeman, Morgan (I)    & $7.50\mathrm{e}{-5}$  & 122   \\ 
+		\hline
+		& Smith, Will (I)        & $3.19\mathrm{e}{-5}$  & 49    \\ 
+		\hline
+		& Portman, Natalie       & $3.09\mathrm{e}{-5}$  & 57    \\ 
+		\hline
+		& Clooney, George        & $3.99\mathrm{e}{-5}$  & 67    \\ 
+		\hline
+		& Damon, Matt    		 & $5.01\mathrm{e}{-5}$  & 85    \\ 
+		\hline
+		& Roberts, Julia (I)  	 & $3.52\mathrm{e}{-5}$  & 58    \\ 
+		\hline
+		& Pacino, Al (I)    	 & $4.13\mathrm{e}{-5}$  & 76    \\ 
+		\hline
+		& Williams, Robin (I)    & $5.16\mathrm{e}{-5}$  & 10    \\ 
+
+		\hline
+	\end{tabular}
+	\label{table:2}
+\end{table}
+\paragraph{}
+To our surprise, the 10 actor/actress listed in Table \ref{table:1} tend to be less famous, names of which barely heard of. This could be explained by the mechanism of pagerank algorithm. Pagerank describes the (weighted) visiting frequency of each node. Without the weight factor, the more one is connected to, the higher the pagerank score s/he has. This is shown by comparing Table \ref{table:1} and Table \ref{table:2}. With weighted considered, we see some actor/actress with fewer connections, but a very high score, like "Tatasciore, Fred" in Table \ref{table:1}. Since pagerank score does not take popularity of a movie into consideration, we argue that such ranking does not provide a good indication whether an actor/actress is famous or not.

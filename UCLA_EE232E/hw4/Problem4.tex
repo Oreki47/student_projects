@@ -1,0 +1,23 @@
+\subsection*{Problem 4}
+\paragraph{}
+To evaluate sector clustering, we examine the following metrics,
+\begin{align*}
+\alpha = \frac{1}{|V|}\sum_{v_i \in V}P(v_i \in S_i),
+\end{align*}
+where $S_i$ is the sector of node $i$, and $P(v_i \in S_i)$ is given by
+\begin{align*}
+P(v_i \in S_i) = \frac{|\{j|v_j \in N_i, S_j = S_i\}|}{|\{j|v_j \in N_i\}|},
+\end{align*}
+where $N_i$ is the neighbors of node $i$. And our result
+\begin{align*}
+\alpha_{day} =  0.6062934.
+\end{align*}
+By comparison, we also assigned sectors randomly, without changing the distribution of the sector, i.e., the probability $P^i_j$ of a node $i$ being assigned with sector $j$ can be expressed as
+\begin{align*}
+P^i_j = \frac{|S_j|}{\sum_k |S_k|}.
+\end{align*}
+In practice, we simply use \textit{sample} method in \textit{R}, which randomize the sequence of sector index. With 100 runs, our ensemble average is
+\begin{align*}
+\alpha_{rand} = 0.08452961,
+\end{align*}
+which shows our method is much superior than guessing.

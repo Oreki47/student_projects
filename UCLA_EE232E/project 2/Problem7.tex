@@ -1,0 +1,53 @@
+\section*{Section 9}
+\paragraph{}
+Here we simply performed a pipeline analysis, i.e., we ran through all combinations of number of movies to include that compute actor scores, and number of actors to include that predict movie ratings. Recall that we truncated the actor and movie by removing nodes with less than 10 connections. So we start with using 1 actor, 2 actors,..., 10 actors, all actors and the same goes with movies. We performed 121 ($11*11$) analysis in total and Figure \ref{fig:bi01} to \ref{fig:bi03} presents the MSE, mean error, and ARMSE of selected results. One obvious fact is the more movies included in averaging actor scores and the more actors included in predicting the movie ratings, the better the fit.
+\paragraph{}
+From this result, it is obvious to use all available movies to product actor scores and use all actors in a movie to predict movie ratings. As such, the prediction of 3 target movies is shown in Table \ref{table:8}. To further analyze the target movies. We explored that each of them has 63, 62, 21 actors/actresses respectively, and Figure \ref{fig:hist} presents a histogram of actor/actress score using all movies available.
+\paragraph{}
+As it turned out, the bipartite graph method performance is comparable to regression methods. When using all movies available to generate actor scores, and using all actors available to generate movie rating predictions, we acquired a MSE, mean error, and ARMSE of 0.54, 0.19 and 0.73 respectively. It has the benefit that the rating errors are less sparse (with smaller MSE and ARMSE compared to model 1-4 in Section 8). On the other hand, its mean estimate error is a bit higher than model 1-4.
+\paragraph{}
+Provided that our focus is on the 3 target movies alone, the bipartite method generates the best fit and beats all 6  models mentioned in previous sections (Problem 6, 7).
+
+\begin{table}[h!]
+	\centering
+	\caption{Actual Ratings and Bipartite Prediction of the 3 Target Movies}
+	\begin{tabular}{{|c|}*{4}{|c|}}
+		\hline
+		&Movie Name 		& Batman v Superman:     & Mission: Impossible & Minions(2015)   	\\
+		&           		& Dawn of Justice(2016)  & Rogue Nation(2015)  &               		\\
+		\hline
+		&Actual Rating  	& 7.1  	                 & 7.5                 & 6.4    			\\ 
+		\hline
+		&Bipartite Rating   & 6.3  	          		 & 6.5          	   & 6.8         		\\ 
+		\hline
+	\end{tabular}
+	\label{table:8}
+\end{table}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=.7\linewidth]{bi01.png}
+	\caption{MSE Trend}	
+	\label{fig:bi01} 
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=.7\linewidth]{bi02.png}
+	\caption{Mean Error Trend}	
+	\label{fig:bi02} 
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=.7\linewidth]{bi03.png}
+	\caption{ARMSE Trend}	
+	\label{fig:bi03} 
+\end{figure}
+
+\begin{figure}[t!]
+	\centering
+	\includegraphics[width=.7\linewidth]{hist.png}
+	\caption{Actor Scores}	
+	\label{fig:hist} 
+\end{figure}

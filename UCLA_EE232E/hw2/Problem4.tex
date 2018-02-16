@@ -1,0 +1,25 @@
+\subsection*{Problem 4}
+\subsubsection*{(a)}
+\paragraph{}
+Figure \ref{fig:d1} presents the case of directed graph with teleportation, with a $cor = 0.8178$.
+\begin{figure} [h!]
+	\centering
+	\includegraphics[scale=0.5]{hw2p3c1.png}
+	\caption{Node Frequency, with $n = 1000,\ t = 20,\ num\_walkers = 1000$}
+	\label{fig:d1}
+\end{figure}
+\subsubsection*{(b)}
+\paragraph{}
+Figure \ref{fig:d2} presents the case of directed graph with teleportation, with a $cor = 0.8211$. Ideally the correlation score should be a bit higher than case (a) since now teleportation also follows degree distribution. Here we see a slight increase in such score. However with one realization of the random graph this is not guaranteed.
+\begin{figure} [h!]
+	\centering
+	\includegraphics[scale=0.5]{hw2p3c1.png}
+	\caption{Node Frequency, with $n = 1000,\ t = 20,\ num\_walkers = 1000$}
+	\label{fig:d2}
+\end{figure}
+\subsubsection*{(c)}
+\paragraph{}
+With $\alpha$ introduced as the probability of teleportation, the formula is as follows.
+\begin{align*}
+	\pi(i)=(1-\alpha)\sum_{j=1}^{n}\frac{1}{deg_o(\nu_j)}A_{ji}\pi(j) + \frac{\alpha}{N} \sum_{j=1}^{n}\pi(j)
+\end{align*}

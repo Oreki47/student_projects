@@ -1,0 +1,104 @@
+\section{Chap 6}
+\subsection{Notes}
+% ----------------------------------------------------------------------
+\subsubsection{Subset Selection}
+The idea of best subset selection is simple, i.e., to perform a thorough search on all possible combinations of predictors.
+\begin{tbox}
+Remark: we could use branch and bound to avoid enumeration, but B\&B also has its limits.
+\end{tbox}
+% ----------------------------------------------------------------------
+\textbf{Stepwise Selection:}
+Forward stepwise begins with a model containing no predictors, and then adds predictors to the model, one-at-a-time, until all of the predictors are in the model. At each step, the variable taht gives the greatest additional improvement is added.
+\begin{tbox}
+	Remark: This is essentially a greedy approach. With that, the search space becomes $n = 1 + p(p+1)/2$.
+\end{tbox}
+Backward stepwise is simply the opposite, with same size of the search space.
+
+% ----------------------------------------------------------------------
+\textbf{Metric:}
+The $C_p$ estimate of test MSE is computed using the equation $$ C_p = \frac{1}{n}(\text{RSS} +2p\hat{\sigma}^2),$$ where $\hat{\sigma}^2$ is an estimate of the variance of the error $\epsilon$ associated with each response measurement. 
+
+The AIC criterion is defined for a large class fo models fit by maximum likelihood. In the case of the model with Gaussian errors, maximum likelihood and least squares are the same thing. In this case AIC is given by $$\text{AIC} = \frac{1}{n\hat{\sigma}^2}(\text{RSS}+2p\hat{\sigma}^2),$$ Hence for least square models, $C_p$ and AIC are proportional to each other.
+
+On the other hand, BIC is derived from a Bayesian point of view, but is also similar to AIC ($C_p$). This is given by $$ \text{BIC} =\frac{1}{n}(\text{RSS}+\log(n)p\hat{\sigma}^2).$$ Since $\log n >2 $ for $n>7$, BIC places a heavier penalty on model with many variables.
+
+Finally the adjusted $R^2$ is another metric, as $$ \text{Adjusted}\ R^2=1 - \frac{\text{RSS}/(n-p-1)}{\text{TSS}/(n-1)}.$$
+\begin{tbox}
+Remark: All expressions here are defined for linear regression.
+\end{tbox}
+
+On the other hand, we could simply use cross-validation to estimate test error. When using cross-validation, we could use one-standard-error rule.
+% ----------------------------------------------------------------------
+\subsubsection{Shrinkage Methods}
+Adding constraints and regularization terms can efficiently reduce variance of the coefficient estimates. Two of the mostly used methods are \xt{ridge regression} and \xt{lasso}. 
+
+% ----------------------------------------------------------------------
+\textbf{Ridge regression:}
+The \xt{ridge regression} coefficient estimate $\hat{\beta}^R$ are the values that minimize $$ \sum_{i=1}^{n}(y_i-\beta_0 -\sum_{j=1}^p\beta_jx_{ij})^2 + \lambda\sum_{j=1}^{p}\beta_j^2,$$ where $\lambda \geq 0$ is a \xt{tuning parameter}.
+
+\begin{tbox}
+Remark: For \xt{ridge regression} to work properly, we need to normalized each predictor $$ \hat{(x)}_{ij} = \frac{x_{ij}}{\frac{1}{n}\sum_{i=1}^{n}(x_{ij}-\bar{x}_{ij})^2},$$ so that all predictors are on the same scale.
+\end{tbox}
+
+The reason of performance improvement lies in the \xt{bias-variance trade-off}. As $\lambda$ increase, the variability of regression fit decrease, leading to increase in bias but decrease in variance.
+
+% ----------------------------------------------------------------------
+\textbf{Lasso:}
+The \xt{lasso} is an alternative to ridge regression, with lasso coefficient $\hat{\beta}^L_\lambda$ minimize the quantity $$ \text{RSS} + \lambda \sum_{j=1}^{p}|\beta_j|.$$
+\begin{tbox}
+lare shrunken all the way to zero.
+\end{tbox}
+% ----------------------------------------------------------------------
+\subsubsection{Dimension Reduction}
+\textbf{Principal Components Regression:} The \xt{first principle component} direction of the data is that along which the observations \xt{vary the most}.
+\begin{tbox}
+Remark: PCA also requires normalization to work properly.
+\end{tbox}
+\textbf{Partial Least Squares:} Relates to both train and test data.
+% ----------------------------------------------------------------------
+\subsubsection{High Dimension}
+% ----------------------------------------------------------------------
+\subsection{Exercise}
+\subsubsection{Conceptual 1.}
+(a) best subset, as it performs an exhaust search. 
+
+(b) Same.
+
+(c) True; True; False; False; False;
+% ----------------------------------------------------------------------
+\subsubsection{Conceptual 2.}
+(a) iii.
+(b) iii.
+(c) ii.
+% ----------------------------------------------------------------------
+\subsubsection{Conceptual 3.}
+(a) iv.
+(b) ii.
+(c) iii.
+(d) iv.
+(e) v.
+% ----------------------------------------------------------------------
+\subsubsection{Conceptual 4.}
+(a) iii.
+(b) ii.
+(c) iv.
+(d) iii.
+(e) v.
+% ----------------------------------------------------------------------
+\subsubsection{Conceptual 5.}
+(a). Minimize: $(y_1 - \hat{\beta}_1x_{11} - \hat{\beta}_2x_{12})^2 + (y_2 - \hat{\beta}_1x_{21} - \hat{\beta}_2x_{22})^2 + \lambda (\hat{\beta}_1^2 + \hat{\beta}_2^2)$.
+
+(b). We could simplify the above expression and would discover that $\beta_1 + \beta_2 = c$ for a given data set. Therefore, to minimize the above expression we are equivalently minimizing $\lambda(\beta_1^2 + \beta_2^2)$ with the constraint that $\beta_1 + \beta_2 = c$. This leads to $\beta_1 = \beta_2$.
+
+(c). Minimize: $(y_1 - \hat{\beta}_1x_{11} - \hat{\beta}_2x_{12})^2 + (y_2 - \hat{\beta}_1x_{21} - \hat{\beta}_2x_{22})^2 + \lambda(|\beta_1| + |\beta_2|)$.
+
+(d). Again, we could come to $\beta_1 + \beta_2 = c$. There are just infinite ways of combinations.
+
+% ----------------------------------------------------------------------
+\subsubsection{Conceptual 6.}
+Pass.
+
+% ----------------------------------------------------------------------
+\subsubsection{Conceptual 7.}
+
+Stopped at page 277

@@ -1,0 +1,44 @@
+\subsection*{Section 3}
+\paragraph{}
+Table \ref{table:1} list all nodes with degree larger than 200, with an average $m_{core\_nodes} = 279.375$. There are a total of 40 core nodes.
+\begin{table}[h!]
+	\centering
+	\caption{List of Core Nodes}
+	\begin{tabular}{{c}*{11}{c}}
+		\hline
+		& 1    & 108  & 349  & 484  & 1087 & 1200 & 1353 & 1432 & 1585 & 1590  \\ 
+		\hline
+		& 1644 & 1685 & 1731 & 1747 & 1769 & 1801 & 1828 & 1889 & 1913 & 1942  \\
+		\hline
+		& 1986 & 1994 & 2048 & 2079 & 2124 & 2143 & 2207 & 2219 & 2230 & 2234  \\
+		\hline
+		& 2241 & 2267 & 2348 & 2411 & 2465 & 2508 & 2544 & 2561 & 2612 & 3438  \\
+		\hline
+	\end{tabular}
+	\label{table:1}
+\end{table}
+\paragraph{}
+Since Node 1 is also a core node, we will be studying this node for problem 3. Figure \ref{fig:d} to \ref{fig:f} presents the community structure by \textit{Fast Greedy, Edge-Betweenness,} and \textit{Infomap} respectively. 
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=.6\linewidth]{q1d.png}
+	\caption{Node 1 Community Structure by \textit{fast greedy algorithms}}	
+	\label{fig:d}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=.6\linewidth]{q1e.png}
+	\caption{Node 1 Community Structure by \textit{Edge-Betweenness algorithms}}	
+	\label{fig:e}
+\end{figure}
+
+\paragraph{}
+Each of the three has a community size of 8, 41 and 26 respectively. By looking at the size of community, we argue that \textit{Fast Greedy} tend to have larger clusters with fewer communities, and \textit{Edge-Betweeness} tend to have one very large cluster with many clusters around, and finally \textit{Infomap} is somewhat moderate between the two. We also notice that the three has some overlaps, indicated by the yellow region in Figure \ref{fig:d} and red in Figure \ref{fig:e} and \ref{fig:f}. In all three cases they are clustered into a group.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=.6\linewidth]{q1f.png}
+	\caption{Node 1 Community Structure by \textit{Infomap algorithms}}	
+	\label{fig:f}
+\end{figure}

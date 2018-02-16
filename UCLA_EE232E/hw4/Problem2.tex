@@ -1,0 +1,26 @@
+\subsection*{Problem 2}
+\paragraph{}
+From \textit{data} folder, there are a total of 505 stocks (nodes) and we created a graph with the number of edges equals to ${505}\choose{2}$, or 127260. Figure \ref{fig:02hist} presents the histogram of the edge weight distribution.
+\paragraph{}
+We compute the weight as follows. First we acquired the log returns $r_i(t)$ of stock $i$ at time $t$,
+\begin{align*}
+r_i(t) = \log p_i(t) - \log p_i(t-\tau),
+\end{align*}
+where $p_i(t)$ is the closing price at time $t$, and $\tau =1 $.  Then we compute the correlation coefficient $\rho_{ij}$ of two different stock-return time series as,
+\begin{align*}
+\rho_{ij} = \frac{\langle r_i(t)r_j(t)\rangle - \langle r_i(t)\rangle \langle r_j(t) \rangle}
+{\sqrt{(\langle r_i(t)^2\rangle - \langle r_i(t)\rangle^2)(\langle r_j(t)^2\rangle - \langle r_j(t)\rangle^2)}}.
+\end{align*}
+\paragraph{}
+Finally, we compute the weight $d_{ij}$ between stocks (nodes) $i$ and $j$ as 
+\begin{align*}
+d_{ij} = \sqrt{2(1 - \rho_{ij})}.
+\end{align*}
+
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=.5\linewidth]{02hist.png}
+	\caption{Distribution of Edge Weight}	
+	\label{fig:02hist} 
+\end{figure}

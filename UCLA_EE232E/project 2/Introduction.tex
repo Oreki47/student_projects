@@ -1,0 +1,14 @@
+\section{Introduction}
+\paragraph{}
+For this project, we used \textit{R} and \textit{igraph} package for graph analytics  (Problem 3, 5) and rest of the work are accomplished with python, including data parsing, cleansing, and statistical learning (Problem 1, 2, 4, 6-9). A list of source codes and a short description are as follows.
+\begin{itemize}
+	\item Parsing\_n\_cleasning.ipynb (python): Basic data parsing and cleansing that generate all data files needed for constructing network edgelists (Problem 1).
+	\item Edgelist\_Construction.ipynb (python): Construction of edgelists of both actor and movie network (Problem 2, 4).
+	\item source\_actor.R (R): Construction of actor graph; pagerank analysis of actor network (Problem 3).
+	\item source\_movie.R (R): Construction of movie graph; community analysis of movie network  (Problem 5).
+	\item Actor\_network\_post\_analysis.ipynb (python): Analysis of actor network in conjunction with source\_actor.R. Exploration of actor/actress page rank score and correlation to their popularity.  (Problem 3)
+	\item Community\_n\_tags.ipynb (python): Analysis of the 3 target movies based on community partitioning results from source\_movie.R, and function fitting of their ratings based on nearest neighbors.  (Problem 5-7)
+	\item Movie\_network\_post\_analysis.ipynb (python): Construction of various fitting models according to page rank scores and popularity of directors.  (Problem 8)
+	\item Bipartite\_fitting.ipynb (python): Prediction of movie ratings using bipartite graph properties.  (Problem 9)
+
+\end{itemize}	

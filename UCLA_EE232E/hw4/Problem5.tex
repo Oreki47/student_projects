@@ -1,0 +1,54 @@
+\subsection*{Problem 5}
+\paragraph{}
+The triangular inequality does hold for the fully connected graph. Assume that each series of the stock's log return has zero mean, the correlation coefficient can be written as 
+\begin{align*}
+\rho_{ij} &= \frac{\langle r_i(t)r_j(t)\rangle}{\sqrt{(\langle r_i(t)^2\rangle)(\langle r_j(t)^2\rangle}} \\
+&=\frac{\frac{1}{n}\sum_{t = 1}^{n} r_i(t)r_j(t)}{\sqrt{(\frac{1}{n}\sum_{t = 1}^{n}r_i(t)^2)(\frac{1}{n}\sum_{t = 1}^{n}r_j(t)^2)}} \\
+&=\frac{P_i^TP_j}{\|P_i\|_2 \|P_j\|_2}\\
+&=\hat{P}_i^T\hat{P}_j,
+\end{align*}
+where $P_i$, $P_j$ is the vector representation of log return series of stock $i$, $j$, and $\hat{P}_i,\ \hat{P}_j$ is just such series after normalization. From here the distance between $i$ and $j$ can be written as
+\begin{align*}
+d_{ij} 	& = \sqrt{2(1-\rho_{ij})}\\
+	 	& = \sqrt{2 - 2 \rho_{ij}}\\
+ 		& = \sqrt{\|\hat{P}_i\| - 2\hat{P}_i^T\hat{P}_j + \|\hat{P}_j\|}\\
+ 		& = \|\hat{P}_i - \hat{P}_j\|_2.
+\end{align*}
+Therefore, we can see $\hat{P}_i$ and $\hat{P}_j$ as points on a unit circle and $d_{ij}$ is the chord between these two points. For any arbitrary stock $k$ and corresponding $\hat{P}_k$, we must have 
+\begin{align*}
+d_{ij} \leq d_{ik} + d_{jk},
+\end{align*}
+which is followed by \textit{Thales' theorem}. To complete our proof, now we examine if the log return series have zero mean. Figure \ref{fig:05mean} presents the mean distribution, which shows that our assumption basically stands. Therefore, the triangular inequality holds for the fully connected graph.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=.5\linewidth]{05mean.png}
+	\caption{Distribution of the Mean}	
+	\label{fig:05mean} 
+\end{figure}
+\paragraph{}
+We applied the 2-approximation algorithm for metric TSP ($\Delta$-TSP) as follows \cite{tsp}:
+
+\begin{algorithm}[H]
+	\caption{ 2-approximation algorithm}
+	\begin{algorithmic}[1]		
+		\State Find the minimum spanning tree of graph $G$.
+		\State Duplicate each edge to obtain a Eulerian graph.
+		\State Find a Eulerian tour $J$ of the Eulerain graph.
+		\State Covert $J$ to a tour $T$ by going through the vertices in the same orfer of $J$, while skipping vertices that have been already visited.
+	\end{algorithmic}
+\end{algorithm}
+
+\paragraph{}
+For simplicity, we save the tour sequence in a file \textit{tour.csv}, which is also attached in the .zip file. For metric TSP, we always have
+\begin{align*}
+c(MST) \leq c(TSP) \leq 2c(MST),
+\end{align*}
+where $c()$ is the cost. By using a general TSP solver, we acquired the tour length
+\begin{align*}
+c(TSP) = 467.131.
+\end{align*}
+On the other hand, the weighted sum of edges in MST,
+\begin{align*}
+c(MST) = 431.2204,
+\end{align*}
+which means the 2- approximation algorithm for metric TSP has a cost $2c(MST) = 862.4408$.

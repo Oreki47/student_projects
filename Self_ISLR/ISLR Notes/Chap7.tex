@@ -1,0 +1,33 @@
+\section{Moving Beyond Linearity}
+\subsection{Notes}
+% ----------------------------------------------------------------------
+\subsubsection{Polynomial}
+We could replace the standard linear model with $$y_i = \beta_0 + \beta_1 x_i + \epsilon_i$$ with a polynomial function $$ y_i = \beta_0 + \beta_1 x_i + \beta_2 x_i^2 + \cdots + \beta_d x_i^d + \epsilon_i,$$ where $\epsilon_i$ is the error term.
+
+% ----------------------------------------------------------------------
+\subsubsection{Step Functions}
+\begin{tbox}
+For step function, consider the case of XGBoost where it imposes a split on some points and assigns a weight on that interval. As mentioned by the book, unless there are natural breakpoints $c_1, c_2, \cdots$, making such assumption is unwise. However, methods such as XGBoost actually learns this $c_1, c_2, \cdots$ series and also the weight.
+\end{tbox}
+
+% ----------------------------------------------------------------------
+\subsubsection{Basis Functions}
+We fit a series of basis functions as $$ y_i = \beta_0 + \beta_1 b_1(x_i) + \beta_2 b_2(x_i) + \cdots + \beta_d b_d(x_i)+ \epsilon_i,$$ This basically includes all possible discriminative models.
+
+% ----------------------------------------------------------------------
+\subsubsection{Regression Splines}
+Fit piecewise polynomial with knots continuity on the original function, first derivative and second derivative. To construct splines, we start off with a basis for cubic polynomial -- $x, x^2, x^3$, and then add one \xt{truncated power basis} function per knot. A truncated power basis function is defined as $$ h(x, \xi) = (x \xi)^3_+ = \begin{cases} (x - \xi)^3  &\text{if } x > \xi \\ 0 & \text{otherwise},
+\end{cases} $$ where $\xi$ is the knot. The cons of cubic splines is that it performs relatively poorly at the outer range of the predictors, i.e., when x is either very small or very large. To address that, we have natural splines, where the first and last portion of the function is linear.
+
+Another question is where should we place the knot. In practice, the knots are usually evenly distributed.
+
+% ----------------------------------------------------------------------
+\subsubsection{Smoothing Splines}
+Essentially we want to make RSS small but also as smooth fit. A natural approach is to find the function $g$ that minimizes $$ \sum_{i=1}^{n}(y_i - g(x_i))^ + \lambda \int g''(t)^2 dt,$$ where $\lambda$ is a nonnegative tuning parameter. The function $g$ that minimize the above expression is known as a \xt{smoothing spline}.
+
+% ----------------------------------------------------------------------
+\subsubsection{Local Regression}
+
+% ----------------------------------------------------------------------
+\subsubsection{Generalized Additive Models}
+Stopped at page 302

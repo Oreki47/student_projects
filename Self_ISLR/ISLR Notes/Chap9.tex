@@ -1,0 +1,28 @@
+\section{Support Vector Machine}
+\subsection{Notes}
+\subsubsection{Maximal Margin Classifier}
+Intuitively, the maximal margin hyperplane represents the mid-line of the widest ``slab'' that we can insert between the two classes. The observations that lies on the slab are called support vectors in the sense that if these points were moved slightly, then the maximal margin hyperplane would move as well. This maximal margin classifier assumes that the two classes can be perfectly separated, which is usually not the case.
+% ----------------------------------------------------------------------
+\subsubsection{Support Vector Classifier}
+Sometimes it is also called aa soft margin classifier. Here what we do is 
+\begin{align*}
+\text{max.} \quad & M\\
+\text{s.t.} \quad & ||\beta||^2 =1 \\
+				  & y_i(\beta^Tx_i) \geq M(1-\epsilon_i),\ i =1,\dots,m \\
+				  & \epsilon_i \geq 0,\ i=1,\dots,m \\
+				  & \sum_{i=1}^m \leq C,
+\end{align*}
+where $M$ is the width of the margin and $C$ is a non-negative parameter. In practice, $C$ is a tuning parameter that controls the bias-variance trade-off. If $C$ is small, then the model fits well to the data, thereby gaining a small bias but high variance. On the other hand, if $C$ is large, the margin is wider and potentially more general.
+% ----------------------------------------------------------------------
+\subsubsection{Support Vector Machine}
+Support vector classifier suffers from the fact that the decision boundary is linear. Here we extend the idea. Instead of fitting the support vector classifier with the $p$ original features, we could instead fit it with $2p$ features including the original set and a square of each. This leads to a non-linear boundary. But this computationally impractical if $p$ becomes very large.
+
+For the sake of this book, we will be omitting how SVM is computed. However, it turns out that the solution to the support vector classifier involves only the \xt{inner products} of the observations (through formulation of dual problem), which could be defined as $$ \langle x_i, x_j \rangle = x_i^Tx_j.$$ and the linear support vector classifier can be represented as $$ f(x) = \beta_0 + \sum_{i=1}^{n}\alpha_i\langle x, x_i \rangle.$$ Theoretically we need to compute $n(n-1)/2$ inner products to evaluate $f(x)$. However, (due to complimentary slackness) $\alpha_i \neq 0$ only for support vectors. So suppose set $S$ is the collection of indices of these support points, we can rewrite any solution function of the form as $$f(x) = \beta_0 + \sum_{i\in S}\alpha_i\langle x, x_i \rangle.$$
+
+Now if we replace the inner product with a \xt{generalization} of the form $$ K(x_i, x_j),$$ where $K$ is some function that we refer to as  a \xt{kernel}. For instance, we could simply take $$ K(x_i, x_j) = x_i^T x_j,$$ which would just give us back the support vector classifier. This is known as a \xt{linear} kernel because the support vector classifier is linear in the features (the linear kernel essentially quantifies the similarity of a
+pair of observations using Pearson (standard) correlation). Of course, it takes other forms such as $$ K(x_i, x_j) = (1 + x_i^Tx_j)^d.$$ This is known as a \xt{polynomial kernel} of degree $d$. Another popular choice is the \xt{radial kernel}, which takes the form $$ K(x_i, x_j) = \exp(-\gamma||x_i - x_j||^2).$$
+
+The advantage of using kernel functions rather than enlarging of $p$ is that it is computationally more efficient. We only have to compute $n(n-1)/2$ pairs which is trivial for modern computers.
+% ----------------------------------------------------------------------
+\subsubsection{Relationship to Logistic Regression}
+Basically, we could rewrite the criterion for fitting the support vector classifier $f(X) = \beta^TX$ as $$ \text{minimize}_\beta \sum_{i=1}^n \text{max}\{0, 1-y_if(x_i)\} + \lambda ||\beta||^2,$$ where $\lambda$ is a non negative tuning parameter. This takes a similar form of ridge regression. The part of loss function without the regulation $$\sum_{i=1}^n \text{max}\{0, 1-y_if(x_i)\},$$ is knonw as \xt{hinge loss}, which is very similar to the loss function used in the logistic regression.

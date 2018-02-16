@@ -1,0 +1,16 @@
+\subsection*{Problem 1}
+\paragraph{}
+The benefits of using log return is several fold \cite{lr1, lr2}. First off, using returns instead of raw prices, we acquired a normalized information, providing a universal metric for all variable s on different scale. Second, log return follows \textit{approximate raw-log equality}, i.e., when returns are very small, the following approximation exists,
+\begin{align*}
+\log(1+r) \approx r \ll 1,
+\end{align*}
+which provides a fair approximation of the percentage return. Third, when computing compounding returns, with the assumption that the returns are distributed normally, then the product, 
+\begin{align*}
+(1+r_1)(1+r_2)(1+r_3)\cdots(1+r_n) = \prod_i(1+r_i)
+\end{align*}
+is not normally distributed, and therefore may be difficult to handle. On the other hand, the log return can be written as 
+\begin{align*}
+\sum_i \log(1+r_i) = \sum_i \log(\frac{p_i}{p_{i-1}}) = \log(p_n) - \log (p_0),
+\end{align*}
+where $p_i$ and $p_{i-1}$ is the price of time $i$ and $i-1$ respectively. This is normally distributed, since sum of Gaussian distribution is still Gaussian. Finally, using log return provides protection of arithmetics operations as when involved with very small numbers, there could be a potential risk of underflow.
+

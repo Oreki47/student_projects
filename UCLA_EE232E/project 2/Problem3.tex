@@ -1,0 +1,79 @@
+\subsection*{Problem 5}
+\paragraph{}
+Due to limited computing resources and constant crash from Rstudio, we shrank down our network size for problem 5-7. We restricts movie network to have a number of actors/actresses between 10 to 15. As such, we acquired a trimmed movie network with 52669 nodes and 8541550 edges. By running \textit{fast.greedy} algorithm, we acquired 23 communities. Of the 52669 movies, 46783 of them have genre information and we attached the rest 5885 movies with "Unknown". As such, the community tag results as presented in Table \ref{table:3}.
+\paragraph{}
+Of the total 29 genres (28 $+$ "Unknown"), the tags that shows up most often is the "Drama", which presents in 19 of 23 communities.
+\paragraph{}
+From project 1 we learned that the \textit{fast.greedy} method does attempt to form larger clusters, and such trend is shown here again. For lager communities such as 1, 3 and 14, the tagged movies covers a mere 20\%, whereas for smaller ones such as 5,20 and 23, the tags are often responsible for a larger share (30\% and more) of within the community and therefore being more informative. This leads to the argument that \textit{fast.greedy} does not provide a very well classification of movie genre. That being said tags themselves do reveal the properties of the community to some extend.
+
+\begin{table}[h!]
+	\centering
+	\caption{Community genre tags and weights}
+	\begin{tabular}{{|c}*{4}{|c|}}
+		\hline
+		& Community ID		  & Genres		         & Percentages 	  	   & Community Size			\\
+		\hline
+		&\multirow{2}{*}{1}   & Drama  	             & 0.213240    	       & \multirow{2}{*}{10319} \\
+		&           		  & Thriller		     & 0.201415   		   &               	     	\\		
+		\hline
+		& 2				      & Drama  	             & 0.259887     	   & 354				    \\ 	
+		\hline
+		& 3				      & Drama  	             & 0.294722      	   & 2823				    \\ 	
+		\hline
+		&\multirow{2}{*}{4}   & Unknown  	         & 0.254853     	   & \multirow{2}{*}{3606}  \\ 
+		&           		  & Drama		     	 & 0.225458    		   &               	     	\\		
+		\hline
+		& 5				      & Drama  	             & 0.406103      	   & 426				    \\ 	
+		\hline
+		&\multirow{2}{*}{6}   & Romance  	         & 0.283333      	   & \multirow{2}{*}{60}    \\ 
+		&           		  & Drama		     	 & 0.216667    		   &               	     	\\	
+		\hline
+		& 7				      & Drama  	             & 0.259765       	   & 11496				    \\ 	
+		\hline
+		& 8			     	  & Drama  	             & 0.363317        	   & 1423				    \\ 	
+		\hline
+		& 9			     	  & Drama  	             & 0.288394        	   & 1706				    \\ 	
+		\hline
+		& 10			      & Drama  	             & 0.316705            & 2185				    \\ 	
+		\hline
+		&\multirow{2}{*}{11}  & Comedy  	         & 0.350816       	   & \multirow{2}{*}{858}   \\ 
+		&           		  & Drama		     	 & 0.321678    		   &               	     	\\	
+		\hline
+		&\multirow{2}{*}{12}  & Musical  	         & 0.450000        	   & \multirow{2}{*}{20}    \\ 
+		&           		  & Unknown		     	 & 0.250000    		   &               	     	\\	
+		\hline
+		&\multirow{2}{*}{13}  & Drama  	             & 0.454545    	       & \multirow{2}{*}{22}	\\ 
+		&           		  & War	  			     & 0.227273    		   &               	     	\\		
+		\hline
+		&\multirow{2}{*}{14}  & Drama  	             & 0.230544    	       & \multirow{2}{*}{7838}	\\ 
+		&           		  & Short  			     & 0.216509    		   &               	     	\\		
+		\hline
+		& 15			      & Drama  	             & 0.219229            & 2153				    \\ 	
+		\hline
+		&\multirow{2}{*}{16}  & Unknown  	         & 0.236932    	       & \multirow{2}{*}{2334}	\\ 
+		&           		  & War	  			     & 0.218081    		   &               	     	\\		
+		\hline
+		&\multirow{2}{*}{17}  & Drama	  	         & 0.336123    	       & \multirow{2}{*}{717}	\\ 
+		&           		  & Comedy	  			 & 0.308229    		   &               	     	\\		
+		\hline
+		&\multirow{2}{*}{18}  & Drama	  	         & 0.302055    	       & \multirow{2}{*}{1460}	\\ 
+		&           		  & Romance	  			 & 0.204795    		   &               	     	\\		
+		\hline
+		&\multirow{2}{*}{19}  & Romance	  	         & 0.337676    	       & \multirow{2}{*}{921}	\\ 
+		&           		  & Drama	  			 & 0.276873    		   &               	     	\\		
+		\hline
+		& 20			      & Drama  	             & 0.650794            & 189				    \\ 	
+		\hline
+		& 21			      & Drama  	             & 0.271012            & 1749				    \\ 	
+		\hline
+		&\multirow{2}{*}{22}  & Romance	  	         & 0.333333    	       & \multirow{2}{*}{6}		\\ 
+		&           		  & Drama	  			 & 0.333333  		   &               	     	\\		
+		\hline
+		& 23			      & Thriller  	         & 0.857143             & 7				 	   \\ 	
+		\hline	
+	\end{tabular}
+	\label{table:3}
+\end{table}
+
+\paragraph{}
+One potential reason that renders the results not desirable is the paucity of information. Here it refers to the lack of tags on movies. Generally speaking, a movie could possess several different tags, for instance, a movie can be categorized into romance, dramma, comedy and etc. at the same time. We believe tagging each movie once increase the gap between movies. As an example, suppose two movies are tagged with drama and romance respectively. From a single tag we may not be able to tell if they are connected. However if both of them have 3 tags instead, say drama, romance, comedy, and romance, comedy, musical respectively, and here 2 out of the 3 are the same, then we could argue that these two movies do, in fact, have some connections. Therefore, by adding more tags we believe tags in a community also cover a higher percentage, which provides more certainties of the properties a community possesses.

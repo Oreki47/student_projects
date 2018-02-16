@@ -1,0 +1,53 @@
+\section{Chap 2}
+1.In PREDICTION, reduce the part that is reducible, i.e.,
+\begin{align}
+\mathbb{E}(Y-\hat{Y}) &= \mathbb{E}[f(X)+\epsilon-\hat{f}(X)]^2 \\&=
+\underbrace{[f(X) -\hat{f}(X)]^2}_{\text{reducible}} +
+\underbrace{\text{Var}(\epsilon)}_{irreducible}
+\end{align}
+2. In INFERENCE, nah. \\
+3. Parametric v.s. non-parametric methods. \\
+4. Supervised v.s. unsupervised learning. \\
+5. Regression v.s. classification. \\
+6. Bias v.s. variance. \\
+7. Jumpiness. \\
+8. Some r methods including: identify
+
+\subsection*{Exercise}
+\subsubsection*{Conceptual}
+1. \\
+(a). Better than an inflexible. Less likely to be overfitting \\
+(b). Worse, tends to overfit. \\
+(c). \textst{Depends.} Better, since nonlinearity means high degree of freedom and it should be approximated with a flexible method.  \\
+(d). \textst{Better, since inflexible methods will have large variance.} Worse, since flexible methods fit to the noise in the error terms and increase variance. \\
+2. \\
+(a). Regression, inference. $n = 500,\ p = 3$. \\
+(b). Classification, prediction. $n = 20,\ p = 13$. \\
+(c). Regression, prediction, $n = 52,\ p = 3$. \\
+3. \\
+Bayes curve is a fixed straight line according to its definition. \\
+Bias of the model should decrease. \\
+Variance of the model should increase. \\
+training error also decrease. \\
+test error curves down. \\
+4.\\
+(a). preferential system/spam/natural language processing. \\
+(b). stock/house/salary prediction. \\
+(c). consumer type. \\
+5. \\
+A more flexible approach takes advantage when the data set is large ($n$) and have a high dimension($p$, not necessarily), and when its high nonlinear. \\
+The disadvantages is that it requires to estimate a larger number of parameters.\\
+6. \\
+Parametric follows the routines of first defining a family of functions as potential fit and then solve parameters linked to those functions. parametric methods take advantage when the problem complexity is relativity low.\\
+7. \\
+(a). 3, 2, $\sqrt{10}$, $\sqrt{5}$, $\sqrt{2}$, $\sqrt{3}$. \\
+(b). Green. \\
+(c). Red. \\
+(d). Small, since large k linearize the boundary.
+\subsubsection*{Applied}
+Written in $R$.
+
+
+
+
+

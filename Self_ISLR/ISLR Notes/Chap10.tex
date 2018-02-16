@@ -1,0 +1,62 @@
+\section{Unsupervised Learning}
+\subsection{Notes}
+Unsupervised learning could be used as part of the exploratory data analysis to uncover patterns.
+\subsubsection{Principal Components Analysis}
+When $p$ is large, it is difficult to directly compare between 2 predictors since they all carry a very small amount of information. What we want to do instead, is to find a low-dimensioanl representation of the data that captures as much of the information as possible. We find out the principal components through the following steps.
+
+The first principal component of a set of features $X_1, X_2,\dots,X_p$ is the normalized linear combination of the features $$ Z_1 = \phi_{11}X_1 + \dots \phi_{p1}X_p $$ that has the largest variance. By \xt{normalized}, we mean that $||\phi||^2 =1$. We refer to the elements $\phi_{11},\dots\phi_{p1}$ as the \xt{loadings} of the first principal component; together they make up the loading vector. This can be summarized as 
+\begin{align*}
+\text{max.} \quad & \frac{1}{n}\sum_{i=1}^{n}\bigg(\sum_{j=1}^{p}\phi_{j1}x_{ij}\bigg)^2 =\frac{1}{n}\sum_{i=1}^{n}z_{i1}^2\\
+\text{s.t.} \quad & ||\phi||^2 =1.
+\end{align*}
+This can be solved via an eigen decomposition. With the first principal component found, we could compute the second principal component, which has the maximal variance out of all linear combinations that are \xt{uncorrelated} (orthogonal) with $Z_1$, and the process goes on. Geometrically, this amounts to projecting the original data down onto the subspace spanned by $\phi_1, \phi_2,\dots,\phi_p$.
+
+\begin{tbox}
+Remark: Another interpretation of principal components -- it provides low-dimensional linear surfaces that are closest to the observations. The first principal component loading vector is the line in $p$-dimensional space that is \xt{closest} to the $n$ observations (using Euclidean distance as a measure of closeness). Such a line provides a good summary of the data (think of linear regression). And the idea extends.For instance, the first two principal components of a data set span the plane that is closest to the n observations, in terms of average squared Euclidean distance. This representation can be written as $$x_{ij} = \sum_{i=1}^{m} z_{im}\phi_{jm}.$$
+\end{tbox}
+
+
+PCA is performed under the assumption that all variables must have zero mean and unit variance. Therefore a normalization should be performed. In certain setting, however, the variables may be measured in the same units. In this case, we might not wish to scale the variables to have standard deviation one before performing PCA. 
+
+
+PVE depicts how much of the variance in the data is contained in PCA. The total variance in a dataset is defined as $$ \sum_{i=1}^{p}\text{Var}(X_j) = \sum_{i=1}^{p}\frac{1}{n}\sum_{i=1}^{n}x_{ij}^2,$$ and the variance explained by the $m$th principal component is $$ \frac{1}{n}\sum_{i=1}^{n}z_{im}^2 = \frac{1}{n}\sum_{i=1}^{n}\bigg(\sum_{j=1}^{p}\phi_{jm}x_{ij}\bigg).$$ Therefore, the PVE of the $m$th principal component is given by $$ \frac{\sum_{i=1}^n \big(\sum_{j=1}^p\phi_{jm}x_{ij}\big)^2}{\sum_{j=1}^p\sum_{i=1}^n x_{ij}^2}.$$ This can be used to determine how many components are needed. However, there is no good objective metrics on how many components to keep. Rather, usually it is determined in a subjective way.
+\begin{tbox}
+Remark: PCA results can indeed be used in models. We use the $n \times M$ matrix instead of $n \times p$, which leads to \xt{less noisy} results, since it is often the case that the signal in a data set is concentrated in its first few principal components.
+\end{tbox}
+
+% ----------------------------------------------------------------------
+\subsubsection{K-means Clustering}
+Clustering (segmentation) refers to a very broad set of techniques for finding \xt{subgroups}. To perform $K$-means clustering, we must first specify the desired number of clusters $K$. Its approach can be summarized as follows. Let $C_1, \dots C_K$ denote sets containing the indices of the observations in each cluster. We have
+\begin{enumerate}
+	\item $C_1 \cup C_2 \cup \dots \cup C_K$ = $\{1,\dots,n\}$. 
+	\item $C_i \cap C_j = \emptyset,\ \forall i \neq j,\ i,j = 1,\dots,K$.
+\end{enumerate}
+It has the basic idea that good clustering is one for which the \xt{within-cluster variation} is as small as possible. This is equivalent to solving the problem $$ \text{min.} \sum_{k=1}^{K} W(C_k),$$ where $W(C_k)$ is a measure of the amount of variations. The most common choice involves \xt{squared Euclidean distance}, that is, we define $$ W(C_k) = \frac{1}{|C_k|} \sum_{i, j \in C_k}(x_i - x_j)^2, $$ where $x_i$ is the $i$th observation.  Combined the two and we get the $K$-means clustering. The brute-force again would fail since there are $K^n$ ways for assignments. The exact approach will not be touched here.
+
+% ----------------------------------------------------------------------
+\subsubsection{Hierarchical Clustering}
+One disadvantage of $K$-means clustering is that we need to specify the $K$. Hierarchical is an alternative approach that does not require that. The algorithm that solve this problem is relatively simple. We begin by defining some sort of \xt{dissimilarity} measure between each pair of observations, mostly Euclidean distance. However, such measure must be extended to dissimilarity between groups. There are four most common types of \xt{linkage}
+\begin{enumerate}
+	\setlength{\itemsep}{0pt}
+	\item Complete -- Maximal inter-cluster dissimilarity. Compute all pairwise dissimilarities between the observations in cluster $A$ and $B$, and record the largest of these dissimilarities.
+	\item Single -- Minimal inter-cluster dissimilarity.Single linkage can result in extended, trailing
+	clusters in which single observations are fused one-at-a-time.
+	\item Average -- Mean inter-cluster dissimilarity.
+	\item Centroid -- Dissimilarity between the centroid for cluster $A$ and $B$. Centroid can result in underisirable inversions.
+\end{enumerate}
+
+Average and complete are generally preferred as they tend to yield more balanced results. Also something that worth mentioning is the choice of dissimilarity measure. We already mentioned that Euclidean distance to be one of the options. Some other choices include \xt{correlation-based distance} that considers two observations to be similar if their features are highly correlated, even though the observed values may be far apart in terms of Euclidean distance.
+
+% ----------------------------------------------------------------------
+\subsubsection{Practical Issues in Clustering}
+\textbf{Small Decisions with Big Consequences}
+\begin{itemize}
+	\setlength{\itemsep}{0pt}
+	\item Should the observations or features first be standardized in some way?
+	\item In the case of hierarchical clustering \begin{itemize}
+		\item What dissimilarity measure should be used
+		\item What type of linkage should be used
+		\item where should we cut the dendrogram in order to obtain clusters
+	\end{itemize}
+	\item In the case of $K$-means clustering, how many clusters should we look for in the data.
+\end{itemize}

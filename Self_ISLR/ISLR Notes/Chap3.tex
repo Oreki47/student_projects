@@ -1,0 +1,158 @@
+\section{Chap 3}
+\subsection{Notes}
+\subsubsection{Standard error (S.E.)}
+\begin{align}
+SE(\hat{\mu})^2 = \frac{\sigma^2}{n},
+\end{align}
+where $\sigma$ is the standard deviation of each of the realization $y_i$ of $Y$. 
+\begin{tbox}
+Remark: Roughly speaking, the S.E. tells us the average amount that this estimate $\hat{\mu}$ differs from the actual value of $\mu$.
+\end{tbox}
+In a similar vein, we can compute how close $\hat{\beta}_0$ and $\hat{\beta}_1$ are to the true values $\beta_0$ and $\beta_1$ with the following:
+\begin{align}
+\text{SE}(\hat{\beta}_0)^2 = \sigma^2\bigg[\frac{1}{n} + \frac{\bar{x}^2}{\sum_{i=1}^n(x_i-\bar{x}^2)}\bigg],\quad \text{SE}(\hat{\beta}_1)^2 = \frac{\sigma^2}{x_i-\bar{x}^2}.
+\end{align}
+% ----------------------------------------------------------------------
+\subsubsection{Residual sum of squares (RSS)}
+\begin{align}
+\text{RSS} = \sum_{i=1}^n(y_i - \hat{y})^2.
+\end{align}
+% ----------------------------------------------------------------------
+\subsubsection{Residual standard error (RSE)}
+\begin{align}
+\text{RSE} = \sqrt{\frac{1}{n-2}\sum_{i=1}^n(y_i - \hat{y}_i)^2} = \sqrt{\frac{1}{n-2}\text{RSS}}.
+\end{align}
+\begin{tbox}
+Remark: RSE is considered as an estimate of $\sigma^2$.
+\end{tbox}
+% ----------------------------------------------------------------------
+\subsubsection{$R^2$ Statistics.}
+\begin{align}
+R^2 = \frac{\text{TSS - RSS}}{\text{TSS}},
+\end{align}
+where TSS = $\sum(y_i-\bar{y})^2$, is the total sum of squares.
+\begin{tbox}
+Remark: TSS measures the total variance in the response $Y$, and can be thought of as the amount of variability inherent in the response before the regression is performed. In contrast, RSS measures the amount of variability that is left unexplained after performing the regression. Hence, TSS$-$RSS measures the amount of variability in the response that is explained (or removed) by performing the regression, and $R^2$ measures the proportion
+of variability in $Y$ that can be explained using $X$, or square of the correlation (correlation written as a “p” or “rho”) between the actual and predicted outcomes. 
+Check sklearn.metrics.r2\_score.
+\end{tbox}
+% ----------------------------------------------------------------------
+%\subsubsection{F-statistic}
+%To check if all regression coefficients are 0, we use the \textit{F-statistic}, defined as,
+%\begin{align}
+%F = \frac{(\text{TSS - RSS})/p}{\text{RSS}/(n-p-1)}.
+%\end{align}
+%If there is no relationship between the response and the predictor, the F-statistic should be close to 1. 
+%\begin{tbox}
+%Remark: F-stats are used in feature selection, with a nice implementation in sklearn. I could think about how to implement this in the next competition. \\
+%Remark2: For Boosting methods, they compute the feature importance in a relatively straightforward way instead of using the metric shown above. what \xt{sklearn} does is it sums up the feature importances of the individual trees, then divide by the total number of trees. What remains is how to calculate feature importance of each individual trees. For each node in the tree, calculate the weighted reduction in node purity from the split at this node, and attribute it to the feature that was split on; then, when done, divide it all by the total weight of the data (in most cases, the number of observations).
+%\end{tbox}
+%
+%% ----------------------------------------------------------------------
+%\subsubsection{Plot illustration}
+%
+%From Figure \ref{fig:3.9} we could see that the left U-shape provides a strong indication of non-linearity in the data and right contains little pattern, suggesting a quadratic term improves the fit.
+%\begin{figure}
+%	\centering
+%	\includegraphics[width=1\textwidth]{3_9.pdf}
+%	\caption{Nonlinearity.}
+%	\label{fig:3.9}
+%\end{figure}
+%\\
+%From Figure \ref{fig:3.11} we can see left cone-shape suggests variability of a variable is unequal across the range of values of a second variable that predicts it; right shows no clear trend.
+%\begin{figure}
+%	\centering
+%	\includegraphics[width=1\textwidth]{3_11.pdf}
+%	\caption{Heteroscedasticity.}
+%	\label{fig:3.11}
+%\end{figure}
+%\\
+%From Figure \ref{fig:3.12} We can see outliers for different metrics. For \xt{Studentized Resuduals}, we expect it to be between $[-3, 3]$, so for $\sqrt{}$ it should be $[-1.73, 1.73]$.
+%\begin{figure}
+%	\centering
+%	\includegraphics[width=1\textwidth]{3_12.pdf}
+%	\caption{Heteroscedasticity.}
+%	\label{fig:3.12}
+%\end{figure}
+%\\
+%From Figure \ref{fig:3.13} We can see how to distinguish high leverage points.
+%\begin{figure}
+%	\centering
+%	\includegraphics[width=1\textwidth]{3_13.pdf}
+%	\caption{Heteroscedasticity.}
+%	\label{fig:3.13}
+%\end{figure}
+% ----------------------------------------------------------------------
+\subsubsection{Some other quick comments}
+\begin{tbox}
+	\begin{itemize}
+	\item Even if we have the $\hat{\beta}$, it is only an estimate of the true model, and therefore its inaccuracy is related to the \textit{reducible error}. In any sense, we could compute a \xt{confidence interval} to determine how close $\hat{Y}$ will be to $f(X)$. For \textit{irreducible error}, we use \textit{prediction intervals}.
+	\item Synergy/interaction effect prompts us to create more features based on the relationship between original feature set.
+	\item \xt{Studentized residuals} and \xt{leverage statistic} to determine outliers and high leverage point.  
+	\item variance inflation factor (VIF) to deal with multicollinearity.
+	\item $p$-value usually generates from the \xt{t-test}, with large value $p > 5\%$ we conclude that there is no connection between the predictor and target value.
+	\item Difference between prediction/confidence intervals. If we are predicting an individual response we use prediction intervals and if predicting average response we use confidence intervals.
+\end{itemize}
+\end{tbox}
+
+\subsection{Exercise}
+\subsubsection{Conceptual 1.}
+The null hypothesis states that the predictor has no effect on $y$, or target value. Based on the p-values, we could conclude that $newspaper$ is irrelevant. 
+% ----------------------------------------------------------------------
+\subsubsection{Conceptual 2.}
+KNN Classifier takes $k$ nearest neighbor and select the mode, which KNN regression takes the mean.
+% ----------------------------------------------------------------------
+\subsubsection{Conceptual 3.}
+(a) i and iii;\\
+(b) $50 + 20* 4 + 0.07*110 + 4.4 + 0 \approx 80$.
+(c) False. There is no information that predictors are normalized and therefore comparison between raw $\beta$ estimates is no where informative.
+% ----------------------------------------------------------------------
+\subsubsection{Conceptual 4.}
+(a) The cubic regression should get a lower RSS since it has two additional degree of freedom.
+(b) The linear regression should get a lower RSS since cubic one overfits.
+(c) The cubic regression should get a lower RSS again for the same reason.
+(d) It depends on the true model, and the test set.
+% ----------------------------------------------------------------------
+\subsubsection{Conceptual 5.}
+\begin{align}
+a_j = \frac{x_ix_j}{\sum_{k=1}^{n}x_k^2}.
+\end{align}
+% ----------------------------------------------------------------------
+\subsubsection{Conceptual 6.}
+Obviously...
+% ----------------------------------------------------------------------
+\subsubsection{Conceptual 7.}
+From $\hat{y}_i = \hat{\beta}_1 x_i$ and $ \hat{\beta}_1 = \frac{\sum_j x_jy_j}{\sum_j x_j^2}$,
+\begin{align}
+R^2 = &\frac{\sum_i y_i^2 - \sum_i(y_i - \hat{y}_i)^2}{\sum_i y_i^2} \\
+ 	= &\frac{\sum_i (2y_i\hat{y}_i -\hat{y}_i^2)}{\sum_i y_i^2} \\
+ 	= &\frac{\frac{\sum_j x_jy_j}{\sum_j x_j^2}\sum_i (2y_ix_i - \frac{\sum_j x_jy_j}{\sum_j x_j^2}x_i^2)}{\sum_i y_i^2} \\
+ 	= &\frac{\frac{\sum_j x_jy_j}{\sum_j x_j^2} (\sum_i 2x_iy_i -\sum_i x_iy_i)}{\sum_i y_i^2} \\
+ 	= &\frac{(\sum_i x_iy_i)^2}{(\sum_i x_i^2)(\sum_i y_i^2)} \\
+ 	= &\text{Cor}(X, Y).
+\end{align}
+% ----------------------------------------------------------------------
+\subsubsection{Applied 11-(d)}
+We have the following
+\begin{align}
+&\hat{\beta} = \frac{\sum x_iy_i}{\sum x_j^2}, \\
+&\text{SE} = \sqrt{\frac{\sum(y_i - x_i\hat{\beta})^2}{n-1\sum x_j^2}}.
+\end{align}
+Therefore  
+\begin{align}
+\hat{\beta}/\text{SE} & = \frac{\sum x_iy_i}{\sum x_j^2 \sqrt{\frac{\sum(y_i - x_i\hat{\beta})^2}{n-1\sum x_j^2}}} \\
+& = \frac{\sum x_iy_i\sqrt{n-1\sum x_j^2}}{\sum x_j^2\sqrt{\underbrace{\sum(y_i - x_i\hat{\beta})^2}_a}}. \\
+\end{align}
+Let's deal with $a$ first.
+\begin{align}
+a &= \sum(y_i - x_i \frac{\sum x_ky_k}{\sum x_j^2})^2\\
+&= \sum (y_i^2 - 2x_iy_i \frac{\sum x_ky_k}{\sum x_j^2} + x_i^2 \frac{(\sum x_ky_k)^2}{(\sum x_j^2)^2}) \\
+& = \frac{1}{\sum x_j^2}(\sum y_i^2 \sum x_j^2 - 2(\sum x_iy_i)(\sum x_ky_k) + \sum x_i^2\frac{(\sum x_ky_k)^2}{(\sum x_j^2)^2}) \\
+& = \frac{1}{\sum x_j^2}(\sum y_i^2 \sum x_i^2 - (\sum x_iy_i)(\sum x_iy_i)).
+\end{align}
+Therefore
+\begin{align}
+\hat{\beta}/\text{SE}  & = \frac{\sum x_iy_i\sqrt{n-1\sum x_j^2}}{\sum x_j^2\sqrt{\frac{1}{\sum x_j^2}(\sum y_i^2 \sum x_i^2 - (\sum x_iy_i)(\sum x_iy_i))}} \\
+& =  \frac{\sum x_iy_i\sqrt{n-1}}{\sqrt{\sum y_i^2 \sum x_i^2 - (\sum x_iy_i)(\sum x_iy_i)}}.
+\end{align}
+We did a couple bookkeeping changes from $k$ to $i$ and so on. 

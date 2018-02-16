@@ -1,0 +1,15 @@
+\subsection*{Problem 6}
+\paragraph{}
+Here, instead of setting $\tau = 1$, we set $\tau=7$, i.e., we sample data weekly on Mondays. Applying the same method, we acquired a MST with vine clusters shown in Figure \ref{fig:06mst}. Using the same metric in Problem 4, we have 
+\begin{align*}
+\alpha_{weekly} = 0.5482848,
+\end{align*}
+which is a bit smaller than daily $\alpha$. This is somewhat expected, as we increase the sample frequency, we tend to miss out more information and therefore we are less likely to discover a pattern within sectors. This results in a decrease of correlation coefficient among stocks belonging to the same sector, which in turn decrease the probability that, in the MST, the neighbors of a node and the node itself belongs to the same sector.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=.5\linewidth]{06mst.png}
+	\caption{MST by Week}	
+	\label{fig:06mst} 
+\end{figure}
+

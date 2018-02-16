@@ -1,0 +1,45 @@
+\documentclass[12pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,mathtools}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{verbatim}
+\usepackage{epstopdf}
+\usepackage{soul}
+\usepackage{tcolorbox}
+\usepackage{indentfirst}
+\graphicspath{{figures/}}
+
+
+% Set Counters 
+\setcounter{section}{1}
+\setcounter{subsection}{1}
+
+% Commands
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\xt}{\textit}
+
+\newenvironment{tbox}{\begin{tcolorbox}}{\end{tcolorbox}}
+\numberwithin{equation}{section}
+
+\begin{document}
+\begin{flushright}
+	An Introduction to Statistical Learning\\
+	Zhiyuan Cao \\ 
+	09/27/2017  
+\end{flushright}	
+	
+\input{Chap2}
+\input{Chap3}
+\input{Chap4}
+\input{Chap5}
+\input{Chap6}
+\input{Chap7}
+\input{Chap8}
+\input{Chap9}
+\input{Chap10}
+\end{document}	
+
+

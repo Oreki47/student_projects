@@ -1,0 +1,27 @@
+\subsection*{Problem 2}
+\subsubsection*{(a)}
+Using Barabasi-Albert model, a undirected graph is created with degree distribution shown in Figure 2. The red line is $y = x^{-3}$. The average diameter over 100 instances $d_{aver} = 20.38$.
+\vspace{-12pt}
+\begin{figure} [h]
+	\centering
+	\includegraphics[scale=0.6]{p21.png}
+	\caption{Degree Distribution of a random network}
+\end{figure}
+\subsubsection*{(b)}
+The network is connected, and therefore the GCC is the graph itself. The modularity over 100 instances $m_{aver} = 0.932$. Modularity is large because preferential attachment means the more connected a node is, the more likely it is to receive new links, and therefore it would form clusters around high-degree nodes.
+\subsubsection*{(c)}
+With 10000 nodes, the modularity over 100 instances $m_{aver} = 0.978$ which is greater than the smaller network. This make sense as explained in section (b).
+\subsubsection*{(d)}
+Figure 3 presents a histogram of such process over 2000 instances. Randomly picked node $i$ has a degree distribution of $x^{-3}$. However, for its neighbor $j$ that is also randomly picked, it follows a distribution of $x^{-2}$, as shown in Figure 4.
+\vspace{-12pt}
+\begin{figure} [h]
+	\centering
+	\includegraphics[scale=0.6]{p22.png}
+	\caption{Out Distribution of a randomly selected point}
+\end{figure}
+\begin{figure} [t!]
+	\centering
+	\includegraphics[scale=0.6]{p23.png}
+	\caption{Out Distribution of a randomly selected point compared to $x^{-2}$}
+\end{figure}
+

@@ -1,0 +1,142 @@
+\section{Chap 4}
+\subsection{Notes}
+% ----------------------------------------------------------------------
+\subsubsection{Logistic Regression}
+The idea is to model the probability of a target belonging to as specific category. The logistic function is
+\begin{align}
+p(X) = \frac{e^{\beta_0 + \beta_1X}}{1 + e^{\beta_0 + \beta_1X}}.
+\end{align}
+With a bit of manipulation
+\begin{align}
+\frac{p(X)}{1-p(X)} = e^{\beta_0 + \beta_1X},
+\end{align}
+which is called \xt{odds}. Also by taking log on both side we acquire the \xt{log-odds}.
+% ----------------------------------------------------------------------
+\subsubsection{Maximum likelihood}
+The $\beta_0$ and $\beta_1$ is chosen to maximize the likelihood function
+\begin{align}
+l(\beta_0, \beta_1) = \prod_{i:y_i=1}p(x_i)\prod_{j:y_j=0}(1-p(x_j)).
+\end{align}
+\begin{tbox}
+Remark: in the model 
+\begin{align}
+Y = X\beta + \epsilon,
+\end{align}
+where $\epsilon ~ N(0, \sigma^2)$, the loglikelihood of $Y|X$ for a sample of $n$ subject is \begin{align}
+f(\beta) = \frac{-n}{2}\log(\sigma^2) - \frac{1}{2\sigma^2}\sum_{i=1}^{n}(y_i -x_i\beta)^2.
+\end{align}
+Maximize $f(\beta)$ is equivalent to minimizing the least square.
+\end{tbox}
+\begin{tbox}
+Quick notes.
+	\begin{itemize}
+		\item The example brought out on page 151-152 is very interesting.
+		\item For multiple-class classification, logistic regression is not very popular.
+	\end{itemize}
+\end{tbox}
+% ----------------------------------------------------------------------
+\subsubsection{Linear Discriminant Analysis}
+The key concept of LDA is that it assumes that observations are drawn from a normal distribution. Some key definitions
+\begin{align}
+&f_k(x) = P(X=x|Y=k).\\
+&\pi_k = P(Y=k).
+\end{align}
+The Bayesian classifier can be summarized as follows. Assume $f_k(x)$ is \xt{normal}, the p.d.f takes the form
+\begin{align}
+f_k(x) = \frac{1}{\sqrt{2\pi\sigma_k}}\exp(-\frac{1}{2\sigma^2_k(x-\mu_k)^2}),
+\end{align}
+where $u_k$ and $\sigma_k^2$ are the mean and variance parameters for the \xt{k}th class.
+Plus this back to the \xt{Bayes' theorem} and we have
+\begin{align}
+P(Y=k|X=x) &= \frac{\pi_kf_k(x)}{\sum_{l=1}^{K}\pi_lf_l(x)} \\
+& = \frac{\pi_k\frac{1}{\sqrt{2\pi\sigma}}\exp(-\frac{1}{2\sigma^2_k(x-\mu_k)^2})}{\sum_{l=1}^{K}\pi_l\frac{1}{\sqrt{2\pi\sigma_l}}\exp(-\frac{1}{2\sigma^2_l(x-\mu_l)^2})}.
+\end{align}
+By taking the log and rearranging, this is equivalent to assigning the observation to the class for which
+\begin{align}
+\delta_k(x) = x\frac{\mu_k}{\sigma^2}-\frac{\mu_k^2}{2\sigma^2} + \log(\pi_k)
+\end{align}
+is largest. So for the case where $K=2$, the boundary is simply $\delta_0(x) = \delta_1(x)$, i.e., where the two values coincide.
+\begin{tbox}
+Remark: This is how Bayesian classifier works. However, it requires the model to be Gaussian and we know all the parameters including $\mu_k$ and $\sigma_k^2$.
+\end{tbox}
+On the other hand, the LDA approximates the Bayes classifier by estimating the following:
+\begin{align}
+&\hat{\mu_k} = \frac{1}{n_k}\sum_{i:y_i=k}x_i, \\
+&\hat{\sigma^2} = \frac{1}{n-K}\sum_{k=1}^K \sum_{i:y_i=k}(x_i - \hat{\mu_k})^2, \\
+&\pi_k = \frac{n_k}{n}.
+\end{align}
+\begin{tbox}
+Remark on Measure of relevance
+\begin{itemize}
+	\item False positive (specificity): False condition + predicted positive (Type I).
+	\item True negative: True condition + predicted negative (Type II).
+	\item Precision = $\sum$ True positive / $\sum$ predicted positive.
+	\item Recall (sensitivity) =  $\sum$ True positive / $\sum$ condition true.
+	\item F$_1$ score = 2*(percision * recall) / (percision + recall).
+\end{itemize}
+\end{tbox}
+\xt{Receiver operating characteristics} or \xt{ROC} is the figure of choice to display two types of errors (false positive and true positive rate). the overall performance is given by the \xt{area under the ROC curve (AUC)}.
+% ----------------------------------------------------------------------
+\subsubsection{Quadratic Discriminant Analysis}
+The main difference is that QDA assumes that each class has its own covariance matrix. Again it assigns an observation $X = x$ to the class for which 
+\begin{align}
+\delta_k(x) &= -\frac{1}{2}(x-\mu_k)^T\Sigma_k^{-1}(x-\mu_k) + \log\pi_k \\
+& = -\frac{1}{2}x^T\Sigma_k^{-1}x + x^T\Sigma_k^{-1}\mu_k - \frac{1}{2}\mu_k^T\Sigma_k^{-1}\mu_k + \log\pi_k
+\end{align}
+is largest.
+% ----------------------------------------------------------------------
+\subsection{Exercise}
+\subsubsection{Conceptual 1.}
+Trivial.
+% ----------------------------------------------------------------------
+\subsubsection{Conceptual 2.}
+This is equivalent to showing that for a fixed $x$, the two expressions yield the same maximum at $k$. By taking the log of the Bayesian expression we have
+\begin{align*}
+\log P_k = \log \pi_k + x\frac{\mu_k}{\sigma^2} -\frac{\mu_k^2}{2\sigma^2} - \underbrace{\frac{x^2}{2\sigma^2} - \log\sum_{l=1}^{K}\pi_l\exp^{-\frac{1}{2\sigma^2}(x-\mu_l)^2}}_c,
+\end{align*}
+where $c$ is a constant over all $k$ terms. Since log function is monotonically increasing and therefore such operation pose no effects to where the maximum will be reached, in this case, the value of $k$.
+% ----------------------------------------------------------------------
+\subsubsection{Conceptual 3.}
+Following a similar procedure, we have
+\begin{align*}
+\log P_k = \frac{1}{\sqrt{2\pi\sigma_k}}(\log \pi_k + x\frac{\mu_k}{\sigma_k^2} -\frac{\mu_k^2}{2\sigma_k^2} - \frac{x^2}{2\sigma_k^2}) \underbrace{ - \log\sum_{l=1}^{K}\frac{1}{\sqrt{2\pi\sigma_l}}\pi_l\exp^{-\frac{1}{2\sigma_l^2}(x-\mu_l)^2}}_c,
+\end{align*}
+where again $c$ is a constant over all $k$ terms. For the case of $K=2$ the Bayes decision boundary corresponds to the following equation
+\begin{align*}
+&\underbrace{(\frac{1}{2\sigma_1^2\sqrt{2\pi\sigma_1}} -\frac{1}{2\sigma_2^2\sqrt{2\pi\sigma_2}})}_ax^2 - \underbrace{(\frac{\mu_1}{2\sigma_1^2\sqrt{2\pi\sigma_1}} -\frac{\mu_2}{2\sigma_2^2\sqrt{2\pi\sigma_2}})}_bx  \\
+ &= \underbrace{\frac{1}{\sqrt{2\pi\sigma_2}}(\log \pi_2 - \frac{\mu_2^2}{2\sigma_2^2}) - \frac{1}{\sqrt{2\pi\sigma_1}}(\log \pi_1- \frac{\mu_1^2}{2\sigma_1^2})}_c
+\end{align*}
+% ----------------------------------------------------------------------
+\subsubsection{Conceptual 4.}
+(a). 10\%.\\
+(b). 1\%\\
+(c). $10^{-98}\%$. \\
+(d). The idea of \xt{curse of dimensionality} is that as $p$ increase, observations that is close in distance decrease. On the other hand, if we want to capture a certain portion of the train observations, the range of observations affected will increase dramatically and therefore it is no longer \xt{near} the test observation. \\
+(e). 0.1, 0.33, 0.95. This is what we mentioned in (d).
+% ----------------------------------------------------------------------
+\subsubsection{Conceptual 5.}
+(a). QDA; LDA. \\
+(b). QDA; QDA. \\
+(c). Increase of sample size means a decrease of variance, therefore QDA is more heavily affected by this method (generally the more flexible the methods, the larger the sample size).\\
+(d). That is not necessarily the case. QDA has a higher variance and will potentially overfit the training set, thereby acquiring a lower accuracy on test set.
+% ----------------------------------------------------------------------
+\subsubsection{Conceptual 6.}
+(a). 37.7\%\\
+(b). 50 hr.
+% ----------------------------------------------------------------------
+\subsubsection{Conceptual 7.}
+\begin{align*}
+p_k(x) &= \frac {\pi_k \frac {1} {\sqrt{2 \pi} \sigma} \exp(- \frac {1} {2 \sigma^2} (x - \mu_k)^2) } {\sum { \pi_l \frac {1} {\sqrt{2 \pi} \sigma} \exp(- \frac {1} {2 \sigma^2} (x - \mu_l)^2) }} \ p_{yes}(x) \\
+&=  \frac {\pi_{yes} \exp(- \frac {1} {2 \sigma^2} (x - \mu_{yes})^2) } {\sum { \pi_l \exp(- \frac {1} {2 \sigma^2} (x - \mu_l)^2) }} \ \\
+&= \frac {\pi_{yes} \exp(- \frac {1} {2 \sigma^2} (x - \mu_{yes})^2)} { \pi_{yes} \exp(- \frac {1} {2 \sigma^2} (x - \mu_{yes})^2) + \pi_{no} \exp(- \frac {1} {2 \sigma^2} (x - \mu_{no})^2) } \ \\
+&= \frac {0.80 \exp(- \frac {1} {2 * 36} (x - 10)^2)} { 0.80 \exp(- \frac {1} {2 * 36} (x - 10)^2) + 0.20 \exp(- \frac {1} {2 * 36} x^2) }  \\
+&= \frac {0.80 \exp(- \frac {1} {2 * 36} (4 - 10)^2)} { 0.80 \exp(- \frac {1} {2 * 36} (4 - 10)^2) + 0.20 \exp(- \frac {1} {2 * 36} 4^2) } = 75.2\%
+\end{align*}
+% ----------------------------------------------------------------------
+\subsubsection{Conceptual 8.}
+Logistic regression. Since for $k=1$ in KNN the training error rate is 0\%.
+% ----------------------------------------------------------------------
+\subsubsection{Conceptual 9.}
+(a). 27\%.
+(b). 19\%.
+

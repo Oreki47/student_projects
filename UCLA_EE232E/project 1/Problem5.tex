@@ -1,0 +1,58 @@
+\newpage
+\subsection*{Section 5}
+\paragraph{}
+Figure \ref{fig:j} and \ref{fig:k} present the distribution of Embeddedness and Dispersion. We observed plenty cases of 0 mutual friend in the personal network. To the other extreme, it is uncommon to see nodes sharing more than 200 mutual friends with the the core nodes. This makes sense in the content of a Facebook friendship network, where sharing an extremely large amount of friends is unlikely. 
+\paragraph{}
+For the case of dispersion, the large amount of 0 are created by a combination of nodes with few mutual friends, and nodes in high modularity communities where everyone knows each other, i.e., there is a direct link between any pair of a node's mutual friends. This is common in the case of coworkers, classmates, and students in the same club, and so on. Again, to the other extreme, we also observed very loosely connected communities, with an extremely large value of dispersion. Notice that a large dispersion often time indicates such node also share a huge number of friends with core nodes. A potential real-world scenario could be such node and a core node are in romantic relationship, with core node introducing his/her friend to the other half. This ends with high dispersion node having a large amount of mutual friend connected, yet these mutual friends barely know each other.
+\paragraph{}
+To capture the network connectivity of high embeddedness, dispersion, and dispersion/embeddedness nodes, we plot out all 40 nodes with degree greater than 200. To our surprise, the point with highest embeddedness is also the one with highest dispersion and dispersion/embeddedness. To simplify discussion, we will refer to this node as Key node. We observed two general patterns and selected 4 nodes, with each pattern 2 examples. This is shown in Figure \ref{fig:type1} and \ref{fig:type2}. Type 1 presents a well diversified personal network with a plentiful communities, with key node residing in, mostly, the largest cluster. This could be one of the case where the core node and the key node met each other in work/campus environment, with later on core node introducing key node to his/her other circles. Type 2 presents a closely connected network with very few numbers (mainly two) of communities, and the core/key nodes serve as the main connector to these communities. In this case, we find it a bit more difficult to justify with real-world case. One hypothesis may be that these two major communities are family members and very close friends of core and key nodes, and with a long period of relationship they tend to know the other half and their inner circle well enough, which results in such a representation. 
+
+\begin{figure}[h!]
+	\centering
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{q1j.png}
+		\caption{}		
+		\label{fig:j}
+	\end{subfigure}%
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{q1k.png}
+		\caption{}	
+		\label{fig:k}
+	\end{subfigure}
+	\caption{(a): Embeddedness Distribution over All Personal Networks; (b): Dispersion Distribution over All Personal Networks}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{1.png}
+		\caption{Node 1}		
+	\end{subfigure}%
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{3438.png}
+		\caption{Node 3438}	
+	\end{subfigure}
+	\caption{Type 1: Many Communities with High Embeddedness Node Residing in the Largest Cluster}
+	\label{fig:type1}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{1747.png}
+		\caption{Node 1747}		
+	\end{subfigure}%
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{2544.png}
+		\caption{Node 2544}	
+	\end{subfigure}
+	\caption{Type 2: Few Communities with High Embeddedness Node Connecting Two Main Communities}
+	\label{fig:type2}
+\end{figure}
+\newpage

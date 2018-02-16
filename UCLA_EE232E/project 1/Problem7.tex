@@ -1,0 +1,239 @@
+\section*{Section 7}
+\paragraph{}
+We started by cleansing data with python, with which we extracted all ego nodes with more than 2 circles and renamed them. There are a total of 125 of them. We also extracted nodes in the circle and wrote as a matrix, into a .csv file respectively.
+\paragraph{}
+For ego network community structure, we applied the same method used in section 6 and utilized \textit{Walktrap} to explore community properties. Similar to Facebook network, we observed two general patterns. Pattern 1 are ego networks with a diverse community (>>2). This is represented by Figure \ref{fig:34g} and \ref{fig:89g}. Pattern 2 are ego network with a relatively small number of clusters, and generally less connections than networks in pattern one. This is represented by Figure \ref{fig:30g} and \ref{fig:31g}.
+\paragraph{}
+From here,  similarly,we define Type 1 community with low community size and low average connections, represented by people that are generally less sociable. This is represented by  Community 9 in Figure \ref{fig:34g}, Community 14 in Figure \ref{fig:89g}, Community 2 in Figure \ref{fig:30g} and Community 1 in Figure \ref{fig:31g}. Type 2 community generally has large community size and high average connections which is represented by Community 1 in Figure \ref{fig:34g}, Community 3 in Figure \ref{fig:89g}, Community 1 in Figure \ref{fig:30g} and Community 2 in Figure \ref{fig:31g}.
+\paragraph{}
+What's interesting is when we compare community partitioned by algorithm and gplus circles predefined by users. We again performed this analysis to all nodes but only presents ones that are repressive. We used both \textit{Walktrap} and \text{Infomap} algorithms to partition communities inside a ego network.
+\paragraph{}
+Here we first define the metric we will be using. For Community to Circle percentage, we define it as,
+\begin{align*}
+\frac{\text{\# of intersect between a Community and Circle}}{\text{\# of Nodes in a Circle}}.
+\end{align*}
+\paragraph{}
+Similarly, we define Circle to Community percentage as,
+\begin{align*}
+\frac{\text{\# of intersect between a Community and Circle}}{\text{\# of Nodes in a Community}}.
+\end{align*}
+\paragraph{}
+First, of the 125 ego networks, we presents the distribution of circle number in Table \ref{table:3}. What we noticed first is the circles predefined by users(ego nodes) does not include all connections in their network, and can have overlaps.
+\paragraph{}
+This is illustrated by Figure \ref{fig:prep}. In Figure \ref{fig:70cim} we see that the maximum percentage intersect through out all circles is less than 10\%. This presents a case where the user rarely tag/include a connection into his/her circle, and therefore we can hardly retrieve any information that is useful. In Figure \ref{fig:69cwk} we observed that the overall percentage match of all circles to a community can exceed 100\%, which means the circles defined by the user have overlaps. Or in other words, some connections have been tagged into more than one circles. This is usually seen in social networks where we can add more than one tag to a user. For the rest of the study, we will be focusing on the latter cases, where the connections of a ego node are, to a great extend, tagged into one or multiple circles.
+
+\begin{table}[h!]
+	\centering
+	\caption{Distribution of Number of Circles}
+	\begin{tabular}{{c}*{10}{c}}
+		\hline
+		& Number of Circles      & 2    & 3    & 4    & 5   & 6   & 7   & 8   & 10 \\
+		\hline
+		& Number of Ego Networks & 68   & 22   & 11   & 8   & 5   & 2   & 2   & 2  \\
+		\hline
+	\end{tabular}
+	\label{table:3}
+\end{table}
+
+\paragraph{}
+For each of the ego network we plotted 4 figures showing the overlapping feature of Communities and Circles. Here we present two typical ones. This is shown in Figure \ref{fig:7} and \ref{fig:128}.  
+\paragraph{}
+What we first noticed is that \textit{Infomap} tend to contain larger clusters/communities. And large Communities tend to Encompass predefined Circles, resulting in a extremely high percentage overlap. This is shown in Circle 2, 3 in Figure \ref{fig:7cirinfomap} and Circle 1, 2 in  \ref{fig:128cirinfomap}. On the other hand, large clusters found by \textit{infomap} tend to have more than 1 Circles, which is shown by Community 1, 14 from Figure \ref{fig:7cominfomap} and Community 1 from \ref{fig:128cominfomap}.
+\paragraph{}
+On the other hand, \textit{Walktrap} does not behave in the same way. Since \textit{Walktrap} tend to have smaller, more diverse community partition, we observed that it does not, generally speaking, contains a whole Circle. And it is rarely encompassed by a Circle as well. What we observed mostly is Community partitioned by \textit{Walktrap} has a part overlapped with Circle and a part that is not, with the size of a Community usually smaller than size of a Circle.
+\paragraph{}
+There are, of course, outliers, where \textit{Infomap} simply forms one Community, and cases where Communities from \textit{Walktrap} is encompassed by Circles. Such cases are shown in Figure \ref{fig:131} and Communities 8, 9 in \ref{fig:129}.
+\begin{figure}[h]
+	\centering
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{34ga.png}
+		\caption{}		
+		\label{fig:34ga}
+	\end{subfigure}%
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{34gb.png}
+		\caption{}	
+		\label{fig:34b}
+	\end{subfigure}
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{34gc.png}
+		\caption{}	
+		\label{fig:34gc}
+	\end{subfigure}
+	\caption{Pattern 2: Gplus Node 34. (a): Density, and Transitivity; (b): Community Size; (c): Average Degree}
+	\label{fig:34g}
+\end{figure}
+
+
+\begin{figure}[h]
+	\centering
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{89ga.png}
+		\caption{}		
+		\label{fig:89ga}
+	\end{subfigure}%
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{89gb.png}
+		\caption{}	
+		\label{fig:89gb}
+	\end{subfigure}
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{89gc.png}
+		\caption{}	
+		\label{fig:89gc}
+	\end{subfigure}
+	\caption{Pattern 2: Gplus Node 89. (a): Density, and Transitivity; (b): Community Size; (c): Average Degree}
+	\label{fig:89g}
+\end{figure}
+
+
+
+\begin{figure}[h]
+	\centering
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{30ga.png}
+		\caption{}		
+		\label{fig:30ga}
+	\end{subfigure}%
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{30gb.png}
+		\caption{}	
+		\label{fig:30gb}
+	\end{subfigure}
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{30gc.png}
+		\caption{}	
+		\label{fig:30gc}
+	\end{subfigure}
+	\caption{Pattern 2: Gplus Node 30. (a): Density, and Transitivity; (b): Community Size; (c): Average Degree}
+	\label{fig:30g}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{31ga.png}
+		\caption{}		
+		\label{fig:31ga}
+	\end{subfigure}%
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{31gb.png}
+		\caption{}	
+		\label{fig:31gb}
+	\end{subfigure}
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{31gc.png}
+		\caption{}	
+		\label{fig:31gc}
+	\end{subfigure}
+	\caption{Pattern 2: Gplus Node 31. (a): Density, and Transitivity; (b): Community Size; (c): Average Degree}
+	\label{fig:31g}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.7\linewidth]{70cominfomap.png}
+		\caption{}		
+		\label{fig:70cim}
+	\end{subfigure}%
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.7\linewidth]{69comwalktrap.png}
+		\caption{}	
+		\label{fig:69cwk}
+	\end{subfigure}
+	\caption{Typical Circle-Community Overlap Pattern. (a): Low Percentage Circle Mark ; (b): High Percentage Circle Mark with Overlaps between Circles.}
+	\label{fig:prep}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.7\linewidth]{7cirinfomap.png}
+		\caption{}		
+		\label{fig:7cirinfomap}
+	\end{subfigure}%
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.7\linewidth]{7cirwalktrap.png}
+		\caption{}	
+		\label{fig:7cirwalktrap}
+	\end{subfigure}
+	\begin{subfigure}{.7\textwidth}
+		\centering
+		\includegraphics[width=.7\linewidth]{7cominfomap.png}
+		\caption{}	
+		\label{fig:7cominfomap}
+	\end{subfigure}
+	\begin{subfigure}{.7\textwidth}
+		\centering
+		\includegraphics[width=.7\linewidth]{7comwalktrap.png}
+		\caption{}	
+		\label{fig:7comwalktrap}
+	\end{subfigure}
+	\caption{Gplus Node 7. (a): Community to Circle, \textit{Infomap}; (b): Community to Circle, \textit{Walktrap}; (c): Circle to Community, \textit{Infomap}; (d): Circle to Community, \textit{Walktrap}}
+	\label{fig:7}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.7\linewidth]{128cirinfomap.png}
+		\caption{}		
+		\label{fig:128cirinfomap}
+	\end{subfigure}%
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.7\linewidth]{128cirwalktrap.png}
+		\caption{}	
+		\label{fig:128cirwalktrap}
+	\end{subfigure}
+	\begin{subfigure}{.7\textwidth}
+		\centering
+		\includegraphics[width=.7\linewidth]{128cominfomap.png}
+		\caption{}	
+		\label{fig:128cominfomap}
+	\end{subfigure}
+	\begin{subfigure}{.7\textwidth}
+		\centering
+		\includegraphics[width=.7\linewidth]{128comwalktrap.png}
+		\caption{}	
+		\label{fig:128comwalktrap}
+	\end{subfigure}
+	\caption{Gplus Node 128. (a): Community to Circle, \textit{Infomap}; (b): Community to Circle, \textit{Walktrap}; (c): Circle to Community, \textit{Infomap}; (d): Circle to Community, \textit{Walktrap}}
+	\label{fig:128}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.7\linewidth]{131cominfomap.png}
+		\caption{}		
+		\label{fig:131}
+	\end{subfigure}%
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.7\linewidth]{129comwalktrap.png}
+		\caption{}	
+		\label{fig:129}
+	\end{subfigure}
+	\caption{Outliers. (a):\textit{Infomap} with One Community; (b): \textit{Walktrap} Community Encompassed by Circles.}
+	\label{fig:last} 
+\end{figure}

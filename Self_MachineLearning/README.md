@@ -1,4 +1,6 @@
-# Machine Learning from Coursera
+# Coursera Machine Learning
+
+Around summer 2015.
 
 On 02/15/2018:
 

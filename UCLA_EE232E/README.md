@@ -1,5 +1,7 @@
 # 232E_All
 
+Spring 2017
+
 """I jsut hope this stupid rstudio works"""
 
 

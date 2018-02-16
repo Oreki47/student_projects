@@ -1,5 +1,5 @@
 # An-Introduction-to-Statistical-Learning
-Notes/Codes for ISLR
+Notes/Codes for ISLR Around 09/2017
 
 I want to start things as organized as possible but it does not usually end with what I want.
 I started the book hoping I could go over everything in the book, including all the practice problems.

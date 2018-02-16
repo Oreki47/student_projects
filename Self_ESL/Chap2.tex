@@ -1,0 +1,64 @@
+\section*{Chap 2}
+$X \in R^P$ -- Input variable \\
+$Y \in R^K$ -- Quantitative output \\
+$G \in R^K$ -- Qualitative output \\
+\\
+$X_j$ -- $j^{th}$ component \\
+$x_i$ -- $i^{th}$ observed variable \\
+$\hat{Y} $ -- Output Prediction \\
+$\hat{\beta}_0$ -- bias\\
+\\
+Pr($X, Y$) -- Joint distribution \\
+$L(Y, f(X))$ -- Loss function \\
+$\mathcal{T}$ -- Trainning set\\ 
+
+
+\subsection*{Linear Models and Least Squares}
+\begin{equation*}
+\hat{Y} = X^T\beta.
+\end{equation*}
+RSS -- Residual sum of squares (Solved through normal equation).
+\begin{align*}
+\text{RSS}(\beta) &= \sum_{i=1}^{N}(y_i - x_i^T\beta)^2 \\
+&=(y-X\beta)^T(y-X\beta)
+\end{align*}
+\\
+At an arbitrary input $x_0$ the prediction is $\hat{y}(x_0) = x_0^T\hat{\beta}$.
+
+\subsection*{KNN}
+\begin{equation*}
+\hat{Y}(x) = \frac{1}{k}\sum_{x_i\in N_k(x)}y_i.
+\end{equation*}
+
+\subsection*{Statistical Decision Theory}
+EPE($f$) -- Expected predicted error \\
+\begin{align*}
+\text{EPE}(f) &= \text{E}(Y-f(X))^2\\
+& = \int [y-f(x)]^2\text{Pr}(dx, dy) \\
+& = \text{E}_X\text{E}_{Y|X}([Y-f(X)^2]|X)
+\end{align*}
+The discrete case (Still a bit confused):
+\begin{align*}
+\sum_{i=1}^N (y_i - f(X_i))^2 P_X(x_i)P_{Y|X}(y_i|x_i).
+\end{align*}
+This leads to 
+\begin{align*}
+f(x) = \text{E}(Y|X=x).
+\end{align*}
+
+\subsection*{Questions}
+1. What does it mean by there're errors on the training data itself (p32).\\
+2. What is Voronoi tessellation. \\
+3. Confused by the uniform example at page 42-43.\\
+4. Total lost in (2.27) and (2.28).\\
+5. 
+
+\subsection*{Exercise}
+1. Check \\
+2. Clear \\
+3. Pass \\
+4. Pass \\
+5. Pass (conditional moments representation and calculation) \\
+6. Clear \\
+
+

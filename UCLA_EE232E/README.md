@@ -15,4 +15,7 @@ Update 02/15/2018
 I have cleaned up this repo a bit and add it into the student_project folder. Now that I see it, I feel like I probably did something wrong. Anyway, this is it.
 
 Only Project 1 data comes from open source:
+
 http://snap.stanford.edu/data/egonets-Facebook.html
+
+The rest are scraped by TAs and will not be shared here.

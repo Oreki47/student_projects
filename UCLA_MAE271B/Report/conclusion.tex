@@ -1,0 +1,8 @@
+\section{Conclusion}
+\paragraph{}
+In this report, the missile intercept problem is first introduced, followed by formation of the \textit{continuous-time Kalman filter}. Based on the model, an implementation under Matlab environment is carried out and the results are presented and discussed. Based on the result of Monte Carlo simulation of both the original model and the random telegraph signal model, the implementation of Kalman filter can be concluded as successful. \vspace{-12pt}
+\paragraph{}
+During the process of implementation several mistakes were made and fixed, which provided some insights to the mechanism of Kalman filter. For instance, the initial state being deterministic instead of random reduces the actual error variance since it is less "random" and it does not affect later stage due to it is uncorrelated. \vspace{-12pt}
+\paragraph{}
+In the future, the mechanism of random telegraph signal can be further explored and its implementation in different fields can be further explored. Aside from that, the continuous Kalman filter, althrough being continuous, is implemented through discretization of $t$, which bears some level of similarity to discrete time Kalman filter, and therefore a comparison between two filters can be made and discussed.
+

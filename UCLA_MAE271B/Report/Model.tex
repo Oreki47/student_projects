@@ -1,0 +1,67 @@
+\section{Continuous-Time Kalman Filter}
+
+\paragraph{}
+The state-space equation for the missile problem is
+\begin{equation}
+\begin{aligned}
+&\underbrace{\begin{bmatrix}
+\dot{y}\\\dot{v}\\\dot{a_T} 
+\end{bmatrix}}_{\dot{x}} =\underbrace{\begin{bmatrix}
+	0 & 1 & 0 \\ 0 & 0 & -1 \\ 0 & 0 & -\frac{1}{\tau}
+	\end{bmatrix}}_F \underbrace{\begin{bmatrix}
+	y\\v\\a
+	\end{bmatrix}}_x + \underbrace{\begin{bmatrix}
+	0\\1\\0
+	\end{bmatrix}}_B a_p + \underbrace{\begin{bmatrix}
+	0\\0\\1
+	\end{bmatrix}}_G\omega_{a_T}\\
+&z =\underbrace{\begin{bmatrix}
+	\frac{1}{V_c(t_f-t)} \ \ 0 \ \ 0
+	\end{bmatrix}}_H \begin{bmatrix}
+	y\\v\\a_T
+	\end{bmatrix} + n
+\end{aligned}
+\end{equation}
+\paragraph{}
+Therefore, the Kalman filter has the form
+\begin{align*}
+&\dot{\hat{y}} = \hat{v} + K_1(z-\frac{\hat{y}}{V_c(t_f -t)}),\\
+&\dot{\hat{v}} = -\hat{a_T} + K_2(z-\frac{\hat{y}}{V_c(t_f -t)}) + a_p,\\
+&\dot{\hat{a_T}} = -\frac{\hat{a_T}}{\tau} + K_3(z-\frac{\hat{y}}{V_c(t_f -t)}),
+\end{align*}
+\paragraph{}
+where the gains are
+\begin{align*}
+&K_1 = \frac{p_{11}}{V_cR_1(t_f-t)+\frac{V_cR_2}{t_f-t}},\\
+&K_2 = \frac{p_{12}}{V_cR_1(t_f-t)+\frac{V_cR_2}{t_f-t}},\\
+&K_3 = \frac{p_{13}}{V_cR_1(t_f-t)+\frac{V_cR_2}{t_f-t}},
+\end{align*}
+\paragraph{}
+where $p_{ij}$ are the $(i,j)$ elements of the error covariance matrix is propagated by the $Riccati$ Equation
+\begin{align}
+\dot{P} = FP + PF^T - PMP + W,
+\end{align}
+\paragraph{}
+where
+\begin{align*}
+	M = \frac{1}{V_c^2R_1(t_f-t)^2 +V_c^2R_2}\begin{bmatrix}
+	1&0&0\\0&0&0\\0&0&0
+	\end{bmatrix}, \qquad W = GE[a_T^2]G^T = E[a_T^2]\begin{bmatrix}
+	0&0&0\\0&0&0\\0&0&1
+	\end{bmatrix}
+\end{align*}
+\paragraph{}
+From here we can develop the algorithm that solves this problem.\\
+
+\begin{algorithm}[H]
+	\SetAlgoLined
+	\KwResult{Estimate $\hat{x}$, error $e$}
+	initialize drive $\omega_{a_T},\text{ noise } n$\;
+	\While{$t < t_f$}{
+		update variance: $P_{k+1} = P_k + \dot{P}_kdt$\;
+		update Kalman gain: $K_{k+1} =P_{k+1}H_{k+1}/V_{k+1}$\;
+		update actual state: $x_{k+1} = x_k + \dot{x}_kdt$, $z_{k+1} = H_{k+1}x_{k+1} + n_{k+1}$\;
+		update estimate state: $\hat{x}_{k+1} = \hat{x}_k + \dot{\hat{x}}_kdt$
+	}
+	\caption{Kalman Filter Implementation}
+\end{algorithm}

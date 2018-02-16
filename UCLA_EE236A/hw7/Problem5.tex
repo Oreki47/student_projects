@@ -1,0 +1,31 @@
+\subsubsection*{Problem 5}
+\paragraph{}
+Monitoring is important in power system network. Suppose in a n-bus power system, we need to reach full observability of the system while minimizing the cost of implementation with a metering device called Phasor Measurement Unit (PMU) that is capable of monitoring all buses incident to the bus it has been installed. We need to determine where those PMUs should be installed. We introduce a indicator variable $x_i$:
+\begin{align*}
+x_1 = \begin{cases}
+&1 \qquad \text{with PMU installed}\\
+&0 \qquad \text{otherwise}.
+\end{cases}
+\end{align*}
+\paragraph{}
+We construct an adjacent matrix $A$ with element $a_{ij}$:
+\begin{align*}
+a_{ij} = \begin{cases}
+&1 \qquad \text{bus $i$ is incident to bus $j$ or }i=j\\
+&0 \qquad \text{otherwise}.
+\end{cases}
+\end{align*}
+\paragraph{}
+An ILP can be formed as followed:
+\begin{align*}
+& minimize \quad \ \ \  \sum_{i=1}^{n}c_ix_i\\
+& subject \ to \qquad \sum_{j=1}^{n}a_{ij}x_i \geq 1,\  i=1,...,n\\
+&\qquad \qquad \quad \quad  \ x_i \in \{0, 1\} \  i=1,...,n \\
+\end{align*}
+\paragraph{}
+We can relax this ILP to LP as followed:
+\begin{align*}
+& minimize \quad \ \ \  \sum_{i=1}^{n}c_ix_i\\
+& subject \ to \qquad \sum_{j=1}^{n}a_{ij}x_i \geq 1,\  i=1,...,n\\
+&\qquad \qquad \quad \quad  \ x_i\geq 0 \  i=1,...,n \\
+\end{align*}

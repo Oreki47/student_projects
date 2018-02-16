@@ -1,0 +1,45 @@
+\subsection*{T2.37}
+\subsubsection*{(b)}
+\paragraph{}
+$\Rightarrow$
+\paragraph{}
+With $p(t) \geq 0$ we can rewrite it as:
+\begin{align*}
+&p(t) = r(t)^2 + s(t)^2 =
+(r_1+r_2t+...+r_{k+1}t^k)^2 +(s_1+s_2t+...+s_{k+1}t^k)^2 \\
+&\quad \ \ =(r_1^2 + s_1^2) +(r_1r_2+s_1s_2)t+...+(r_1r_{k+1}+s_1s_{k+1})t^k + \\
+&\qquad \ \ \  (r_1r_2+s_1s_2)t+ (r_2^2 +s_2^2)t^2+...+(r_2r_{k+1}+s_2s_{k+1})t^{k+1} +\\
+&\qquad \ \ \ ... \\
+&\qquad \ \ + (r_1r_{k+1}+s_1s_{k+1})t^k + (r_2r_{k+1}+s_2s_{k+1})t^{k+1} +...+(r_{k+1}^2+s_{k+1}^2)t^{2k} \\
+&\quad \ \ =\nu^tY\nu
+\end{align*}
+\paragraph{}
+Where $\nu=[1, t, t^2 ... t^k] \in R^{k+1}$ and
+\begin{align*}
+Y=\begin{bmatrix*}[r]
+r_1^2 + s_1^2        & r_1r_2+s_1s_2         & ... & r_1r_{k+1}+s_1s_{k+1} \\ 
+r_1r_2+s_1s_2        & r_2^2 +s_2^2          & ... & r_2r_{k+1}+s_2s_{k+1} \\
+...                  & ...                   & ... &...                    \\
+r_1r_{k+1}+s_1s_{k+1}& r_2r_{k+1}+s_2s_{k+1} & ... & r_{k+1}^2+s_{k+1}^2   \\
+\end{bmatrix*}
+\end{align*}
+\paragraph{}
+Since $\nu^TY\nu \geq 0$, $Y\in S_+^{k+1}$. 
+\paragraph{}
+$\Leftarrow$
+\paragraph{}
+Conversely, with $x_i=\sum_{m+n=i+1}Y_{mn}$, we can rewrite $p(t)$ as
+\begin{align*}
+&p(t)= Y_{11} + (Y_{12}+Y_{21})t +(Y_{13}+Y_{22}+Y_{31})t^2 +...+Y_{k+1,k+1}t^{2k} \\
+&\quad \ \  = \nu^tY\nu
+\end{align*}
+\paragraph{}
+Where $\nu=[1, t, t^2 ... t^k] \in R^{k+1}$ and since $Y\in S_+^{k+1}$, we have $p(t) \geq 0$.
+\subsubsection*{(c)}
+\paragraph{}
+From $K^{\ast}_{pol}=\{z \ | \ x^Tz \geq 0, \forall x\in K_{pol}\}$ we have
+\begin{align*}
+	\sum_{i=1}^{2k+1}z_i\sum_{m+n=i+1}Y_{mn}=\sum_{m,n=1}^{k+1}Y_{mn}z_{m+n-1}=\text{tr}(YH(z)) \geq 0	
+\end{align*}
+\paragraph{}
+Therefore $H(z)\succeq 0$.

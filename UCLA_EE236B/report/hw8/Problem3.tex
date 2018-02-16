@@ -1,0 +1,63 @@
+\subsection*{A4.26}
+\subsubsection*{(a)}
+\begin{align*}
+&L(x,y,z) =\gamma||x||_1 +||y||_2 +z^T(Ax-b-y)\\
+&\qquad \qquad =\gamma||x||_1 +z^TAx +(||y||_2-z^Ty) -b^Tz\\
+&g(z)=\inf_{x,y}L(x,y,z) \\
+&\qquad =\begin{cases}
+&\inf_x(\gamma||x||_1+z^TAx-b^Tz), \qquad \text{if}\ ||z||_2 \leq 1\\
+&-\infty \qquad \qquad \qquad \qquad \quad \ \ \text{otherwise}
+\end{cases}\\
+&\qquad =\begin{cases}
+&-b^Tz, \qquad \text{if}\ ||A^Tz||_\infty \leq \gamma\\
+&-\infty \qquad  \quad \text{otherwise}
+\end{cases}
+\end{align*}
+\paragraph{}
+Therefore the dual can be written as
+\begin{align*}
+&\text{maximize} \qquad -b^Tz\\
+&\text{subject to} \qquad ||z||_2 \leq 1\\
+&\qquad \qquad \qquad \ ||A^Tz||_\infty \leq \gamma
+\end{align*}
+\subsubsection*{(b)}
+\paragraph{}
+We examine the KKT conditions,
+\begin{enumerate}
+	\item $x,y \text{satisfy} Ax-b=y$
+	\item $||A^Tz||_\infty \leq \gamma, ||z||_2 \leq 1$
+	\item $x^\star, y^\star$ minimize $L(x,y,z^\star)$.
+\end{enumerate}
+\paragraph{}
+Therefore for the last condition, we have
+\begin{align*}
+y^\star =\text{argmin}(||y||_2-y^Tz^\star) =0
+\end{align*}
+\paragraph{}
+Therefore $z^\star = y^\star/||y^\star||_2 =(Ax^\star-b)/(||Ax^\star -b||_2)=r$, i.e., $r$ is dual optimal. and therefore we have
+\begin{align*}
+||A^Tr||_\infty \leq \gamma, \qquad r^TAx^\star +\gamma||x^\star||_1=0
+\end{align*}
+\paragraph{}
+With the equation followed by strong duality.
+\subsubsection*{(c)}
+\paragraph{}
+We write $A$ as followed,
+\begin{align*}
+A = \begin{bmatrix}
+&a_1 &a_2 &\cdots &a_n
+\end{bmatrix}
+\end{align*}
+\paragraph{}
+Where $a_i \in R^m, i=1,...,n$.
+\paragraph{}
+From the strong duality
+\begin{align*}
+&(A^Tz)^Tx^\star+\gamma||x^\star||_1 = a_1^Tzx_1^\star + \cdots + a_n^Tzx_n^\star +\gamma(|x_1^\star|+\cdots+|x_n^\star|) \\
+&\qquad \qquad \qquad \qquad \ = (a_1^Tzx_1^\star +\gamma|x_1^\star|)+...+(a_n^Tzx_n^\star +\gamma|x_n^\star|)\\
+&\qquad \qquad \qquad \qquad \ \geq(-|a_1^Tz|x_1^\star +\gamma|x_1^\star|)+...+(-|a_n^Tz|x_n^\star +\gamma|x_n^\star|)\\
+&\qquad \qquad \qquad \qquad \ \geq(-\gamma x_1^\star +\gamma|x_1^\star|)+...+(-\gamma x_n^\star +\gamma|x_n^\star|)\\
+&\qquad \qquad \qquad \qquad \ =0
+\end{align*}
+\paragraph{}
+Since $(A^Tz)^Tx^\star+\gamma||x^\star||_1 =0$. for the $i^{th}$ term we must either have $a_i^Tz = -|a_i^Tz| = -\gamma$ or $x_i=0$. Since $||a_i|| < \gamma$, we have $-|a_i^Tz| \leq -||a_i||||z|| < \gamma$ and therefore we must have $x_i=0$.

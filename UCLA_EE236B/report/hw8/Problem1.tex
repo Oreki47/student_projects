@@ -1,0 +1,34 @@
+\subsection*{T5.18}
+\paragraph{}
+For a given $a$, with introducing Lagrange multiplier $z_1 \in R^n$, we always have 
+\begin{align*}
+&\inf_{x\in P_1} a^Tx = \inf_x(a^Tx +z_1^T(Ax-b))\\
+&\qquad \quad \ \ =(a+A^Tz_1)^Tx-bz_1 \\
+&\qquad \quad \ \ =\begin{cases}
+& -bz_1 \qquad \text{if}\ A^Tz_1+a=0\\
+& -\infty \qquad \text{otherwise}
+\end{cases}
+\end{align*}
+\paragraph{}
+Same, with introducing Lagrange multiplier $z_1 \in R^n$, we have
+\begin{align*}
+\sup_{x\in P_2} a^Tx=\begin{cases}
+& -dz_2 \qquad \text{if}\ C^Tz_2-a=0\\
+& -\infty \qquad \text{otherwise}
+\end{cases}
+\end{align*}
+\paragraph{}
+Therefore, we could find $a$ by formulating a minimization problem and solve its dual,
+\begin{align*}
+&\text{maximize} \qquad \inf_{x\in P_1} a^Tx - \sup_{x\in P_2} a^Tx\\
+&\text{subject to}\qquad ||a||_1 \leq 1
+\end{align*}
+\paragraph{}
+and set $\gamma = (\inf_{x\in P_1} a^Tx - \sup_{x\in P_2} a^Tx)/2$. Since the objective value is homogeneous in $a$, a bound is add. The dual is as follow:
+\begin{align*}
+&\text{maximize} \qquad -bz_1 + dz_2\\
+&\text{subject to}\qquad C^Tz_2-a=0\\
+&\qquad \qquad \qquad \ A^Tz_1+a=0\\
+&\qquad \qquad \qquad \ z_1, z_2 \geq 0.\\
+&\qquad \qquad \qquad||a||_1 \leq 1
+\end{align*}

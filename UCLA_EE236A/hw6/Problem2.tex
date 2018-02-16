@@ -1,0 +1,18 @@
+\subsection*{Problem 2}
+\paragraph{}
+For this problem, we assume an indicator variable $a_{ij},\ i=1,...,n,\ j=1,...,k$.
+\begin{align*}
+a_{ij} = \begin{cases}
+&1 \qquad v_i \in S_j\\
+&0 \qquad \text{otherwise}.
+\end{cases}
+\end{align*}
+\paragraph{}
+Also assume $|V|=n$, an ILP can be formed:
+\begin{align*}
+& maximum \quad \ \ \sum_{(i,l)\in E}\omega_{il}\sum_{m,n=1,m \neq n}^{k}|a_{im} -a_{ln}| \\
+& subject \ to \qquad a_{ij} \in\{0,1\},\ i=1,...n, j=1,...,k\\
+&\qquad \qquad \quad \quad \sum_{j=1}^{k}a_{ij}=1, i=1,...,n
+\end{align*}
+\paragraph{}
+Notice that in the objective function, $|a_{im} -a_{ln}|=0$ for vertices $i \in m$ and $l \in n$ and 1 otherwise, which is exactly the opposite we are looking for. However, this results in calculating $\omega_{ij}$ for k-1 times which is a constant and therefore this pose no effect on the solution.

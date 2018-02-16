@@ -1,0 +1,31 @@
+\subsection*{Problem 2}
+\paragraph{}
+The given system could be reformed as follow:
+\begin{align*}
+& (P - I)y = 0 \\
+& \textbf{1}^T y = 1 \\
+& y \leq 0
+\end{align*}
+\paragraph{}
+From Farkas's Lemma, to prove the above system to be feasible, we can prove the following alternative system to be infeasible, i.e., there exist no $z \in R^n,\ \omega \in R$ such that satisfy:
+\begin{align*}
+& (P - I)z + \textbf{1}\omega = 0 \\
+& \omega < 0 
+\end{align*}
+\paragraph{}
+Combine the two and we have
+\begin{align*}
+& (P - I)z > 0
+\end{align*}
+\paragraph{}
+or,
+\begin{align}
+& Pz > z
+\end{align}
+\paragraph{}
+This is impossible due to the fact that $p_{ij}$ is positive and columns of $P$ sum to one and we should have
+\begin{align*}
+& (Pz)_i \leq \max\{z_j\}, \qquad i,j =1,...,n
+\end{align*}
+\paragraph{}
+Which contradicts to (1), and therefore we can prove that the original system is feasible.

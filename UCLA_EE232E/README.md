@@ -1,4 +1,4 @@
-# 232E_All
+# EE 232E Graphs and Network Flows
 
 Spring 2017
 

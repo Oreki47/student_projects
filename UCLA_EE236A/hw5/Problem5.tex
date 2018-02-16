@@ -1,0 +1,23 @@
+\subsubsection*{Problem 5}
+\paragraph{}
+The problem states that Bob wants to visit each house $H$ exactly once with the shortest total distance. This is similar to traveling salesman problem that could be formed into an ILP.
+\paragraph{}
+Assume we have n homes, with distance between home $i$ and $j$ as $c_{ij}$, and define an auxiliary variable $u_i$, where $i,\ j=1,...,n$. Define variable $x_{ij}$ as follow:
+\begin{align*}
+x_{ij} = \begin{cases}
+&1 \qquad \text{the path goes from i to j}\\
+&0 \qquad \text{otherwise}.
+\end{cases}
+\end{align*}
+\paragraph{}
+An ILP can be formed as follow:
+\begin{align*}
+& minimize \quad \ \ \  \sum_{i=0`}^n\sum_{j\neq i, j=1}^n c_{ij}x_{ij}\\
+& subject \ to \qquad \sum_{i=0, i\neq j}^n x_{ij} = 1 \qquad j=1,...,n\\
+& \qquad \qquad \qquad \ \sum_{j=0, j\neq i}^n x_{ij} = 1 \qquad i=1,...,n\\
+& \qquad \qquad \qquad x_{ij} \in \{0, 1\}  \qquad i, j = 1,...,n\\
+& \qquad \qquad \qquad u_i - u_j +nx_{ij} \leq n-1 \qquad 1\leq i \neq j \leq n\\
+\end{align*}
+\vspace{-50pt}
+\paragraph{}
+The first two constraints guarantee that each home can serve as the destination and starting point for exactly once. The third constraint restrict potential value of $x_{ij}$ to 0 and 1. The last constraint enforces that there is only one single tour, i.e., no disjointed tours. To see why the last constraint holds, it is sufficient to show that every subtour in a feasible solution pass through home 0 (restaurant). If we sum all inequalities corresponding to $x_{ij} =1$ for any subtour of k steps without passing through home 0, we have $ nk \leq (n-1)k$ which is a contradiction. Therefore, there exist only one single tour.

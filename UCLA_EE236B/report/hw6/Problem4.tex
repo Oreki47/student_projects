@@ -1,0 +1,42 @@
+\subsection*{T5.19}
+\subsubsection*{(a)}
+\paragraph{}
+The given LP is equivalent to the following ILP since its constraint matrix is total unimodular.
+\begin{align*}
+&minimize \qquad x^Ty\\
+&subject\ to \qquad y \in \{0,\ \textbf{1}\}\\
+&\qquad \qquad \qquad \ \textbf{1}^Ty =r
+\end{align*}
+\paragraph{}
+This optimal value of this IPL is equal to $f(x)$.
+\subsubsection*{(b)}
+\begin{align*}
+&L(y, u, v, t) = -x^Ty + u^T(y-\textbf{1}) -v^Ty + t(\textbf{1}^Ty -r)  \\
+&\qquad \qquad\ \  =(-x+u-v+t\textbf{1})^Ty -1^Tu-tr
+\end{align*}
+\begin{align*}
+&g(u,v,t) = \inf_y L(y,u,v,t)\\
+& \qquad  \quad \ \ =\begin{cases}
+& -rt -\textbf{1}^Tu \qquad   u-v+t\textbf{1}-x =0, \ u,v \succeq 0\\
+& -\infty \qquad \qquad \quad \text{otherwise}
+\end{cases}
+\end{align*}
+\paragraph{}
+This can be written as 
+\begin{align*}
+&minimize \qquad rt+1^Tu\\
+&subject\ to \qquad t\textbf{1} +1 \succeq x\\
+&\qquad \qquad \qquad \ u \succeq 0
+\end{align*}
+\subsubsection*{(c)}
+from (b), $f(x) \leq 0.8$ if and only if $0.1nt+1^Tu \leq 0.8$, $t\textbf{1}+u \geq x$, and $u \geq 0$. Therefore it can be written as a QP as
+\begin{align*}
+&minimize \qquad x^T\Sigma x \\
+&subject\ to \qquad \bar{p}^Tx \geq r_{min}\\
+&\qquad \qquad \qquad \ \textbf{1}^Tx =1, \qquad x\succeq 0\\
+&\qquad \qquad \qquad \ 0.1nt+1^Tu \leq 0.8\\
+&\qquad \qquad \qquad \ t\textbf{1}+u \geq x\\
+&\qquad \qquad \qquad \ u \geq 0
+\end{align*}
+\paragraph{}
+where $x,t,u$ are the variables.

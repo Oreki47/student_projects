@@ -1,0 +1,50 @@
+\subsection*{A4.4}
+\paragraph{}
+We can rewrite the problem as
+\begin{align*}
+&minimize \qquad ||Az - b||_2^2\\
+&subject\ to \qquad z^TCz + 2f^Tz = 0,
+\end{align*}
+\paragraph{}
+where
+\begin{align*}
+A = \begin{bmatrix*}[r]
+&-2y_1^T & 1 \\ &...&...\\&-2y_5^T&1\\
+\end{bmatrix*} \qquad b = \begin{bmatrix*}[r]
+&d_1^2 - ||y_1||^2_2 \\ &... \\&d_5^2 - ||y_5||^2_2 
+\end{bmatrix*}\qquad C = \begin{bmatrix*}[r]
+&1 &0 &0 \\&0 &1 &0\\ &0 &0 &0\\
+\end{bmatrix*} \qquad f=\begin{bmatrix}
+&0\\&0\\&-1/2
+\end{bmatrix}
+\end{align*}
+\paragraph{}
+The Lagrangian is
+\begin{align*}
+&L(z, \nu) = z^TA^TAz -2b^TAz+ b^Tb +\nu^T(z^TCz + 2f^Tz) \\
+&\qquad \ \ \  =z^T(A^TA+\nu C)z - 2(A^Tb-\nu f)^Tz+b^Tb
+\end{align*}
+\paragraph{}
+which is bounded below if
+\begin{align*}
+A^TA +\nu C \succeq 0 \qquad A^Tb -\nu f \in \text{Range}(A^TA +\nu C)
+\end{align*}
+\paragraph{}
+and we have
+\begin{align*}
+&\triangledown L(z,v) = 2(A^TA + \nu C)z -2(A^Tb - \nu f) = 0 \Rightarrow  z = (A^TA+\nu C)^+(A^Tb-\nu f)
+\end{align*}
+\paragraph{}
+Therefore $g(\nu)$ can be written as
+\begin{align*}
+g(\nu) = -(A^b-\nu f)^T(A^TA+\nu C)^+(A^Tb-\nu f) +b^Tb
+\end{align*}{}
+The dual can therefore be written as an SDP
+\begin{align*}
+&maximize \qquad -t +b^Tb\\
+&subject\ to \qquad \begin{bmatrix*}[r]
+&A^TA +\nu C &A^Tb- \nu f \\&(A^Tb-\nu f)^T &t 
+\end{bmatrix*}\succeq 0
+\end{align*}
+\paragraph{}
+This can be easily solved through CVX. This gives $\nu^{\star} =0.5896$, which gives $z^{\star} = [1.33, 0.64, 2.18]^T$. Therefore $x^{\star} = [1.33, 0.64]^T$.

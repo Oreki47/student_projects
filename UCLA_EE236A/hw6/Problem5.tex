@@ -1,0 +1,36 @@
+\subsubsection*{Problem 5}
+\paragraph{}
+First of all, since every vertex in both A and B has a degree of k, we have $A=B$ from $kA=kB$. Assume a perfect assignment o maximize the sum of satisfaction, we can assume an indicator variable $a_{ij},\ i=1,...,A,\ j=1,...,B$.
+\begin{align*}
+a_{ij} = \begin{cases}
+&1 \qquad \text{Applicant} \ i \ \text{gets job} \ j\\
+&0 \qquad \text{otherwise}.
+\end{cases}
+\end{align*}
+\paragraph{}
+An ILP can be formed as followed:
+\begin{align*}
+& maximum \quad \ \ \sum_{i=1}^{A}\sum_{j=1}^{B}c_{ij}a_{ij} \\
+& subject \ to \qquad a_{ij} \in\{0,1\},\ i=1,...A, j=1,...,B\\
+&\qquad \qquad \quad \quad \sum_{j=1}^{B}a_{ij}=1, i=1,...,A\\
+&\qquad \qquad \quad \quad \sum_{i=1}^{A}a_{ij}=1, j=1,...,B\\
+\end{align*}
+\paragraph{}
+This is equivalent to the following LP:
+\begin{align*}
+& maximum \quad \ \ \sum_{i=1}^{A}\sum_{j=1}^{B}c_{ij}a_{ij} \\
+& subject \ to \qquad a_{ij}\geq 0, \ i=1,...A, j=1,...,B\\
+&\qquad \qquad \quad \quad \sum_{j=1}^{B}a_{ij}=1,\ i=1,...,A\\
+&\qquad \qquad \quad \quad \sum_{i=1}^{A}a_{ij}=1,\ j=1,...,B\\
+\end{align*}
+\paragraph{}
+We can first relax the ILP into LP by making $a_{ij} \in\{0,1\}$ to $0 \leq a_{ij}\leq 1$. The constraint matrix can be proved to be a TUM. Also since we have the second and third constraint, $a_{ij}\leq 1$ is redundant. Therefore these two problems are equivalent.
+\paragraph{}
+Notice that in the LP there's no constraint on whether applicant i is capable of job j. One method is simply set all $a_{ij} = 0$ for such cases. Assume $G=(V,E)$ where $(i, j)\in E$ represents all job $j$ satisfied by applicant $i$. Another method to resolve such problem is to manually reform the satisfaction index $c_{ij}$ into some relative large negative number for such cases, and the rest remaining the same. This would deceive the solver to provide us with a solution that fits the registration record. 
+\begin{align*}
+& maximum \quad \ \ \sum_{i=1}^{A}\sum_{j=1}^{B}c_{ij}a_{ij} \\
+& subject \ to \qquad a_{ij}\geq 0, \ i=1,...A, j=1,...,B\\
+&\qquad \qquad \quad \quad  \ a_{ij} = 0, \ \forall (i,j) \notin E\\
+&\qquad \qquad \quad \quad \sum_{j=1}^{B}a_{ij}=1,\ i=1,...,A\\
+&\qquad \qquad \quad \quad \sum_{i=1}^{A}a_{ij}=1,\ j=1,...,B\\
+\end{align*}

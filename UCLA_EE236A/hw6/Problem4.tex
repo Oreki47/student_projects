@@ -1,0 +1,64 @@
+\subsubsection*{Problem 4}
+\subsubsection*{(1)}
+\paragraph{}
+First, we assume there are $k$ students and $m-k$ pizza options. We notice that these can be seen as two sets of points, call them $S_s$ and $S_p$. And all preferences (assume there are $n$ of them in total) of students can be seen as edges connecting these two sets. We construct a graph $G=(V,E)$, where $|V|=m$, $|E|=n$. The problem can therefore be seen as a matching problem with objective to minimize $|S_p^{\prime}|$ where $S_p^{\prime} \subseteq S_p$, while having each of the element in $S_s$ at least one edge connection to $|S_p^{\prime}|$. 
+We introduce the following variable $x_e$ in solving the problem:
+\begin{align*}
+x_e = \begin{cases}
+&1 \qquad \text{e belongs to the matching}\\
+&0 \qquad \text{otherwise}.
+\end{cases}
+\end{align*}
+\paragraph{}
+To simplify notation, let $M = [M_1^T M_2^T]^T$ where $M_1$ is the edge adjacent matrix of $S_s$ and $M_2$ is the edge adjacent matrix of $S_p$. An ILP can be formed as follow:
+\begin{align*}
+& minimize \quad \ \  \textbf{1}^T min\{M_2 x, \textbf{1}\}\\
+& subject \ to \qquad x\in \{0, 1\}\\
+&\qquad \qquad \quad \quad M_1 x \geq 1
+\end{align*}
+\paragraph{}
+We introduce an axillary variable $t$ and the problem can be reformed as followed:
+\begin{align*}
+& minimize \quad \ \  \textbf{1}^T t \\
+& subject \ to \qquad x\in \{0, 1\}\\
+&\qquad \qquad \quad \quad \ t \in \{0, 1\} \\
+&\qquad \qquad \quad \quad \ M_2 x \geq t\\
+&\qquad \qquad \quad \quad \ M_1 x \geq 1
+\end{align*}
+\subsubsection*{(2)}
+\paragraph{}
+The LP relaxation of the problem can be written as:
+\begin{align*}
+& minimize \quad \ \  \textbf{1}^T t \\
+& subject \ to \qquad x \geq 0\\
+&\qquad \qquad \quad \quad \ t \geq 0\\
+&\qquad \qquad \quad \quad \ M_2 x \geq t\\
+&\qquad \qquad \quad \quad \ M_1 x \geq 1
+\end{align*}
+\paragraph{}
+In matrix form:
+\begin{align*}
+& minimize \quad \ \  \textbf{1}^T t \\
+& subject \ to \qquad \begin{bmatrix*}[r]
+$-$M_1 \ \  0\\ 
+$-$M_2 \ \ I\\
+$-$I   \ \ 0\\
+0      \ \ $-$I\\
+\end{bmatrix*}
+\begin{bmatrix*}[r]
+x\\ t\\
+\end{bmatrix*} \leq 
+\begin{bmatrix*}[r]
+$-$\textbf{1} \\ 0 \\ 0 \\ 0\\
+\end{bmatrix*}
+\end{align*}
+\paragraph{}
+Therefore the dual can be written as:
+\begin{align*}
+& maximize \quad \ \  \textbf{1}^T\lambda_1 \\
+& subject \ to \qquad M_1^T\lambda_1 + M_2^T\lambda_2 \leq \textbf{1}\\
+&\qquad \qquad \quad \quad \ \lambda_2 \leq \textbf{1} \\
+&\qquad \qquad \quad \quad \ \lambda_1, \ \lambda_2 \geq 0
+\end{align*}
+\paragraph{}
+The $\lambda_1$ and $\lambda_2$ represent vertices being selected in set $S_p$ and $S_s$. 

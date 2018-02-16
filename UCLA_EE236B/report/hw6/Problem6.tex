@@ -1,0 +1,32 @@
+\subsection*{A4.30}
+\subsubsection*{(a)}
+\begin{align*}
+&L(x,y, \lambda) = c^Tx +\frac{1}{\mu}\sum_{i=1}^{n}\log(1+e^{\mu y_i}) + \lambda^T(Ax-b-y)\\
+&\qquad \qquad = (c-A^T\lambda)^Tx+(\frac{1}{\mu}\sum_{i=1}^{n}\log(1+e^{\mu y_i})-\lambda^Ty) -b^T\lambda
+\end{align*}
+\begin{align*}
+&g(\lambda) =\inf_{x, y}L(x, y ,\lambda)\\
+&\qquad = \inf_y (\frac{1}{\mu}\sum_{i=1}^{n}\log(1+e^{\mu y_i})-\lambda^Ty -b^T\lambda) \qquad \text{if}\ c-A^T\lambda = 0,\ \lambda \geq 0
+\end{align*}
+\paragraph{}
+Taking partial over $y$ and set it to 0, we have
+\begin{align*}
+y_i = \frac{1}{u}\log \frac{\lambda_i}{1-\lambda_i}
+\end{align*}
+\paragraph{}
+Therefore we have
+\begin{align*}
+g(\lambda) = \frac{1}{u}\sum_i^n(\log\frac{1}{1-\lambda_i}-\lambda_i \log(\frac{\lambda_i}{1- \lambda_i}))-b^T\lambda \qquad \text{if} \ \lambda \preceq 1
+\end{align*}
+\paragraph{}
+The dual can we written as:
+\begin{align*}
+&maximize \qquad \frac{1}{u}\sum_i^m(\log\frac{1}{1-\lambda_i}-\lambda_i \log(\frac{\lambda_i}{1- \lambda_i}))-b^T\lambda \qquad\\
+&subject \ to \qquad c-A^T\lambda = 0\\
+&\qquad \qquad \qquad \ 0 \preceq \lambda \preceq 1
+\end{align*}
+\subsubsection*{(b)}
+\paragraph{}
+Rewrite objective function of (25) as $ f(z) -b^Tz$. To see $p^{\star} \leq q^{\star}$, notice that $z^{\star}$ is dual feasible for (25) and $f(z) \geq 0$ for $z$ feasible. Therefore we always have $f(z) -b^Tz \geq f(z^{\star}) -b^Tz^{\star} \geq b^Tz^{\star}$. Since strong duality holds followed by Slater's condition, we have $p^{\star} \leq q^{\star}$.
+\paragraph{}
+To see $q^{\star} \leq p^{\star} + m\log2/\mu$. Take derivative of $f(z)$ and we have $f'(0.5) = 0$, i.e., $z=0.5$ maximize $f(z)$ and $f(0.5) =m\log2/\mu$. With $z^\star$ maximizing $-b^Tz$, assume $z'$ maximize dual of (25), we have $ q^\star = d^{\star} = f(z')-b^Tz' \leq f(0.5) -b^Tz^\star = p^\star + m\log2/\mu $.

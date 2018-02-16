@@ -1,0 +1,223 @@
+% --------------------------------------------------------------
+% This is all preamble stuff that you don't have to worry about.
+% Head down to where it says "Start here"
+% --------------------------------------------------------------
+ 
+\documentclass[12pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,mathtools}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ 
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{reflection}[2][Reflection]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{proposition}[2][Proposition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+ 
+\begin{document}
+ 
+% --------------------------------------------------------------
+%                         Start here
+% --------------------------------------------------------------
+\begin{flushright}
+	EE 236A HW3 \\
+	Zhiyuan Cao \\
+	304397496   \\
+	10/18/2016  
+\end{flushright}
+%\renewcommand{\qedsymbol}{\filledbox}
+ 
+%\title{EE 236A HW 3}%replace X with the appropriate number
+%\author{Zhiyuan Cao\\ %replace with your name
+%304397496} %if necessary, replace with your course title
+ 
+%\maketitle
+%% Problem 1
+\subsection*{Problem 1}
+\subsubsection*{(a)}
+\paragraph*{}
+With the rank method we have:
+\begin{align*}
+J = \{1, 2, 3, 4\}
+\end{align*}
+\paragraph{}
+and corresponding $A_J$ as:
+\begin{align*}
+A_J = 
+\begin{bmatrix*}[r]
+-1&-6&1&3\\ 
+-1&-2&7&1\\
+ 0&3&-10&-1\\
+-6&-11&-2&12 
+\end{bmatrix*}
+\end{align*}
+\paragraph*{}
+$A_J$ is full rank and therefore $\tilde{x}$ is an extreme point of $P$
+\subsubsection*{(b)}
+\paragraph*{}
+To find the vector c, notice that $\tilde{x}$ is the unique solution to linear equation $A_J x  = b$ since $N(A_J)=\{0\}$. Therefore we have $\forall x \in P$, $A_J x \leq b$. If we set c as any non-positive combination of the rows in $A_J$ we would have:
+\begin{align*}
+c = - A_J^T * d
+\end{align*}
+\paragraph*{}
+where $d \in \textbf{R}^4_+$. One example is to set $d = [1, 1, 1, 1]$, and we would have $c^T x \geq -13$, and only when $x = \tilde{x}$ we have $c^T \tilde{x} = -13$.
+%% Problem 2
+\subsection*{Problem 2}
+\paragraph*{}
+By using the same rank method we have:
+\begin{align*}
+J = \{ 2, 3, 4\}
+\end{align*}
+%
+\paragraph{}
+and corresponding $A_J$ as:
+%
+\begin{align*}
+A_J = 
+\begin{bmatrix*}[r]
+-4&-2&-2&-9\\
+-8&-2&0&-5\\
+0&-6&-7&-4 
+\end{bmatrix*}
+\end{align*}
+%
+\paragraph*{}
+$R(\begin{bmatrix}
+A_J\\
+C
+\end{bmatrix}) = 4$ and therefore $\hat{x}$ is a extreme point of $P$.
+%% Problem 3
+\subsection*{Problem 3}
+\subsubsection*{(a)}
+\paragraph*{}
+The equivalent could be written as:
+\begin{align*}
+&minimize  \qquad \textbf{1}^T y\\
+&subject \ to \qquad -y_k \textbf{1} \leq A_k^T x - b_k \leq y_k \textbf{1}, \quad k = 1,...,m,
+\end{align*}
+\paragraph*{}
+with $y \in \textbf{R}^m$ as our auxiliary variable.
+\subsubsection*{(b)}
+\paragraph*{}
+The Lagrangian could be formed as follow:
+\begin{align*}
+& L(x,\ y,\ \lambda,\ \mu)  \\
+& = \sum_{i = 1}^{m} [\textbf{1}^T y_k + \lambda_k^T(A_k^T x -b_k -y_k \textbf{1}) + \mu_k^T(-y_k \textbf{1} -A_k^T x + b_k)]\\
+& = \sum_{i = 1}^{m} \{(\textbf{1} - \lambda_k - \mu_k)^T y_k  +[A_k^T(\lambda_k - \mu_k)]^T x -(\lambda_k - \mu_k)^T (b_k)\}
+\end{align*}
+\paragraph*{}
+Therefore the Lagrangian dual function:
+\begin{align*}
+& g(\lambda, \ \mu) = \inf_{x,\ y} L(x,\ y, \ \lambda,\ \mu)\\
+& = \inf_{x,\ y} \{ \sum_{i = 1}^{m} [ {(\textbf{1} - \lambda_k - \mu_k)^T y_k  +[A_k^T(\lambda_k - \mu_k)]^T x -(\lambda_k - \mu_k)^T (b_k)}]\}\\
+&= \begin{cases}
+&\sum_{i = 1}^{m} b_k^T(\lambda_k - \mu_k) \quad \quad \textbf{1} - \lambda_k - \mu_k = 0 \ \& \  A_k^T(\lambda_k - \mu_k) = 0\\
+&-\infty  \qquad \qquad \qquad \qquad \text{otherwise}.
+\end{cases}
+\end{align*}
+\paragraph*{}
+And the dual problem and therefore be formed as: 
+%
+\begin{align*}
+&maximize \qquad \sum_{i = 1}^{m} b_k^T(\lambda_k - \mu_k)\\
+&subject \ to \qquad \textbf{1}^T ( \lambda_k + \mu_k)= 1\\
+& \qquad \qquad \qquad  \ \sum_{i = 1}^{m} A_k^T(\lambda_k - \mu_k) = 0\\
+& \qquad \qquad \qquad  \ \lambda_k \geq 0, \quad \mu_k \geq 0, \quad k = 1,...,m.\\
+\end{align*}
+\vspace{-45pt}
+\paragraph*{}
+To have the simplified form we only have to set $z_k = \lambda_k -\mu_k$.
+\begin{align*}
+&maximize \qquad \sum_{i = 1}^{m} b_k^Tz_k\\
+&subject \ to \qquad  \ \sum_{i = 1}^{m} A_k^Tz_k = 0\\
+& \qquad \qquad \qquad  \ \  ||z_k|| \leq 1 \quad k = 1,...,m.\\
+\end{align*}
+%
+\subsubsection*{(c)}
+\paragraph*{}
+For least square solution $x_{ls}$, it satisfies normal equation, i.e.,
+\begin{align*}
+A^T Ax_{ls} = A^T b
+\end{align*}
+%
+\paragraph*{}
+or in our case:
+\begin{align*}
+\sum_{i = 1}^{m} A_k^T(A_kx_{ls}-b_k) = 0
+\end{align*}
+\paragraph*{}
+i.e.,
+\begin{align*}
+\sum_{i = 1}^{m} A_k^Tr_{ls} = 0
+\end{align*}
+%
+\paragraph*{}
+Therefore $r_{ls}$ satisfy the first constraint of the dual problem. To find out a lower bound of the primal problem we need a feasible value of the dual problem and therefore we set:
+\begin{align*}
+z_k =- \frac{r_k}{max_{k = 1,...,m} \ ||r_k||_1}
+\end{align*}
+\paragraph*{}
+Obviously $||z_k||_1 \leq 1$, Therefore we have:
+\begin{align*}
+\sum_{i = 1}^{m} b_k^Tz_k \leq \sum_{i = 1}^{m} (A_kx_{ls} - b_k)z_k = \frac{r_k^2}{max_{k = 1,...,m} \ ||r_k||_1}
+\end{align*}
+%%
+%
+\subsection*{Problem 4}
+\subsubsection*{(a)}
+\paragraph*{}
+The standard LP:
+\begin{align*}
+&minimize  \qquad y\\\
+&subject \ to \quad  \ \ -y \textbf{1} \leq x - x_0 \leq y \textbf{1}\\
+&\qquad \qquad \qquad A^T x \leq b
+\end{align*}
+%
+\subsubsection*{(b)}
+\paragraph*{}
+The Lagrangian could be formed as follow:
+\begin{align*}
+& L(x,\ y,\ \lambda,\ \mu, \ \omega)  \\
+& = y + \lambda^T(x - x_0 - y \textbf{1}) + \mu^T(\lambda - \mu + A^T\omega) +\omega^T(A^T x -b)\\
+& = (1-\textbf{1}^T \lambda - \textbf{1}^T \mu)y + (\lambda - \mu +A^T\omega)^T x +(\mu - \lambda)^T x_0 -b^T \omega
+\end{align*}
+%
+\paragraph*{}
+Therefore the Lagrangian dual function:
+\begin{align*}
+& g(\lambda, \ \mu, \ \omega) = \inf_{x,\ y} L(x,\ y, \ \lambda,\ \mu, \ \omega)\\
+& = \inf_{x,\ y} \{[(1-\textbf{1}^T \lambda - \textbf{1}^T \mu)y + (\lambda - \mu +A^T\omega)^T x +(\mu - \lambda)^T x_0 -b^T \omega]\}\\
+&= \begin{cases}
+&(\mu - \lambda)^T x_0 -b^T \omega \quad \quad \textbf{1} - \lambda_k - \mu_k = 0 \ \& \ \lambda - \mu +A^T\omega  = 0\\
+&-\infty  \qquad  \qquad \qquad \qquad \text{otherwise}.
+\end{cases}
+\end{align*}
+%
+\paragraph*{}
+Then the dual problem could be formed as follow:
+\begin{align*}
+&maximize \qquad (\mu - \lambda)^T x_0 - b^T \omega\\
+&subject \ to \qquad \textbf{1}^T ( \lambda_k + \mu_k)= 1\\
+& \qquad \qquad \qquad  \ A^T \omega = \mu - \lambda\\
+& \qquad \qquad \qquad  \ \lambda \geq 0, \quad \mu \geq 0,\quad \omega \geq 0\\
+\end{align*}
+%
+\paragraph*{}
+Using the second constraint $ A^T \omega = \mu - \lambda$ and a simplified version could be formed as follow:
+\begin{align*}
+&maximize \qquad (A^T\omega - b)^T x_0\\
+&subject \ to \qquad ||A^T\omega||_1 \leq 1\\
+& \qquad \qquad \qquad \ \omega \geq 0
+\end{align*}
+%
+\end{document}	

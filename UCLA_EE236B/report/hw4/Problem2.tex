@@ -1,0 +1,22 @@
+\subsection*{A3.5}
+\subsubsection*{(a)}
+\paragraph{}
+Name the original problem as (1) and first introduce $t$ and $s$ to acquire the following problem as (2)
+\begin{align*}
+&minimize \qquad t/s \\
+&subject \ to \qquad   \max_{i=1,...,m}a^T_ix+b_i \leq t \\
+&\qquad \qquad \qquad \ \min_{i=1,...,p}c^T_ix+d_i \geq s \\
+&\qquad \qquad \qquad \ Fx \preceq g \\
+&\qquad \qquad \qquad \ s \geq 0
+\end{align*}
+\paragraph{}
+It is obvious that (1) and (2) are equivalent since they have the same feasible set and notice that (2) reaches optimality with the following two equations $\max_{i=1,...,m}a^T_ix+b_i = t $ and $\min_{i=1,...,p}c^T_ix+d_i =s$, i.e., they have the same optimal value. Now this is a linear-fractional programming problem with $s > 0$. We can apply the same trick used in textbook 4.3.2 and rewrite the problem as (3):
+\begin{align*}
+&minimize \qquad u \\
+&subject \ to \qquad   a^T_ix+b_i \leq u \qquad i=1,...,m\\
+&\qquad \qquad \qquad \ c^T_ix+d_i \geq v \qquad i=1,...,p\\
+&\qquad \qquad \qquad \ Fx \preceq g \\
+&\qquad \qquad \qquad \ v=1
+\end{align*}
+\paragraph{}
+This is now an linear programming problem. To see equivalent, for a feasible u we set $t = u/v$ and $s = 1/v$, which is feasible in (2) with the same objective value. Conversely, if $t$, $s$ is feasible in (2), then $u=t/s$ is feasible in (3) with same objective value.

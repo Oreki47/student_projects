@@ -1,0 +1,70 @@
+\subsection*{Add.3}
+\subsubsection*{(a)}
+\paragraph{}
+$\Rightarrow$
+\paragraph{}
+Provided that $X \in S^n$, We introduce $\nu = [\nu_1, \nu_2]^T$, Since $X \succeq 0$, we have
+\begin{align*}
+\nu^T X\nu =[\nu_1^T, \nu_2^T]\begin{bmatrix*}[r]
+& 0 & B\\&B^T &C\\
+\end{bmatrix*}\begin{bmatrix*}[r]
+&\nu_1 \\&\nu_k\\ 
+\end{bmatrix*}= 2\nu_1^TB\nu_2 +\nu_2^TC\nu_2 \geq 0
+\end{align*}
+\paragraph{}
+for any $\nu$. set $\nu_1 =-tB\nu_2$ and we have
+\begin{align*}
+-2t||B\nu_2|| + \nu_2^TC\nu_2 \geq 0
+\end{align*} 
+\paragraph{}
+with $ t \rightarrow -\infty$, we must have $B = 0$ to satisfy the condition. This also shows $ C \succeq 0$.
+\paragraph{}
+$\Leftarrow$
+\paragraph{}
+Provided that $B =0$ and $C \succeq 0$, we can introduce $\nu = [\nu_1, \nu_k]^T$ and show $\nu X\nu \geq 0$.
+\subsubsection*{(b)}
+\begin{align*}
+&AA^+ = [Q1 Q2]\begin{bmatrix*}[r]
+&\Lambda_1 &0 \\&0 &0\\
+\end{bmatrix*}\begin{bmatrix*}[r]
+&Q^T_1 \\&Q^T_2 \\
+\end{bmatrix*}Q_1\Lambda^{-1}_1Q_1^T = Q_1Q_1^T \\
+&A^+A =Q_1\Lambda^{-1}_1Q_1^T[Q1 Q2]\begin{bmatrix*}[r]
+&\Lambda_1 &0 \\&0 &0\\
+\end{bmatrix*}\begin{bmatrix*}[r]
+&Q^T_1 \\&Q^T_2 \\
+\end{bmatrix*} =  Q_1Q_1^T
+\end{align*}
+\begin{align*}
+I- AA^+ = I-A^+A = [Q_1\ Q_2]\begin{bmatrix*}[r]
+&Q^T_1 \\&Q^T_2 \\
+\end{bmatrix*} -  Q_1Q_1^T = Q_2Q_2^T
+\end{align*}
+\subsubsection*{(c)}
+\paragraph{}
+$\Rightarrow$
+\paragraph{}
+Let
+\begin{align*}
+A = [Q^T_2\ Q^T_1]\begin{bmatrix}
+&0 &0\\ &0 &\Lambda \\
+\end{bmatrix}\begin{bmatrix*}[r]
+&Q_2\\& Q_1
+\end{bmatrix*}
+\end{align*}
+\begin{align*}
+\nu X\nu =[\nu_1^T, \nu_2^T, \nu_3^T]\begin{bmatrix*}[r]
+&0  &0 &Q_2^TB\\&0&\Lambda&Q_1^TB\\&B^TQ_2 &B^TQ_1 &C\\
+\end{bmatrix*}\begin{bmatrix*}[r]
+&\nu_1 \\&\nu_2\\& \nu_3\\ 
+\end{bmatrix*}=  \geq 0
+\end{align*}
+\paragraph{}
+Based on (a), we must have $B^TQ_2 = 0$, which is equivalent to $(I-AA^{+})B = 0$. Also we must have
+\begin{align*}
+\begin{bmatrix*}[r]
+&\Lambda & Q_1^TB\\& B^TQ_1& C\\
+\end{bmatrix*} \succeq 0
+\end{align*}
+\paragraph{}
+Apply the general \textit{Schur Component} and we have $C - B^TQ_1\Lambda Q_1^TB = C - B^TA^+B \geq 0$.

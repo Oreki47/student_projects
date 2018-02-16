@@ -1,0 +1,5 @@
+\subsubsection*{Problem 4}
+\paragraph{}
+Plug in $x = (1, 1, 1, 1)$ and we have $Ax = [7\ 13\ {-4}\ 27\ {-18}]^T $, which states that the $2^{rd}$ to $5^{th}$ inequality constraints are tight. According to complementary slackness, $z= [0\ z_2\ z_3\ z_4\ z_5]$, and by solving $A^T z + c = 0 $ we have $z= [0\ 2\ 1\ 2\ 2]^T$. Obviously $z$ is feasible in dual and $-b^T z = {-40} = c^T x$. Therefore $x^\star =x = (1\ 1\ 1\ 1)$.
+\paragraph{}
+$x^\star= (1\ 1\ 1\ 1)$ is a non-degenerate vertex of the primal problem and therefore it is unique, i.e., there are no other primal optimal solutions. The dual optimal must satisfy the complementary slackness and since the $z^\star= [0\ 2\ 1\ 2\ 2]^T$ is the unique solution of $A^T z + c = 0 $, we can conclude that no other feasible $z$ satisfy the complementary slackness and therefore no other dual optimal solutions.

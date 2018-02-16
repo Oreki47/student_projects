@@ -1,0 +1,109 @@
+\subsection*{A4.10}
+\subsubsection*{(a)}
+\paragraph{}
+Introducing Lagrange multiplier $\nu \in R^n$, and we have
+\begin{align*}
+&L(x, \nu) = x^TA^TAx -2b^ITAx +b^Tb +\sum_{i=1}^{n}\nu_i(x_i-1) \\
+& \qquad \quad = x^T(A^TA +\textbf{diag}(\nu))x-2b^TAx +b^Tb -\nu^T\textbf{1}
+\end{align*}
+\paragraph{}
+$L(x,\nu)$ is bounded below if $A^TA+\textbf{diag}(\nu) \succeq 0$ and $2b^TA \in \text{Range}(A^TA+\textbf{diag}(\nu))$. Take partial over $x$ and we have $x =(A^TA+\textbf{diag}(\nu))^\dagger A^Tb$ and 
+\begin{align*}
+g(\nu) =-b^TA(A^TA+\textbf{diag}(\nu))^\dagger A^Tb +b^Tb-\nu^T\textbf{1}
+\end{align*}
+\paragraph{}
+With introducing $t\in R$, the dual problem is therefore equivalent to 
+\begin{align*}
+&maximize \qquad b^Tb-t-\nu^T\textbf{1}\\
+&subject\ to \qquad \begin{bmatrix}
+&A^TA+\textbf{diag}(\nu)&-A^Tb\\&-b^TA&t
+\end{bmatrix} \succeq 0
+\end{align*}
+\paragraph{}
+With $t,\ \nu$ being the variables.
+\subsubsection*{(b)}
+\paragraph{}
+First we write it into minimization form
+\begin{align*}
+&minimize \qquad t+\nu^T\textbf{1}-b^Tb\\
+&subject\ to \qquad \begin{bmatrix}
+&A^TA+\textbf{diag}(\nu)&-A^Tb\\&-b^TA&t
+\end{bmatrix} \succeq 0
+\end{align*}
+\paragraph{}
+With introduction of Lagrange multiplier
+\begin{align*}
+\begin{bmatrix}
+&Z&z\\&z^T&\lambda
+\end{bmatrix},
+\end{align*}
+\paragraph{}
+The Lagrangian can be written as:
+\begin{align*}
+&L(t,\nu,Z,z,\lambda)=t+\textbf{1}^T\nu-b^Tb-\textbf{tr}(Z(A^TA+\textbf{diag}(\nu)))+2z^TA^Tb -t\lambda\\
+&\qquad \qquad \qquad = (1-\lambda)t +(\textbf{1}-\textbf{diag}(Z))^T\nu -\textbf{tr}(ZA^TA)+2b^TAz -b^Tb\\
+&\qquad \qquad \qquad =\begin{cases}
+&-\textbf{tr}(ZA^TA)+2b^TAz -b^Tb, \qquad \text{if}\ \textbf{diag}(Z)=\textbf{1}, \lambda=1\\
+&-\infty \qquad  \qquad \qquad \qquad \qquad \qquad \ \ \text{otherwise}
+\end{cases}
+\end{align*}
+\paragraph{}
+Writing the dual function in minimization form and we have
+\begin{align*}
+&minimize \qquad \textbf{tr}(ZA^TA)-2b^TAz + b^Tb\\
+&subject\ to \qquad \textbf{diag}(Z)=\textbf{1}\\
+&\qquad \qquad \qquad \begin{bmatrix}
+&Z&z\\&z^T&1
+\end{bmatrix} \succeq 0
+\end{align*}
+\paragraph{}
+To see this is a relaxation of the original problem. First we have
+\begin{align*}
+&||Ax-b||^2_2 = x^TA^TAx -2b^TAx+b^Tb\\
+&\qquad \qquad \ \ =\textbf{tr}(x^TA^TAx) -2b^TAx +b^Tb\\
+&\qquad \qquad \ \ =\textbf{tr}(A^TAxx^T) -2b^TAx +b^Tb
+\end{align*}
+\paragraph{}
+This problem is therefore equivalent to
+\begin{align*}
+&minimize \qquad \textbf{tr}(ZA^TA)-2b^TAz + b^Tb\\
+&subject\ to \qquad \textbf{diag}(Z)=\textbf{1}\\
+&\qquad \qquad \qquad Z=zz^T
+\end{align*}
+\paragraph{}
+This is replaced by a weaker constraint $Z\succeq zz^T$ in the SDP and therefore it is a relaxation of the original problem. When
+\begin{align*}
+\text{rank}( \begin{bmatrix}
+&Z&z\\&z^T&1
+\end{bmatrix}) = 1
+\end{align*}
+\paragraph{}
+We have
+\begin{align*}
+[Z\ z] = q[z\ 1]
+\end{align*}
+\paragraph{}
+and obviously a solution of $q = z$ and we have $Z=zz^T$.
+\subsubsection*{(c)}
+\begin{align*}
+&\textbf{E}||A\nu-b||^2_2 =\textbf{E}[\nu^TA^TA\nu -2b^TA\nu+b^Tb]\\
+&\qquad \qquad \quad \ =\textbf{E}[\nu^TA^TA\nu]- \textbf{E}[2b^TA\nu] +b^Tb\\
+&\qquad \qquad \quad \ =\textbf{tr}(\textbf{E}[\nu\nu^T]A^TA)-2b^TA\textbf{E}\nu+b^Tb
+\end{align*}
+\paragraph{}
+Therefore, the equivalence is followed by $Z = \textbf{E}[\nu\nu^T]$ and $z = \textbf{E}\nu$.
+\subsubsection*{(d)}
+\paragraph{}
+The optimal values are as followed:
+\begin{center}
+	\begin{tabular}{ c | c | c | c | c | c}
+		s   & $f(x_a)$ & $f(x_b)$ & $f(x_c)$ & $f(x_d)$ & $d^\star$ \\ 
+		0.5 & 4.1623   & 4.1623   & 4.1623   & 4.1623   & 4.0524    \\  
+		1.0 & 12.7299  & 8.3245   & 8.3245   & 8.3245   & 7.8678    \\ 
+		2.0 & 30.1419  & 16.6490  & 16.6490  & 16.6490  & 15.1814   \\ 
+		3.0 & 33.9339  & 25.9555  & 25.9555  & 24.9735  & 22.1139   \\ 
+	\end{tabular}
+\end{center}
+\paragraph{}
+See matlab code as follow.
+\verbatiminput{bi.m}

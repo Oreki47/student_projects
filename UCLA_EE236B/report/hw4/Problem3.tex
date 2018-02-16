@@ -1,0 +1,13 @@
+\subsection*{T4.21}
+\subsubsection*{(b)}
+\paragraph{}
+Let $y = A^{1/2}(x-x_c)$ and $\hat{c} = A^{-1/2}c$, the original problem could be written as:
+\begin{align*}
+&\text{minimize} \qquad\ \hat{c}^Ty +\hat{c}^Tx_c\\
+&\text{subject to} \qquad y^Ty \leq 1\\
+\end{align*}
+\paragraph{}
+The solution to this problem can be easily seen geometrically, $y$ lies on the boundary of the unit ball and has the opposite direction of $\hat{c}$, i.e., $y=-\hat{c}/ ||\hat{c}||$. The corresponding solution to $x$ therefore is
+\begin{align*}
+x = x_c - \frac{cA^{-1}}{\sqrt{c^TA^{-1}c}}
+\end{align*}

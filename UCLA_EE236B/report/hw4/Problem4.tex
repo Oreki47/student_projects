@@ -1,0 +1,21 @@
+\subsection*{T4.25}
+\paragraph{}
+First we can replace the two constraints with $a^Tx +b \geq 1$ and $a^Tx+b \leq -1$ due to homogeneity. From here we have the following constraints:
+\begin{align*}
+&\inf_{\varepsilon_i}\{a^Tx +b\}  \geq 1 \qquad i=1,...,K \\
+&\sup_{\varepsilon_i}\{a^Tx +b\}  \leq -1 \qquad i=K+1,...,K+L\\
+\end{align*}
+\paragraph{}
+Plugging in the definition of ellipsoid we have
+\begin{align*}
+&\inf_{\varepsilon_i}\{a^Tx +b\} = \inf_{\varepsilon_i}\{a^Tq_i +a^TP_iu +b\ |\ ||u||_2 \leq 1\} \\
+& \qquad \qquad \quad \ \ =  a^Tq_i -||P_i^Ta||_2 +b\\
+&\sup_{\varepsilon_i}\{a^Tx +b\} =a^Tq_i +||P_i^Ta||_2 +b
+\end{align*}
+\paragraph{}
+This is followed by Cauchy Inequality. Therefore we acquired two groups of SOCP constraints and the problem can be formed as follow:
+\begin{align*}
+&find \qquad  \qquad a, b \\
+&subject \ to \qquad   a^Tq_i -||P_i^Ta||_2 +b \geq  1, \qquad i=1,...,K \\
+&\qquad \qquad \qquad \ a^Tq_i +||P_i^Ta||_2 +b \leq -1 \qquad i=K+1,...,K+L\\
+\end{align*}

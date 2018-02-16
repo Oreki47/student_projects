@@ -1,0 +1,41 @@
+\subsection*{A3.11}
+\subsubsection*{(a)}
+\paragraph{}
+The problem can be written as:
+\begin{align*}
+&\text{minimize} \qquad t \\
+&\text{subject to} \qquad \begin{bmatrix*}[r]
+&F(x) & c^T \\ & c & t\\
+\end{bmatrix*} \succeq 0
+\end{align*}
+\paragraph{}
+This is followed by \textit{Schur Component} with $t - c^TF^{-1}(x)c \geq 0$.
+\subsubsection*{(b)}
+\paragraph{}
+The problem can be written as:
+\begin{align*}
+&\text{minimize} \qquad t \\
+&\text{subject to} \qquad \begin{bmatrix*}[r]
+&F(x) & c^T \\ & c & t\\
+\end{bmatrix*} \succeq 0, \qquad i =1,...,K
+\end{align*}
+\subsubsection*{(c)}
+\begin{align*}
+f(x) =\lambda_{max}(F^{-1}(x)) \leq t \Leftrightarrow F^{-1}(x) \leq tI
+\end{align*}
+\paragraph{}
+Therefore the problem is formed as followed
+\begin{align*}
+&\text{minimize} \qquad t \\
+&\text{subject to} \qquad \begin{bmatrix*}[r]
+&F(x) & I \\ & I & tI \\
+\end{bmatrix*} \succeq 0
+\end{align*}
+\subsubsection*{(d)}
+\begin{align*}
+&E[c^TF^{-1}c] = E[\bar{c}^TF^{-1}\bar{c} + (c-\bar{c})^TF^{-1} (c-\bar{c})] \\
+&\qquad \qquad \ \ =E[\bar{c}^TF^{-1}\bar{c}] + E[\sum_{i =1}^{m}\sum_{j =1}^{m}x_{ij}y_iy_j] \\
+&\qquad \qquad \ \ =\bar{c}^TF^{-1}\bar{c} + \textbf{tr}(F^{-1}S)
+\end{align*}
+\paragraph{}
+where $y_i = c_i -\bar{c_i}$.

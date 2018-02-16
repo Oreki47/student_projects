@@ -1,0 +1,25 @@
+\subsection*{A2.10}
+\paragraph{}
+The Hessian $\triangledown^2f(x)$ is given by
+\begin{align*}
+\frac{\partial^2f(x)}{\partial x^2_k} = \frac{\alpha_k(\alpha_k-1)}{x_k^2}f(x),
+\qquad 
+\frac{\partial^2f(x)}{\partial x_k\partial x_l} = \frac{\alpha_k \alpha_l}{x_k x_l}f(x) \qquad \text{for }k \neq l
+\end{align*}
+\paragraph{}
+and can be expressed as
+\begin{align*}
+	\triangledown^2f(x) = -f(x)(\textbf{diag}(z_k^2/\alpha_k)-zz^T)
+\end{align*}
+\paragraph{}
+Where $z_k=\alpha_k/x_k$. We must show $\triangledown^2f(x) \preceq 0$, i.e, that 
+\begin{align*}
+\nu^T\triangledown^2f(x)\nu =-f(x)(\sum_{i=1}^{n}\frac{\nu_i^2 z_i^2}{\alpha_i}-(\sum_{i=1}^{n}v\nu_iz_i)^2) \leq 0
+\end{align*}
+\paragraph{}
+With
+\begin{align*}
+	\sum_{i=1}^{n}\frac{\nu_i^2 z_i^2}{\alpha_i} \geq \sum_{i=1}^{n}\frac{\nu_i^2 z_i^2}{\max\{\alpha_k\}}=  \frac{1}{\max\{\alpha_k\}}\sum_{i=1}^{n}\nu_i^2 z_i^2 \geq \sum_{i=1}^{n}\nu_i^2 z_i^2
+\end{align*}
+\paragraph{}
+since $\alpha_k \geq 0$, $k=1,...,n$ and $\sum_k\alpha_k=1$, apply the Cauchy-Schwarz inequity $(a^Ta)(b^Tb)\geq (a^Tb)^2$, where $a=\nu$ and $b=x$, and we get the result.

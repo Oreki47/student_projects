@@ -1,0 +1,44 @@
+\subsection*{A7.1}
+\subsubsection*{(a)}
+\paragraph{}
+The ellipsoid $\mathcal{E} =\{ Q^{1/2}y\ |\ ||y||_2 \leq 1 \}$ is contained in $C$ if and only if
+\begin{align*}
+\sup_{||y||_2\leq 1} a_i^T(Q^{1/2}y) \leq ||Q^{1/2}a_i||_2 = a_i^TQa_i \leq 1,\qquad i =1,...,p.
+\end{align*}
+\subsubsection*{(b)}
+Introducing Lagrange multiplier $z \in R^P$.
+\begin{align*}
+&L(Q,z) =\log \text{det}Q^{-1} +\sum_{i=1}^{p}z_ia_i^TQa_i - \sum_{i=1}^{p}z_i\\
+&G(z) = \inf_Q L(Q,z) =\\
+&\qquad = \begin{cases}
+&\log\text{det}(\sum_{i=1}^{p}z_ia_ia_i^T) +n -\sum_{i=1}^{p}z_i, \qquad \text{if }  \sum_{i=1}^{p}z_ia_ia_i^T \succ 0 \\
+& -\infty, \qquad\qquad\qquad\qquad\qquad\qquad\qquad\quad\ \text{otherwise}
+\end{cases}
+\end{align*}
+\paragraph{}
+Therefore the dual is 
+\begin{align*}
+&\text{maximize}\qquad \log\text{det}(\sum_{i=1}^{p}z_ia_ia_i^T) +n -\sum_{i=1}^{p}z_i\\
+&\text{subject to}\qquad z \geq 0
+\end{align*}
+\subsubsection*{(c)}
+\paragraph{}
+The KKT conditions are
+\begin{enumerate}
+	\item $Q\succ 0$ and $a_i^TQa_i \leq 1, i=1,...,p$
+	\item $z \geq 0$
+	\item $z_i(a_i^TQa_i -1) =0, i=1,...,p$
+	\item $Q^{-1} = \sum_{i=1}^{p}z_ia_ia_i^T$
+\end{enumerate}
+\paragraph{}
+Taking the inner product of the last condition,
+\begin{align*}
+n = \textbf{tr}(\sum_{i=1}^{p}z_ia_i^TQa_i) = \sum_{i=1}^{p}z_i
+\end{align*}
+\paragraph{}
+Next we have,
+\begin{align*}
+x^TQ^{-1}x = x^T( \sum_{i=1}^{p}z_ia_ia_i^T)x = \sum_{i=1}^{p}z_i(a_i^Tx)^2 \leq \sum_{i=1}^{p}z_i = n.
+\end{align*}
+\paragraph{}
+for $x \in C$, i.e., $ |a_i^Tx| leq 1$ for $i =1,...,p$.

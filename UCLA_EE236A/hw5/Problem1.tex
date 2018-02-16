@@ -1,0 +1,48 @@
+\subsection*{Problem 1}
+\subsubsection*{(1)}
+\paragraph{}
+We could rewrite the max-flow LP in matrix form as followed:
+\begin{align*}
+\underbrace{
+\begin{bmatrix*}[r]
+I_{N-1} \  0\\ 
+M \ \ \\
+-I_{N} \  
+\end{bmatrix*}}_\text{A} f=
+\begin{bmatrix*}[r]
+c\\ 
+0\\
+0
+\end{bmatrix*} 
+\end{align*}
+\paragraph{}
+We proved that M is a TUM during the class. Now consider following situations with u being a square sub-matrix of A.
+\begin{enumerate}
+	\item If all rows belong to M: u is TUM since M is TUM.
+	\item If some of the rows belongs to the first/third Identity matrices in A
+	 \begin{itemize}
+		\item If it contains a row with all zero, the determinant is 0.
+		\item Otherwise, expand along columns that contains 1/-1, and the determinant will falls into one of the situations discussed and eventually ends up in either 0, 1 or -1.
+	\end{itemize}
+\end{enumerate}
+Therefore we could conclude that A is a TUM.
+\subsubsection*{(2)}
+\paragraph{}
+First, we relax the ILP into LP as followed:
+\begin{align*}
+& minimize \quad \ \ c^T d\\
+& subject \ to \quad\ \ p_s - p_t \geq 1\\
+&\qquad \qquad \qquad d_{ij} - p_i + p_j \geq 0\\
+&\qquad \qquad \qquad 0\leq d\leq 1\\
+&\qquad \qquad \qquad 0\leq p\leq 1\\
+\end{align*}
+\paragraph{}
+This is similar to the max-flow LP with two extra constraints: $d \leq 1 \& p \leq 1$. To prove equivalence we prove that these two constraints are redundant.
+\paragraph{}
+First, the optimal solution should satisfy the first constraint with equality. if $p_s -p_t = c \geq 1$, then we could acquire a better solution with $p/c$ and $d/c$. Moreover, we could prove that at optimal point, $p_s =1$ and $p_t=0$ using the same method.
+\paragraph{}
+Second, if there is an edge from $i$ to $j$, then we would have $p_i < p_j$. With the optimal solution, we always have $d_{ij} =max(0, p_i - p_j)$. If an optimal solution has $p_i <p_j$, then $d_ij =0$ and we could have $p_i =p_j$ without losing optimality.
+\paragraph{}
+Third, given $0 \leq p_i \leq 1$ we can conclude that $0 \leq d_{ij} \leq 1$ from $d_{ij} =max(0, p_i - p_j)$. 
+\paragraph{}
+Therefore we can conclude that those two constraints are redundant. To prove these two problems have the same optimal value, recall that the feasible polyhedron has integer vertices due to TUM property.

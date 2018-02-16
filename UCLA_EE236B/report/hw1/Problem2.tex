@@ -1,0 +1,28 @@
+\subsection*{T2.12}
+\subsubsection*{(d)}
+\paragraph{}
+$||x-x_0||_2 \leq ||x-y||_2$
+\paragraph{} 
+$\Rightarrow (x-x_0)^T(x-x_0) \leq (x-y)^T(x-y)$
+\paragraph{} 
+$\Rightarrow x^Tx - 2x_0^Tx +x_0^Tx_0 \leq x^Tx -2y^Tx +y^Ty$
+\paragraph{}
+$\Rightarrow (y-x_0)^T x \leq (y^Ty - x_0^Tx)/2$
+\paragraph{}
+For a given $y \in S$, $\{x\ | \ ||x-x_0||_2 \leq ||x-y||_2\}$ represents a halfspace in  R$^n$, and is a convex set. Therefore, $\{x\ | \ ||x-x_0||_2 \leq ||x-y||_2\ \text{for any y}\in S\}$ can be written as $\cap_{y \in S}\{x\ | \ ||x-x_0||_2 \leq ||x-y||_2\}$ and is a convex set.
+\subsubsection*{(e)}
+\paragraph{}
+We could apply the same method and conclude that for each $x$ that satisfies $ \text{dist}(x, S) \leq \text{dist}(x, T)$, there is always a $y \in S$ and $z \in T$ that makes it equivalent to $ ||x-y||_2 \leq ||x-z||_2$, which is a halfspace. However, this does not mean all points that satisfies $\{x\ | \ \text{dist}(x, S) \leq \text{dist}(x, T)\}$ are also in that particular halfspace. To see this, consider $S=\{(x,y) \in R^2\ \ | \ x^2+y^2=1, y \leq 0\}$ and $T=\{(x,y) \in R^2\ \ | \ x^2+y^2=2, y \leq 0\}$ and $A=\{(x,y) \in R^2\ \ |\text{dist}(x,S)\leq \text{dist}(x,T)\}$. Obviously $A$ is not a convex set.
+\subsubsection*{(f)}
+\paragraph{}
+Assume $S = \{x\ | \ ||x-a||_2 \leq \theta ||x-b||_2\}$. Again, we could rewrite the inequality as follow:
+\paragraph{}
+$\underbrace{(1-\theta^2)}_ax^Tx +\underbrace{2(\theta^2 b -a)^T}_bx +\underbrace{(a^Ta-\theta^2 b^Tb)}_c \leq 0$
+\paragraph{}
+$\Rightarrow a||x-h||_2 +k \leq 0$, where $ h = -b/2a$ and $k = c-b^2/4a$. 
+\paragraph{}
+Now we could apply the definition and assume $x_1, x_2 \in S$ and $0 \leq \theta \leq 1$. We have
+\paragraph{}
+$a||\theta x_1 +(1-\theta) x_2 + h||_2 + k \leq a\theta||x_1 + h||_2 + a(1-\theta)||x_2 +h|| +k \leq 0$
+\paragraph{}
+Therefore, $S$ is a convex set.

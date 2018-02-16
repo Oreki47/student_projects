@@ -1,0 +1,30 @@
+\subsection*{A12.6}
+\subsubsection*{(a)}
+\paragraph{}
+The problem can be formed as follow:
+\begin{align*}
+	&minimize \qquad t\\
+	&subject\ to \qquad ||A\omega||_2 \leq t\\
+	&\qquad \qquad \qquad \ F\omega = 1,
+\end{align*}
+\paragraph{}
+where
+\begin{align*}
+&A = \begin{bmatrix*}[r]
+&\cos\gamma_1(\theta)&...&\cos\gamma_n(\theta) & -\sin\gamma_1(\theta)&...&-\sin\gamma_n(\theta)\\
+&\sin\gamma_1(\theta)&...&\sin\gamma_n(\theta) & cos\gamma_1(\theta)&...&\cos\gamma_n(\theta)
+\end{bmatrix*} \\
+&F = \begin{bmatrix*}[r]
+&\cos\gamma_1(\theta^{tar})&...&\cos\gamma_n(\theta^{tar}) & -\sin\gamma(\theta^{tar})&...&-\sin\gamma_n(\theta^{tar})\\
+&\sin\gamma(\theta^{tar})&...&\sin\gamma_n(\theta^{tar}) & cos\gamma(\theta^{tar})&...&\cos\gamma_n(\theta^{tar})
+\end{bmatrix*},
+\end{align*}
+\paragraph{}
+and $\omega = [\omega_{re} \ \omega_{im}]^T$.
+\subsubsection*{(b)}
+\verbatiminput{est_main.m}
+\begin{figure}
+	\centering
+	\includegraphics[scale=0.7]{est.jpg}
+	\caption{Gain}
+\end{figure}

@@ -1,0 +1,20 @@
+\subsection*{T3.55}
+\subsubsection*{(a)}
+\begin{align*}
+f'(x) =e^{-h(x)}  \qquad \qquad f''(x) = -h'(x)e^{-h(x)}
+\end{align*}
+\paragraph{}
+It is clear we have,
+\begin{align*}
+(f'(x))^2 \geq 0 \geq -h'(x) e^{-2h(x)}  =f''(x)f(x)
+\end{align*}
+\subsubsection*{(b)}
+\paragraph{}
+Take exponential and integrate both side of $e^{-h(t)} \leq e^{ -h(x) - h'(x) (t-x) }$
+\begin{align*}
+&\int_{-\infty}^{x}e^{-h(t)}dt \leq e^{xh'(x)-h(x)} \int_{-\infty}^{x}e^{-h'(x)t}dt \\
+&\qquad \qquad \quad \ \ = e^{xh'(x)-h(x)}\frac{e^{-xh'(x)}}{-h'(x)} \\ 
+&\qquad \qquad \quad \ \ = \frac{e^{-h(x)}}{-h'(x)}
+\end{align*}
+\paragraph{}
+From here we have $-h'(x)e^{-h(x)}\int_{-\infty}^{x}e^{-h(t)}dt \leq e^{-2h(x)}$ which is just $f''(x)f(x) \leq (f'(x))^2$.

@@ -1,0 +1,18 @@
+\subsection*{Problem 2}
+\paragraph{}
+For case 1, to solve the problem with undirected graph $G=(V, E)$. We could replace each edge with two edges pointing toward the opposite direction the with same capacity constraint. An LP can be formulated as follow with the new graph $G=(V, E')$:
+\begin{align*}
+& maximum \quad \ \ f_{st}\\
+& subject \ to \qquad f_{ij} \leq c_{ij}, \quad \forall (i, j) \ in \ E' \\
+&\qquad \qquad \quad \quad \sum_{j:(i, j)\in E'} f_{ij} - \sum_{k:(i, k)\in E'} f_{jk} \leq 0, \ \forall i \in V \\
+&\qquad \qquad \quad \quad f_{i, j} \geq 0, \forall (i, j) \in E'
+\end{align*}
+\paragraph{}
+For case 2, we could simply add an additional constraint on top of case 1:
+\begin{align*}
+& maximum \quad \ \ f_{st}\\
+& subject \ to \qquad f_{ij} \leq c_{ij}, \quad \forall (i, j) \ in \ E' \\
+&\qquad \qquad \quad \quad \sum_{j:(i, j)\in E'} f_{ij} - \sum_{k:(i, k)\in E'} f_{jk} \leq 0, \ \forall i \in V \\
+&\qquad \qquad \quad \quad f_{i, j} \geq 0, \forall (i, j) \in E'\\
+&\qquad \qquad \quad \quad f_{ij} + f_{ji} \leq c_{ij}, \ \forall (i, j) \in E'
+\end{align*}

@@ -1,0 +1,26 @@
+\subsubsection*{A2.31}
+\subsubsection*{(a)}
+\paragraph{}
+Using the composition rule, $f(x) =h(g(x))$ where $g(x)=||x||_2$, since $g(x)$ is convex on $R^n$ and $h(x)$ is nondecreasing and convex, $f(x)$ is convex.
+\subsubsection*{(b)}
+\paragraph{}
+\begin{align*}
+& f^{\ast}(y) = \sup_x(y^Tx -h(||x||_2))\\ 
+&\qquad\ =\sup_{t\geq 0} \sup_{||x||_2 = t}(y^Tx - h(t)) \\ 
+&\qquad\ \leq\sup_{t\geq 0} \sup_{||x||_2 = t}(||y||_2||x||_2 - h(t)) \\
+&\qquad\ = \sup_{t\geq 0}(t||y||_2 - h(t)) \\
+&\qquad\ = h^{\ast}(||y||_2)
+\end{align*}
+\subsubsection*{(c)}
+\paragraph{}
+Since$||y||_2 \geq 0$, we have
+\begin{align*}
+&h^{\ast}(||y||_2) =\sup_{t} (t||y||_2 - h(t)) \\
+&\qquad \ \ \ \ \ \ = t||y||_2 - pt^p
+\end{align*}
+\paragraph{}
+It reaches maximum at $||y||_2 = t^{p-1}$ and
+\begin{align*}
+f^{\ast}(y) = h^{\ast}(||y||_2) = \frac{p-1}{p}||y||_2^{\frac{p}{p-1}}, \qquad \forall y \in R^n
+\end{align*}
+

@@ -1,0 +1,7 @@
+\subsection*{A7.9}
+\subsubsection*{(a)}
+\paragraph{}
+Introducing $\phi_{k,t}(x) = ||A_kx+b_k- y_k(c^T_kx + d_k)||_2 - t(c^T_kx + d_k)$ and we can solve a feasibility problem of finding $x$ with $\phi_{k,t}(x) \leq 0$. The original problem is a quasiconvex problem since each $f_k(x) - y_k$ is quasilinear and taking the $\max$ over a family of them does not change convexity.
+\subsubsection*{(b)}
+With CVX the solution is found at $t = 0.495$ and $x =[4.9\ 5.0\ 5.2]$.
+\verbatiminput{camera_main.m}

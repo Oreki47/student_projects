@@ -1,0 +1,41 @@
+\subsubsection*{Problem 3}
+\subsubsection*{(1)}
+\paragraph{}
+Let's name the LP with the edge setup as $\textcircled{1}$ and path setup as $\textcircled{2}$. To prove equivalence:
+\paragraph{}
+$\textcircled{1}$ $\Rightarrow$ $\textcircled{2}$
+\paragraph{}
+Given a feasible solution of $\textcircled{1}$, we can acquire a feasible set of $f_i$ through flow decomposition:
+\begin{enumerate}
+	\item Start with path $P_1$. For this path $P_1$ select the edge $e^{min}$ such that $e^{min}=arg \ \underset{e\in P_1}{\min} f^{\star}_e$. Set the flow of the path as $f_{e^{min}}$.
+	\item Subtract $f_{e^{min}}$ from all edges that belongs to $P_1$.
+	\item Remove edges from the graph that only belong to $P_1$.
+	\item Repeat the process with path index +1 until all edges with flows greater than zero are assigned and removed.
+\end{enumerate}
+\paragraph{}
+Such set $P$ of path is clearly feasible because of the flow conservation constraint in $\textcircled{1}$. To see $\textcircled{1}$ and $\textcircled{2}$ have the same optimal value, notice that each path ends up in the sink t, and therefore for each $P_i$ in $P$, there exist j such that $(j, t) \in P_i$. 
+\begin{align*}
+\sum f_i = \underset{j:(j, t)\in E}{\sum}f_{jt} = f_{ds}
+\end{align*}
+\paragraph{}
+$\textcircled{2}$ $\Rightarrow$ $\textcircled{1}$
+\paragraph{}
+Given a set of viable path $P$. We can simply add them up to acquire a set E of edge flow. Such set E satisfies the capacity constraint because of $\underset{(i:e\in P_i)}{\sum}f_i \leq c_e$. The flow conservation constraint also holds because for $i \in V$, for all paths that go through $V_i$ we have $f_{in} = f_{out}$. And by summing up we acquire the flow conservation constraint. Same argument could be use to prove that the objective function value of the two problems are the same.
+\subsubsection*{(2, 3)}
+To prove the statement. We first derive the dual of $\textcircled{2}$ as follow:
+\begin{align*}
+& minimize \quad \ \ \  \sum C_ed_e\\
+& subject \ to \qquad \underset{e\in P_i}{\sum} d_e \geq 1, \ \forall P_i\\
+& \qquad \qquad \qquad  \ d_e \geq 0 \\
+\end{align*}
+\vspace{-42pt}
+\paragraph{}
+The dual of $\textcircled{2}$ is a min-cut problem with $d_e$ representing as an indicator variable whether edge e is in the cut, i.e.,
+\begin{align*}
+d_e = \begin{cases}
+&1 \qquad e \in C^{\star}(s, t)\\
+&0 \qquad \text{otherwise}.
+\end{cases}
+\end{align*}
+\paragraph{}
+Now statement in (2) is obviously true. When we have $C_e=1, \ \forall e \in E$, the objective function becomes $\sum d_e=k$ and therefore for the min-cut $C^{\star}(s, t)$ there is k edge-disjoint paths from s to t.

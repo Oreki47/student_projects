@@ -1,0 +1,18 @@
+\subsection*{Problem 1}
+\paragraph{}
+Let $A_{ij} = \bar{A}_{ij} +\alpha \Delta A_{ij} $, where $ -1 \leq \alpha \leq 1$. Since $ \Delta A_{ij} \geq 0$, we have
+\begin{align*}
+& \bar{A}_{ij} - \Delta A_{ij} \leq \bar{A}_{ij} + \alpha \Delta A_{ij} \leq \bar{A}_{ij} + \Delta A_{ij} \\
+&\bar{A}_{ij}x - \Delta A_{ij}|x| \leq (\bar{A}_{ij} + \alpha \Delta A_{ij}) x = \bar{A}_{ij}x + \alpha \Delta A_{ij} x \leq \bar{A}_{ij}x + \Delta A_{ij}|x|
+\end{align*}
+\paragraph{}
+To make sure $x$ is feasible for all possible values of $A$, the following inequality should be established:
+\begin{align*}
+\bar{A}_{ij}x + \Delta A_{ij}|x| \leq b
+\end{align*}
+\paragraph{}
+And therefore an LP can be formed as follow: 
+\begin{align*}
+& minimize \qquad c^T x \\
+& subject \ to \qquad \bar{A}_{ij}x + \Delta A_{ij}|x| \leq b
+\end{align*}

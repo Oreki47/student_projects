@@ -1,0 +1,51 @@
+\subsubsection*{Problem 4}
+\paragraph{}
+From an active set of $\{3,4,5\}$ we can form a tableau as followed:
+\begin{center}
+	\begin{tabular}{ c | c  c  c | c }
+		\      & $x_4$ & $x_5$ & $x_3$ &   1 \\ \hline
+		$x_1$  &    -1 &     0 &     0 &   2 \\ 
+		$x_2$  &     0 &    -1 &     0 &   2 \\ 
+		$x_6$  &     0 &     0 &    -1 &   2 \\
+		$x_7$  &     1 &     1 &    -1 &   0 \\ \hline
+		$z$    &    -1 &    -1 &    -1 &   4 \\ 		
+	\end{tabular}
+\end{center}
+\paragraph{}
+Based on Blands rule, we pick the smallest subscript with a negative entry at the last row. Therefore we perform a Jordan exchange between $(x_3, x_6)$.
+\begin{center}
+	\begin{tabular}{ c | c  c  c | c }
+		\      & $x_4$ & $x_5$ & $x_6$ &   1 \\ \hline
+		$x_1$  &    -1 &     0 &     0 &   2 \\ 
+		$x_2$  &     0 &    -1 &     0 &   2 \\ 
+		$x_3$  &     0 &     0 &    -1 &   2 \\
+		$x_7$  &     1 &     1 &     1 &  -2 \\ \hline
+		$z$    &    -1 &    -1 &     1 &   2 \\ 		
+	\end{tabular}
+\end{center}
+\paragraph{}
+Again we perform an Jordan exchange between $(x_1, x_4)$.
+\begin{center}
+	\begin{tabular}{ c | c  c  c | c }
+		\      & $x_1$ & $x_5$ & $x_6$ &   1 \\ \hline
+		$x_4$  &    -1 &     0 &     0 &   2 \\ 
+		$x_2$  &     0 &    -1 &     0 &   2 \\ 
+		$x_3$  &     0 &     0 &    -1 &   2 \\
+		$x_7$  &    -1 &     1 &     1 &   0 \\ \hline
+		$z$    &     1 &    -1 &     1 &   0 \\ 		
+	\end{tabular}
+\end{center}
+\paragraph{}
+Finally we perform an Jordan exchange betweern $(x_5, x_2)$.
+\begin{center}
+	\begin{tabular}{ c | c  c  c | c }
+		\      & $x_1$ & $x_2$ & $x_6$ &   1 \\ \hline
+		$x_4$  &    -1 &     0 &     0 &   2 \\ 
+		$x_5$  &     0 &    -1 &     0 &   2 \\ 
+		$x_3$  &     0 &     0 &    -1 &   2 \\
+		$x_7$  &    -1 &    -1 &     1 &   2 \\ \hline
+		$z$    &     1 &     1 &     1 &  -2 \\ 		
+	\end{tabular}
+\end{center}
+\paragraph{}
+The optimality condition is satisfied and the solution is $x=(0,0,2)$ and the optimal value is $p=-2$.

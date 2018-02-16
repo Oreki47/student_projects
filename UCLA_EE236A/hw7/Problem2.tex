@@ -1,0 +1,104 @@
+\subsection*{Problem 2}
+\subsubsection*{(1)}
+\paragraph{}
+First, we notice that for the second constraint $b_2>0$. Therefore we introduce slack variables $z_0 = x_0$, $x_3$ and $x_4$ and form the following tableau:
+\begin{center}
+	\begin{tabular}{ c | c  c  c | c }
+		\      & $x_1$ & $x_2$ & $x_0$ &   1 \\ \hline
+	 	 $x_3$ &    -1 &    -1 &     0 &   2 \\ 
+		 $x_4$ &     2 &     2 &     1 & -10 \\ \hline
+		   $z$ &    -3 &     1 &     0 &   0 \\
+		 $z_0$ &     0 &     0 &     1 &   0 \\ 
+	\end{tabular}
+\end{center}
+\paragraph{}
+We perform an special pivot change between $(x_0 \ x_4)$ and acquired the following tableau:
+\begin{center}
+	\begin{tabular}{ c | c  c  c | c }
+		\     & $x_1$ & $x_2$ & $x_4$ &   1 \\ \hline
+		$x_3$ &    -1 &    -1 &     0 &   2 \\ 
+		$x_0$ &    -2 &    -2 &     1 &  10 \\ \hline
+	   	  $z$ &    -3 &     1 &     0 &   0 \\
+		$z_0$ &    -2 &    -2 &     1 &  10 \\ 
+	\end{tabular}
+\end{center}
+\paragraph{}
+The tableau is feasible. We follow the pivot and perform Jordan exchange on $(x_1, x_3)$ and get the following tableau:
+\begin{center}
+	\begin{tabular}{ c | c  c  c | c }
+		\     & $x_3$ & $x_2$ & $x_4$ &   1 \\ \hline
+		$x_1$ &    -1 &    -1 &     0 &   2 \\ 
+		$x_0$ &     2 &     2 &     1 &   6 \\ \hline
+		$z$   &     3 &     4 &     0 &  -6 \\
+		$z_0$ &     2 &     0 &     1 &   6 \\ 
+	\end{tabular}
+\end{center}
+\paragraph{}
+This tableau satisfies optimality condition with optimal value $z_0=6$. Therefore the original problem is infeasible.
+\subsubsection*{(2)}
+\paragraph{}
+Again, we introduce slack variables $z_0 = x_0$, $x_3$ and $x_4$ and form the following tableau:
+\begin{center}
+	\begin{tabular}{ c | c  c  c | c }
+		\      & $x_1$ & $x_2$ & $x_0$ &   1 \\ \hline
+		$x_3$  &     2 &    -1 &     1 &  -1 \\ 
+		$x_4$  &     1 &     2 &     1 &  -2 \\ \hline
+		$z$    &    -1 &     1 &     0 &   0 \\
+		$z_0$  &     0 &     0 &     1 &   0 \\ 
+	\end{tabular}
+\end{center}
+\paragraph{}
+We perform an special pivot change between $(x_0 \ x_4)$ and acquired the following tableau:
+\begin{center}
+	\begin{tabular}{ c | c  c  c | c }
+		\      & $x_1$ & $x_2$ & $x_4$ &   1 \\ \hline
+		$x_3$  &     1 &    -3 &     1 &   1 \\ 
+		$x_0$  &    -1 &    -2 &     1 &   2 \\ \hline
+		$z$    &    -1 &     1 &     0 &   0 \\
+		$z_0$  &    -1 &    -2 &     1 &   2 \\ 
+	\end{tabular}
+\end{center}
+\paragraph{}
+The tableau is feasible. We follow the pivot and perform Jordan exchange on $(x_2, x_3)$ and get the following tableau:
+\begin{center}
+	\begin{tabular}{ c | c  c  c | c }
+		\      & $x_1$ & $x_3$ & $x_4$ &   1 \\ \hline
+		$x_2$  &   1/3 &  -1/3 &   1/3 & 1/3 \\ 
+		$x_0$  &  -5/3 &   2/3 &   1/3 & 4/3 \\ \hline
+		$z$    &  -2/3 &  -1/3 &   1/3 & 1/3 \\
+		$z_0$  &  -5/3 &   2/3 &   1/3 & 4/3 \\ 
+	\end{tabular}
+\end{center}
+\paragraph{}
+Again, we perform another Jordan exchange on $x_1 \ x_0$:
+\begin{center}
+	\begin{tabular}{ c | c  c  c | c }
+		\      & $x_0$ & $x_3$ & $x_4$ &    1 \\ \hline
+		$x_2$  &   1/5 &  -1/5 &   2/5 &  3/5 \\ 
+		$x_1$  &  -3/5 &   2/5 &   1/5 &  4/5 \\ \hline
+		$z$    &   2/5 &  -3/5 &   1/5 & -1/5 \\
+		$z_0$  &     1 &     0 &   0   &    0 \\ 
+	\end{tabular}
+\end{center}
+\paragraph{}
+The tableau satisfies the optimality condition. Since $z_0^\star = 0$, the original problem is feasible. We remove the first column and last row and acquired a feasible tableau of the orignal problem:
+\begin{center}
+	\begin{tabular}{ c | c  c | c }
+		\      & $x_3$ & $x_4$ &    1 \\ \hline
+		$x_2$  &  -1/5 &   2/5 &  3/5 \\ 
+		$x_1$  &   2/5 &   1/5 &  4/5 \\ \hline
+		$z$    &  -3/5 &   1/5 & -1/5 \\
+	\end{tabular}
+\end{center}
+\paragraph{}
+From the pivot rule, we perform Jordan exchange on $(x_2, x_3)$:
+\begin{center}
+	\begin{tabular}{ c | c  c | c }
+		\      & $x_2$ & $x_4$ &    1 \\ \hline
+		$x_3$  &    -5 &     2 &    3 \\ 
+		$x_1$  &    -2 &     1 &    2 \\ \hline
+		$z$    &     3 &    -1 &   -2 \\
+	\end{tabular}
+\end{center}
+\paragraph{}
+We cannot find a pivot row corresponding to pivot column 2. Therefore the original problem is unbounded. 

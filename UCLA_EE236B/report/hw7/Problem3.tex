@@ -1,0 +1,43 @@
+\subsection*{T5.30}
+\paragraph{}
+With introduction of Lagrange multiplier $z \in R^n$, the KKT conditions are
+\begin{enumerate}
+	\item $X\succ 0$, 
+	\item $Xs =y$,
+	\item $X^{-1} = I +1/2(zs^T +sz^T)$,
+\end{enumerate}
+\paragraph{}
+Combine 2 and 3 we have
+\begin{align}
+s = y +\frac{1}{2}(z+sz^Ty),
+\end{align}
+\paragraph{}
+Multiplying $y^T$ on both side,
+\begin{align*}
+	1 -y^Ty =z^Ty
+\end{align*}
+\paragraph{}
+Plugging it back to (1),
+\begin{align*}
+s = y +\frac{1}{2}(z+s-y^Tys) \Rightarrow z = (1+y^Ty)s -2y
+\end{align*}
+\paragraph{}
+Plugging it back to 3 and we have
+\begin{align*}
+X^{-1} = I +(1+y^Ty)ss^T -ys^T-sy^T.
+\end{align*}
+\paragraph{}
+To verify $X^\star = I +yy^T -ss^T/s^Ts$, 
+\begin{align*}
+&X^{-1}X^\star = (I +(1+y^Ty)ss^T -ys^T-sy^T)(I +yy^T -ss^T/s^Ts) \\
+&\qquad \quad \ =I -yy^T -ss^T/s^Ts +(1+y^Ty)s^Ts +(1+y^Ty)sy^T \\
+&\qquad \qquad -(1+y^Ty)s^Ts -ys^T-yy^T+ys^T-sy^T-y^Tysy^T+ss^T/s^Ts\\
+&\qquad \quad \ = I
+\end{align*}
+\paragraph{}
+Still we need to show $X^\star \succ 0$. This can be shown by
+\begin{align*}
+X^\star = I + yy^T - \frac{ss^T}{s^Ts} = (I+\frac{ys^T}{||s^Ts||_2}-\frac{ss^T}{s^Ts})(I+\frac{ys^T}{||s^Ts||_2}-\frac{ss^T}{s^Ts})^T \succ 0
+\end{align*}
+\paragraph{}
+This is followed by the property of \textit{Cholesky Decomposition}.

@@ -1,0 +1,43 @@
+\subsection*{A8.9}
+\subsubsection*{(a)}
+\paragraph{}
+First we rewrite the problem as 
+\begin{align*}
+\text{minimize}\qquad -\sum_{\bar{y_i}=1}\log \Phi(a_i^Tx -b_i)  -\sum_{\bar{y_i}=-1}\log \Phi(b_i  - a_i^Tx) 
+\end{align*}
+\paragraph{}
+Where $\Phi(x)$ is the cumulative Gaussian distribution function, which is log-concave. Therefore this problem is convex.
+\subsubsection*{(b)}
+\paragraph{}
+To simplify the problem, we redefine $A$ and $b$ as 
+\begin{align*}
+A = \textbf{diag}(y)A, \qquad b=\textbf{diag}(y)b.
+\end{align*}
+\paragraph{}
+Thus the problem can be written as
+\begin{align*}
+\text{minimize}\qquad h(Ax-b),
+\end{align*}
+\paragraph{}
+where
+\begin{align*}
+h(\omega) = -\sum_{i=1}^{m}\log \Phi(\omega_i).
+\end{align*}
+\paragraph{}
+The gradient and Hessian of $f(x) = H(Ax-b)$ are
+\begin{align*}
+\nabla f(x) = A^T\nabla h(Ax-b),\qquad \nabla f(x)^2 = A^T\nabla^2 h(Ax-b)A 
+\end{align*}
+\paragraph{}
+The first derivative of $h$ are
+\begin{align*}
+\frac{\partial h(\omega)}{\partial \omega_i} = \frac{-1/\sqrt{2\pi}}{\exp(\omega^2_i/2)\Phi(\omega_i)} 
+\end{align*}
+\paragraph{}
+The Hessian of $h$ are
+\begin{align*}
+\frac{\partial^2h(\omega)}{\partial \omega_i^2} = \frac{\omega_i/\sqrt{2\pi}}{\exp(\omega^2_i/2)\Phi(\omega_i)} +(\frac{1/\sqrt{2\pi}}{\exp(\omega^2_i/2)\Phi(\omega_i)})^2
+\end{align*}
+\paragraph{}
+This converges within 5 steps and $x =(−0.27, 9.15, 7.98, 6.70, 6.02, 5.0, 4.30, 2.68, 2.02, 0.68).$
+\verbatiminput{main.m}

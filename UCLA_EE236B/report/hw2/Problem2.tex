@@ -1,0 +1,36 @@
+\subsection*{T3.1}
+\subsubsection*{(a)}
+\paragraph{}
+$x\in [a,b]$ is equivalent to $x=\theta a +(1-\theta)b$, $0\leq \theta \leq 1.$ Plug in the inequality and we get:
+\begin{align*}
+f(\theta a +(1-\theta)b) \leq \theta f(a) +(1-\theta)f(b)
+\end{align*}
+\paragraph{}
+Which is the definition of a convex function.
+\subsubsection*{(b)}
+\paragraph{}
+Again, set $x=\theta a +(1-\theta)b$ and we have:
+\begin{align*}
+\frac{f(b)-f(x)}{b-x} = \frac{f(b)-f(\theta a +(1-\theta)b)}{b-\theta a -(1-\theta)b} \geq \frac{f(b)-\theta f(a) -(1-\theta)f(b) }{\theta(b-a)}=\frac{f(b)-f(a)}{b-a}
+\end{align*}
+\paragraph{}
+Where we applied result from (a) at the first inequality. Same argument can be made to the left inequality, i.e.
+\begin{align*}
+\frac{f(x)-f(a)}{x-a} = \frac{f(\theta a +(1-\theta)b)-f(a)}{\theta a +(1-\theta)b -a} \leq \frac{\theta f(a) +(1-\theta)f(b)-f(a) }{(1-\theta)(b-a)}=\frac{f(b)-f(a)}{b-a}
+\end{align*}
+\subsubsection*{(c)}
+\paragraph{}
+By taking the limit of $x \rightarrow a$ we have:
+\begin{align*}
+	\lim_{x \rightarrow a} \frac{f(x)-f(a)}{x-a} = f'(a) \leq \frac{f(b)-f(a)}{b-a}
+\end{align*}
+\paragraph{}
+We can also obtain the right inequality by taking the limit of $x \rightarrow b$.
+\subsubsection*{(d)}
+\paragraph{}
+From (c) we have:
+\begin{align*}
+\frac{f'(b)-f'(a)}{b-a} \geq 0
+\end{align*}
+\paragraph{}
+By taking the limit of $b \rightarrow a$ we get $f''(a) \geq 0$ and by taking the limit of $a \rightarrow b$ we get $f''(b) \geq 0$.

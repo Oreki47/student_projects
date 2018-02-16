@@ -1,0 +1,74 @@
+\subsubsection*{Problem 3}
+\subsubsection*{(1)}
+\paragraph{}
+First we introduce a variable $x_e$ such that:
+\begin{align*}
+x_e = \begin{cases}
+&1 \qquad \text{e belongs to the matching}\\
+&0 \qquad \text{otherwise}.
+\end{cases}
+\end{align*}
+\paragraph{}
+Therefore an ILP can be formed as follow:
+\begin{align*}
+& maximize \quad \ \ \ \sum_{e\in E} x_e\\
+& subject \ to \qquad \sum_{e\in\delta(u)} x_e \leq 1, \ \forall u \in V\\
+&\qquad \qquad \quad \quad  \ \ x_e \in \{0, 1\}, \ \forall u \in E
+\end{align*}
+\paragraph{}
+Since the constraint matrix is TUM the ILP can be relaxed into LP as followed:
+\begin{align*}
+& maximize \quad \ \ \ \sum_{e\in E} x_e\\
+& subject \ to \qquad \sum_{e\in\delta(u)} x_e \leq 1, \ \forall u \in V\\
+&\qquad \qquad \quad \quad  \ \ x_e \geq 0, \ \forall u \in E
+\end{align*}
+\paragraph{}
+Therefore, the dual can be written as:
+\begin{align*}
+& minimize \quad \ \ \ \sum_{u\in V} \lambda_u\\
+& subject \ to \qquad \lambda_u + \lambda_v \geq 1, \ \forall e=(u, v) \in E\\
+&\qquad \qquad \quad \quad \ \lambda_u \geq 0
+\end{align*}
+\paragraph{}
+Again, since the constraint matrix is TUM we can write the corresponding ILP as:
+\begin{align*}
+& minimize \quad \ \ \ \sum_{u\in V} \lambda_u\\
+& subject \ to \qquad \lambda_u + \lambda_v \geq 1, \ \forall e=(u, v) \in E\\
+&\qquad \qquad \quad \quad \ \lambda_u \in \{0, 1\}
+\end{align*}
+\subsubsection*{(2)} 
+The dual is a vertex cover problem and the objective function tries to minimize the size of the vertex cover. The first constraint says that for a certain edge $e$, at least one of the vertices is in the set. $\lambda_u$ is the indicator function such that:
+\begin{align*}
+\lambda_u = \begin{cases}
+&1 \qquad \text{vertex u is in the cover}\\
+&0 \qquad \text{otherwise}.
+\end{cases}
+\end{align*}
+\subsubsection*{(3)} 
+\paragraph{}
+Since $M<|V_1|$, there is no perfect matching for this graph. Assume $|V_1|=|V_2|=n$, the size of the maximum matching is $\leq n-1$, and so is the size of the maximum cut is also $\leq n-1$. Let's call this cut $C$. We introduce $L_1:=C \cap V_1$, $L_2:= V_1 - C$, $R_1:=C \cap V_2$, $R_2:= V_2 - C$.
+\paragraph{}
+The capacity of cut $C$ can be written as:
+\begin{align*}
+capacity(S) = |L_2| + |R_1| +|(L1, R2)|
+\end{align*}
+\paragraph{}
+Therefore we have:
+\begin{align*}
+n-1 = |L_2| + |R_1| +|(L1, R2)|
+\end{align*}
+\paragraph{}
+Also since $|L_1| = n - |L_2|$,
+\begin{align*}
+|L_1| > |L_2| + |R_1| +|(L1, R2)|+1
+\end{align*}
+\paragraph{}
+We also have $|N(L)| < |L_2| + |R_1| +|(L1, R2)|$ because the neighbor of $L_1$ can at most include $|(L1, R2)|$ vertices in $|R_2|$. To conclude, we have:
+\begin{align*}
+|L_1| > |N(L)| +1
+\end{align*}
+\paragraph{}
+Therefore we have found such a set.
+\subsubsection*{(4)}
+\paragraph{}
+If we have $M=|V_1|$, that means the solution returned by (1) is a perfect matching. Therefore for any subset S, there is at least one edge that match vertices in $S$ to its neighbor $N(S)$, and therefore $|S| \leq |N(S)|$ holds.

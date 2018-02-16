@@ -1,0 +1,49 @@
+\subsection*{Add.3}
+\subsubsection*{(a)}
+\paragraph{}
+$\Rightarrow$
+\paragraph{}
+Provided that $X \in S^n$, We introduce $\nu = [\nu_1, \nu_k]^T$, where $\nu_1 \in R\ \text{and}\ \nu_k \in R^{n-1}$. Since $X \succeq 0$, we have
+\begin{align*}
+\nu X\nu =[\nu_1, \nu_k^T]\begin{bmatrix*}[r]
+& 0 & B\\&B^T &C\\
+\end{bmatrix*}\begin{bmatrix*}[r]
+&\nu_1 \\&\nu_k\\ 
+\end{bmatrix*}= \nu_k^TB^T\nu_1 + \nu_1B\nu_k +\nu_k^TC\nu_k \geq 0
+\end{align*}
+\paragraph{}
+for any $\nu$. This is equivalent to $B =0$ and $C \succeq 0$.
+\paragraph{}
+$\Leftarrow$
+\paragraph{}
+Provided that $B =0$ and $C \succeq 0$, we can introduce $\nu = [\nu_1, \nu_k]^T$ and show $\nu X\nu \geq 0$.
+\subsubsection*{(b)}
+\begin{align*}
+&AA^+ = [Q1 Q2]\begin{bmatrix*}[r]
+&\Lambda_1 &0 \\&0 &0\\
+\end{bmatrix*}\begin{bmatrix*}[r]
+&Q^T_1 \\&Q^T_2 \\
+\end{bmatrix*}Q_1\Lambda^{-1}_1Q_1^T = Q_1Q_1^T \\
+&A^+A =Q_1\Lambda^{-1}_1Q_1^T[Q1 Q2]\begin{bmatrix*}[r]
+&\Lambda_1 &0 \\&0 &0\\
+\end{bmatrix*}\begin{bmatrix*}[r]
+&Q^T_1 \\&Q^T_2 \\
+\end{bmatrix*} =  Q_1Q_1^T
+\end{align*}
+\begin{align*}
+I- AA^+ = I-A^+A = [Q_1\ Q_2]\begin{bmatrix*}[r]
+&Q^T_1 \\&Q^T_2 \\
+\end{bmatrix*} -  Q_1Q_1^T = Q_2Q_2^T
+\end{align*}
+\subsubsection*{(c)}
+\paragraph{}
+$\Rightarrow$
+\paragraph{}
+Assume $A \in S^n$ and $X \in S^{n+m}$. Introduce $\nu =  [\nu_1^T, \nu_2^T]$, where $\nu_1 \in R^n\ \text{and}\ \nu_2 \in R^m$. Since $X \succeq 0$, we have
+\begin{align*}
+\nu X\nu =[\nu_1^T, \nu_2^T]\begin{bmatrix*}[r]
+& \Lambda & Q^TB\\&B^TQ &C\\
+\end{bmatrix*}\begin{bmatrix*}[r]
+&\nu_1 \\&\nu_2\\ 
+\end{bmatrix*}= \nu_k^TB^T\nu_1 + \nu_1B\nu_1 +\nu_k^TC\nu_k \geq 0
+\end{align*}

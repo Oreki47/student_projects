@@ -1,0 +1,76 @@
+\subsection*{A8.1}
+\subsubsection*{(a)}
+\paragraph{}
+For convenience we have $x =[x_1\ \sqrt{\gamma }x_2]^T\ \text{and}\ y=[y_1\ y_2]^T$.
+For $x_1 \geq |x_2|$,
+\begin{align}
+\sup_{||y|| \leq 1} x^Ty = ||x|| = \sqrt{x_1^2 + \gamma x_2^2}
+\end{align}
+\paragraph{}
+With $y$ satisfying 
+\begin{align*}
+y = \frac{1}{\sqrt{x_1^2 + \gamma x_2^2}}\begin{bmatrix}
+&x_1 \\&\sqrt{\gamma }x_2
+\end{bmatrix}
+\end{align*}
+\paragraph{}
+Now since we have $x_1 \geq |x_2|$,
+\begin{align*}
+y_1=\frac{x_1}{\sqrt{x_1^2 + \gamma x_2^2}} \geq \frac{1}{\sqrt{1+\gamma}}
+\end{align*}
+\paragraph{}
+This means that we can always find such a direction of $y$ such that it satisfies the constraint and (1) can be established. For $x_1 < |x_2|$, since we have $\gamma \geq 1$, we always have $|y_1| \leq \sqrt{\gamma }|y_2|$. Through inspection we have
+\begin{align*}
+\sup_{||y|| \leq 1, y_1 \geq 1/\sqrt{(1+\gamma)}}x^Ty = \frac{x_1+ \gamma |x_2|}{\sqrt{(1+\gamma)}} 
+\end{align*}
+\paragraph{}
+By taking $y_1 = 1/ \sqrt{(1+\gamma)}$ and $y_2=\pm\sqrt{\gamma}/ \sqrt{(1+\gamma)}$, with $y_2$ taking the same sign as $x_2$. Since the set
+\begin{align*}
+f(x_1,x_2) = \sup \{x_1y_1 +\sqrt{\gamma}x_2y_2\ |\ y_1^2+y_2^2 \leq 1, y_1 \geq 1/ \sqrt{(1+\gamma)}\}
+\end{align*}
+\paragraph{}
+is convex for a fixed $y$ and we just showed its equivalence to the function, the function $f(x_1,x_2)$ is also convex.
+\subsubsection*{(b)}
+\paragraph{}
+With $x^{(0)} =(\gamma, 1)$, we have
+\begin{align*}
+\triangledown f = \frac{1}{\sqrt{x_1^2 + \gamma x_2^2}}\begin{bmatrix}
+&x_1 \\ &\gamma x_2
+\end{bmatrix}
+\end{align*}
+\paragraph{}
+For convenience we write
+\begin{align*}
+t\Delta x = -t\triangledown f =  \frac{-t}{\sqrt{x_1^2 + \gamma x_2^2}}\begin{bmatrix}
+&x_1 \\ &\gamma x_2 
+\end{bmatrix} = -s \begin{bmatrix}
+&x_1 \\ &\gamma x_2 
+\end{bmatrix}
+\end{align*}
+\paragraph{}
+Therefore we have,
+\begin{align*}
+x^{(k+1)} =x^{(k)} - s^{(k)}\begin{bmatrix}
+&x_1^{(k)} \\ &\gamma x_2^{(k)}
+\end{bmatrix} \qquad s^{(k)} = \frac{t^{(k)}}{\sqrt{(x_1^{(k)})^2 + \gamma (x_2^{(k)})^2}}
+\end{align*}
+\paragraph{}
+With $x^{(0)} = (\gamma, 1)$, it fits the iterates at $k=0$. Using induction assume at iteration $k$, 
+\begin{align*}
+x_1^{(k)} = \gamma (\frac{\gamma -1}{\gamma +1})^k, \qquad x_2^{(k)} =(-\frac{\gamma -1}{\gamma +1})^k
+\end{align*}
+\begin{align*}
+x^{(k+1)} = \begin{bmatrix}
+\gamma - s^{(k)}\gamma \\ (-1)^k -(-1)^k\gamma s^{(k)}
+\end{bmatrix}(\frac{\gamma -1}{\gamma +1})^k
+\end{align*}
+\paragraph{}
+Plugging back to $f(x_1, x_2)$ and take derivative over $s^{(k)}$, set it to zero, and we have
+\begin{align*}
+s^{(k)} = \frac{2}{\gamma +1}
+\end{align*}
+\paragraph{}
+and 
+\begin{align*}
+x_1^{(k+1)} = \gamma (\frac{\gamma -1}{\gamma +1})^{k+1}, \qquad x_2^{(k+1)} =(-\frac{\gamma -1}{\gamma +1})^{k+1}
+\end{align*}

@@ -1,0 +1,17 @@
+\subsection*{Add.1}
+\subsubsection*{(a)}
+\paragraph{}
+For rule 2 we have
+\begin{align*}
+\log f =\log (\max\{g_1, g_2,...,g_m\}) = \max\{\log g_1, \log g_2\,...,\log g_m\}
+\end{align*}
+\paragraph{}
+This is followed by logarithm function being monotonically increasing over $R_{++}$, which is the domain of $f(x)$. since $\log g_i, i=1,...,m$ are convex, $\log f$ is also convex since it is the supreme of a family of convex functions.
+\paragraph{}
+For rule 3 we have $h'(z_1,...,z_n) = \log h(e^{z_1},...,e^{z_n})$ as convex and nondecreasing in each of its argument. Hence, 
+\begin{align*}
+&\log f(e^{y_1},...,e^{y_n})  = \log h(g_1(e^{y_1},...,e^{y_n}),...,g_m(e^{y_1},...,e^{y_n})) \\
+& \qquad \qquad \qquad \qquad  \ \ h'(\log g_1(e^{y_1},...,e^{y_n}),...,\log g_m(e^{y_1},...,e^{y_n}))
+\end{align*}
+\paragraph{}
+From here we can establish convexity of $\log f$ from composition rule with $h'$ convex and nondecreasing in each of its argument and $\log g_i,\ i=1,...,n$ as a convex function.

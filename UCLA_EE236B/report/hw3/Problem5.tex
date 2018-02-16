@@ -1,0 +1,42 @@
+\subsubsection*{A2.30}
+\paragraph{}
+We can rewrite $h(x)$ as
+\begin{align*}
+h(x) = \inf_y(\sum_{i=1}^{n}|y_i|+\frac{1}{2}\sum_{i=1}^{n}(x_i-y_i)^2)
+\end{align*}
+\paragraph{}
+To minimize $h(x)$ over $y$ it is equivalent to minimizing sum of each term, call it $g(x_i,y_i)$, over $y_i$ separately
+\begin{align*}
+\sum_{i=1}^{n}\inf_{y_i}(|y_i|+\frac{1}{2}(x_i-y_i)^2) =\sum_{i=1}^{n}g(x_i,y_i)
+\end{align*}
+\paragraph{}
+To see this is the \textit{Huber penalty}, we set
+\begin{align*}
+\frac{\partial g(x_i,y_i)}{\partial y_i} 
+=0 =\begin{cases}
+&y_i - x_i + 1 \qquad y_i \geq 0\\
+&y_i - x_i - 1 \qquad \text{otherwise}.
+\end{cases}
+\end{align*}
+\paragraph{}
+and get the following:
+\begin{align*}
+y_i=\begin{cases}
+& x_i - 1 \qquad y_i \geq 0, x_i \geq 1\\
+& x_i + 1 \qquad y_i < 0, x_i \leq -1 \\
+& \text{no solution} \qquad \text{otherwise}\\
+\end{cases}
+\end{align*}
+\paragraph{}
+For the first two cases, combining them and we acquire
+\begin{align*}
+\phi(u) = \{(|u|-1/2) \mid |u|\geq 1\}
+\end{align*}
+\paragraph{}
+For the case where $|x_i| \leq 1$, when $y_i \geq 0$ we have $\partial g(x_i,y_i)/ \partial y_i \geq 0$ and therefore is nondecreasing over $y_i$. Hence $\inf_{y_i}g(x_i,y_i) = 1/2(x_i)^2$ with $y_i$ set to 0. Same argument can be made in the case where $y_i <0$. Combining all cases we get the \textit{Huber penalty}, i.e.,
+\begin{align*}
+h(x) =\sum_{i=1}^{n}\phi(x_i), \qquad \qquad \phi(u) = \begin{cases}
+&u^2/2 \qquad \qquad |u| \leq 1\\
+&|u| - 1/2 \qquad |u| >1
+\end{cases}
+\end{align*}

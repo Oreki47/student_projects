@@ -1,0 +1,26 @@
+\subsection*{A4.14}
+\subsubsection*{(a)}
+\paragraph{}
+The KKT conditions are
+\begin{itemize}
+	\item $x\succeq 0$, $\textbf{1}^Tx =1$,
+	\item $(\nu - a_i/a^Tx-b_i/b^Tx )x_i = 0$, for $i =1,...,n$,
+	\item $\nu\textbf{1} \geq a/a^Tx+b/b^Tx$
+\end{itemize}
+\paragraph{}
+From complimentary slackness, for $x  = (1/2, 0,...,0, 1/2)$, $\nu =2$. To see optimality, $x = (1/2, 0,...,0, 1/2),\ \nu =2$ satisfies the first and second condition of KKT. To see it satisfies the last inequality,
+\begin{align*}
+&\nu =2 \geq a_i/a^Tx+b_i/b^Tx = \frac{2a_i}{a_1+a_n} +\frac{2b_i}{b_1+b_n} = 2\frac{a_i+a_1a_n/a_i}{a_1+a_n} \\
+&\Rightarrow a_1(a_i - a_n) \geq a_i(a_i-a_n)
+\end{align*}
+\paragraph{}
+This is follow by $a_n \leq a_i \leq a_1$ for $i=1,...,n$. Therefore $x  = (1/2, 0,...,0, 1/2)$ is indeed optimal.
+\subsubsection*{(b)}
+\begin{align*}
+&\log(2(u^TAu)^{1/2}(u^TA^{-1}u)^{1/2}) = \log2 +\frac{1}{2}\log(z^T\Lambda z) + \frac{1}{2}\log(z^T\Lambda^{-1} z)\\
+&\qquad \qquad \qquad \qquad \qquad \qquad \ \leq \log2 +\log(\frac{1}{2}a_1+\frac{1}{2}a_n) +\log(\frac{1}{2}a_1^{-1}+\frac{1}{2}a_n^{-1}) \\
+&\qquad \qquad \qquad \qquad \qquad \qquad \ = \log2 +\frac{1}{2}\log(2+\frac{a_1}{a_n}+\frac{a_n}{a_1})\\
+&\qquad \qquad \qquad \qquad \qquad \qquad \  =\log(\sqrt{\frac{a_n}{a_1}}+ \sqrt{\frac{a_1}{a_n}}),
+\end{align*}
+\paragraph{}
+with first equality followed by eigendecomposition $u^TAu =u^TQ\Lambda Q^Tu$ and let $z = Q^Tu$ and second inequality followed by letting $a_k =\lambda_k$. Finally, since taking the exponential on both sides does not change the inequality, the \textit{Kantorovich inequality} holds.

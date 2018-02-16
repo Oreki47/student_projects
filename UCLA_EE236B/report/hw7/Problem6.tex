@@ -1,0 +1,39 @@
+\subsection*{A4.17}
+\subsubsection*{(a)}
+\paragraph{}
+Using eigendecomposition, $A = Q\Lambda Q^T$ and \textbf{tr}$(AX) $=\textbf{tr}($\Lambda Q^TXQ$). Set $Y = Q^TXQ$ and we have,
+\begin{align*}
+&maximize \qquad \sum_{i=1}^{n}Y_{ii}\lambda_i\\
+&subject\ to \qquad \sum_{i=1}^{n}Y_{ii} = r\\
+&\qquad \qquad \qquad \ \ 0 \leq Y_{ii} \leq 1, \qquad i=1,...,n
+\end{align*} 
+\paragraph{}
+This is followed by trace only involves the diagonal elements of matrix $Y$. Through inspection, the optimal value of this SDP is equal to $f(A)$ by taking $Y_{ii} = 1$ for $i=1,...,r$ and 0 otherwise.
+\subsubsection*{(b)}
+\paragraph{}
+$f(A)$ is convex since it is the pointwise supremum of a family of linear function.
+\subsubsection*{(c)}
+\begin{align*}
+&L(X, \nu, U, V) = -\textbf{tr}(AX) +\nu(\textbf{tr}X-r) - \textbf{tr}(UX) + \textbf{tr}(V(X-I))\\
+&\qquad \qquad \quad \ \ 	= -\textbf{tr}((A-\nu I -U +V)X)-r\nu-\textbf{tr}V\\
+&\qquad \qquad \quad \ \ =\begin{cases}
+& -r\nu-\textbf{tr}V \qquad \text{if} \ -A-\nu I -U +V = 0\\
+& -\infty \qquad \qquad \quad  \text{otherwise}
+\end{cases}
+\end{align*}
+\paragraph{}
+Therefore, the dual function
+\begin{align*}
+&maximize \qquad  -r\nu-\textbf{tr}V \\
+&subject\ to \qquad A+ \nu I \preceq V\\
+&\qquad \qquad \qquad  \ V \succeq 0,
+\end{align*}
+\paragraph{}
+or in minimization form,
+\begin{align*}
+&minimize \qquad  r\nu+\textbf{tr}V \\
+&subject\ to \qquad A+ \nu I \preceq V\\
+&\qquad \qquad \qquad  \ V \succeq 0,
+\end{align*}
+\paragraph{}
+Through strong duality, this optimal value of this SDP equals to $f(A(x))$.

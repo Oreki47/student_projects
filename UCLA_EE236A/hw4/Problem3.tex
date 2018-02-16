@@ -1,0 +1,47 @@
+\subsubsection*{Problem 3}
+\paragraph{}
+An LP can be formed as follow:
+\begin{align*}
+& maximize \quad \ \  \sum_{i:a_i \geq \alpha} p_i\\
+& subject \ to \qquad \sum_{i = 1}^n p_i a_i = b\\
+&\qquad \qquad \qquad \ \sum_{i = 1}^n p_i = 1\\
+&\qquad \qquad \qquad \ -p \leq 0
+\end{align*}
+\paragraph{}
+or in matrix form:
+\begin{align*}
+& maximize \quad \ \ -d^T p\\
+& subject \ to \qquad G^T p + c = 0\\
+&\qquad \qquad \qquad \ p \geq 0
+\end{align*}
+\paragraph{}
+Where $d \in R^n$, and $d_i = 0$ for $a_i < \alpha$, and -1 otherwise. 
+$G = \begin{bmatrix*}[r]
+a&\textbf{1}
+\end{bmatrix*}$,  
+$c = \begin{bmatrix*}[r]
+-b&-1
+\end{bmatrix*}$. This is clearly a dual of a LP in inequality form, i.e.,
+\begin{align*}
+& minimize \quad \ \ -bx_1 - x_2\\
+& subject \ to \qquad a_i x_1 + x_ 2 \leq d_i
+\end{align*}
+\paragraph{}
+let $\lambda = -x_1$, and $\nu = -x_2$, and replace $d_i$ with 0 and -1, we have:
+\begin{align*}
+& minimize \quad \ \ \  \lambda b +\nu\\
+& subject \ to \qquad \lambda a_i + \nu \geq 0,\ \text{for all}\ a_i < \alpha\\
+& \qquad \qquad \qquad  \ \lambda a_i + \nu \geq 1,\ \text{for all}\  a_i \geq \alpha \\
+\end{align*}
+\paragraph{}
+The constraints of primal problem states that for $b \geq \bar{a}$, we have $f(b) =\lambda b +\nu \geq 1$ and for $b \leq \bar{a}$, $f(b) \geq 0$. Since the dual problem is a sum of probability and it's optimal value $d^\star \leq 1$, for $b \geq \bar{a}$ we have 
+\begin{align*}
+& p^\star = f(b^\star) = 1
+\end{align*}
+\paragraph{}
+Here we simply pick $\nu = 1, \ \lambda = 0$, which makes $f(b) = 1$.
+\paragraph{}
+For  $b \leq \bar{a}$, to minimize the function value, we should have $f(a_1) =0$ and $f(\bar{a}) = 1$, from here we have $\nu = -a_1/(\bar{a}-a_1)$ and $\lambda = 1/(\bar{a}-a_1)$. Therefore we have:
+\begin{align*}
+& p^\star = f(b^\star) = (b - a_1)/(\bar{a}-a_1)
+\end{align*}

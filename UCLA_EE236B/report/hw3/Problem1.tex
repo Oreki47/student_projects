@@ -1,0 +1,14 @@
+\subsection*{T3.18}
+\subsubsection*{(a)}
+\paragraph{}
+Define $g(t) =f(Z+tV)$ and restrict $g$ to the interval of values of $t$ for which $Z +tV \succ 0$. We have
+\begin{align*}
+&g(t) =\textbf{tr}( (Z+tV)^{-1}) \\
+&\quad \ \ = \textbf{tr}((Z^{1/2}(I+tZ^{-1/2}VZ^{-1/2})Z^{1/2})^{-1}) \\
+&\quad \ \ = \textbf{tr}(Z^{-1}(I+tZ^{-1/2}VZ^{-1/2})^{-1}) \\
+&\quad \ \ = \textbf{tr}(Z^{-1}(I+tQ\Lambda Q^T)^{-1}) \\
+&\quad \ \ = \textbf{tr}(Q^TZ^{-1}Q(I+t\Lambda)^{-1})  \\
+&\quad \ \ = \sum_{i=1}^{n}(Q^TZ^{-1}Q)_{ii}(1+t\lambda_i)^{-1}
+\end{align*}
+\paragraph{}
+Where we had $Z^{-1/2}VZ^{-1/2} = Q\Lambda Q^T$. $g(t)$ can be seen as a positive weighted sum of convex functions $1/(1+t\lambda_i)^{-1}$ and therefore is convex.

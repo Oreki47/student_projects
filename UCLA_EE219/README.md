@@ -1,4 +1,6 @@
-# UCLA ECE 219 Winter 2018
+# UCLA ECE 219 Large-Scale Data Mining: Models and Algorithms
+
+Winter 2018
 
 On 02/15/2018
 

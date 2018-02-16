@@ -1,0 +1,23 @@
+\subsubsection*{Problem 4}
+\paragraph{}
+\vspace{-18pt}
+\begin{enumerate}
+	\item If the optimal solution is unique
+	\vspace{-18pt}
+	\paragraph{}
+	This problem is trivial since the max-flow solution is the solution with minimum penalty.
+	\item If the optimal solution is not unique
+	\vspace{-18pt}
+	\paragraph{}
+	To acquire a max-flow solution that also has the minimum penalty, we could first solve the max-flow problem with optimal value $p^{\star}$. Then we solve the following LP:
+	\begin{align*}
+	& minimize \quad \ \ \  \sum p_ef_e\\
+	& subject \ to \qquad f_{ij} \leq c_{ij}, \ \forall (i,j) \in E\\
+	&\qquad \qquad \qquad  \sum_{j:(i, j)\in E} f_{ij} - \sum_{k:(i, k)\in E} f_{jk} \leq 0, \ \forall i \in V \\
+	&\qquad \qquad \qquad  f_{i, j} \geq 0, \forall (i, j) \in E\\
+	&\qquad \qquad \qquad  \sum_{i:(s, i)\in E} f_{si} = p^{\star}
+	\end{align*}
+	\vspace{-30pt}
+	\paragraph{}
+	The first three constraints are exactly the same ones used in solving the max-flow problem to guarantee a same solution space. The last constraint is added to guarantee the max-flow is reached while minimizing the penalty.
+\end{enumerate}

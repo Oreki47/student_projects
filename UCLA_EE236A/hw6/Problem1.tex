@@ -1,0 +1,22 @@
+\subsection*{Problem 1}
+\subsubsection*{(1, 2)}
+\paragraph{}
+See attached sheet for Steiner tree graphs.
+\subsubsection*{(3)}
+\paragraph{}
+Let $T=\{T_1, T_2,...,T_m\}$ be the Steiner trees found in graph $G$. Each tree $T_i$ has a flow $f_i$. Then an LP could be formed as followed:
+\begin{align*}
+& maximum \quad \ \ \sum_{i \in T} f_i\\
+& subject \ to \qquad f_i \geq 0, \ i = 1,...,m \\
+&\qquad \qquad \quad \quad \sum_{i:e\in T_i} f_i \leq C_e, \ \forall e \in E
+\end{align*}
+\subsubsection*{(4)}
+\paragraph{}
+The corresponding dual of this problem could be formed as followed:
+\begin{align*}
+& minimize \quad \ \ \  \sum_{e\in E} c_e d_e\\
+& subject \ to \qquad d_e \geq 0, \ \forall e \in E  \\
+&\qquad \qquad \quad \quad \sum_{e:e\in T_i} d_e \geq 1, \  i = 1,...,m
+\end{align*}
+\paragraph{}
+This is similar to max-flow, min-cut problem with variable being the path except here the variable is the Steiner tree. Therefore the dual variable $d_e$ can be seen as the distance between $s$ and $r$ with its minimum value being 1. This is to say that any cut given by the dual will seperate $s$ and $r$.

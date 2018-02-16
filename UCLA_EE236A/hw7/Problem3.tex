@@ -1,0 +1,73 @@
+\subsubsection*{Problem 3}
+\subsubsection*{(1)}
+\paragraph{}
+We can obviously have $x=0$ and $t=max\{b_i, \  0\}$ that is feasible.
+\subsubsection*{(2)}
+\paragraph{}
+We can write the duals of problem (1) and (2) as:
+\begin{align*}
+& maximize \quad \ \ b^Ty\\
+& subject \ to \quad \ \  A^Ty \leq c\\
+&\qquad \qquad \quad \quad y \geq 0
+\end{align*}
+\paragraph{}
+and:
+\begin{align*}
+& maximize \quad \ \ b^Ty\\
+& subject \ to \quad \ \  A^Ty \leq c\\
+&\qquad \qquad \quad \quad \textbf{1}^Ty \leq M\\
+&\qquad \qquad \quad \quad y \geq 0
+\end{align*}
+\paragraph{}
+Obviously we have $d_1^\star \geq d_2^\star$, since $d_2$ has one extra constraint and therefore a smaller feasible set. For M that is big enough, we should have $y_1^\star$ satisfying $\textbf{1}^Ty \leq M$. Under such condition, we have  $d_1^\star = d_2^\star$ and from the strong duality $p_1^\star = p_2^\star$. Therefore if we have $x=x^\star$ for (1) and $x=x^\star$, $t=0$ for (2), the objective value of (1) and (2) will be the same.
+\subsubsection*{(3)}
+\paragraph{}
+The "big M" LP can be written as follow:
+\begin{align*}
+& minimize \quad \ \ \  z=x_1-x_2+Mt\\
+& subject \ to \qquad -x_1 + x_2 + t \geq 2\\
+&\qquad \qquad \quad \quad  \ -x_1 - x_2 + t \geq 6 \\
+&\qquad \qquad \quad \quad  \ x_1, \ x_2, \ t \geq 0 
+\end{align*}
+\paragraph{}
+The tableau can be formed as followed:
+\begin{center}
+	\begin{tabular}{ c | c  c  c | c }
+		\      & $x_1$ & $x_2$ &   $t$ &   1 \\ \hline
+		$x_3$  &    -1 &     1 &     1 &  -2 \\ 
+		$x_4$  &    -1 &    -1 &     1 &   6 \\ \hline
+		$z$    &     1 &    -1 &   $M$ &   0 \\
+	\end{tabular}
+\end{center}
+\paragraph{}
+From the feasible point $x=0$, $t=2$ we perform a Jordan exchange between $(t, x_3)$.
+\begin{center}
+	\begin{tabular}{ c | c  c  c | c }
+		\      & $x_1$ &    $x_2$ & $x_3$ &    1 \\ \hline
+		$t$    &     1 &       -1 &     1 &    2 \\ 
+		$x_4$  &     0 &       -2 &     1 &    8 \\ \hline
+		$z$    & $M+1$ & $-(M+1)$ &   $M$ & $2M$ \\
+	\end{tabular}
+\end{center}
+\paragraph{}
+From the pivot rule, we perform a Jordan exchange between $(t, x_2)$.
+\begin{center}
+	\begin{tabular}{ c | c  c  c | c }
+		\      & $x_1$ &      $t$ & $x_3$ &   1 \\ \hline
+		$x_2$  &     1 &       -1 &     1 &   2 \\ 
+		$x_4$  &    -2 &        2 &    -1 &   4 \\ \hline
+		$z$    &     0 &  $(M+1)$ &    -1 &  -2 \\
+	\end{tabular}
+\end{center}
+\paragraph{}
+Again, perform a Jordan exchange between $(x_3, x_4)$.
+\begin{center}
+	\begin{tabular}{ c | c  c  c | c }
+		\      & $x_1$ &      $t$ & $x_4$ &   1 \\ \hline
+		$x_2$  &    -1 &        1 &    -1 &   6 \\ 
+		$x_3$  &    -2 &        2 &    -1 &   4 \\ \hline
+		$z$    &     2 &  $(M-1)$ &     1 &  -6 \\
+	\end{tabular}
+\end{center}
+\paragraph{}
+This tableau satisfies the optimality condition with $x_1=0$, $x_2 =6$, and $p^\star=-6$.

@@ -11,4 +11,6 @@
 *.Rhistory
 *.rar
 
-# 
+# Specific
+/UCLA_EE219/Project 3/
+**/.ipynb_checkpoints/

@@ -15,4 +15,5 @@ Time to move on and explore the new world :p
 
 ---------------------------------------------------------
 Update 02/15/2018
+
 I do not think I would be able to finish the coding part. But again and again I come back to it and find this book useful. Now I have better ideas of how to use this kind of books. My preference is to read it through swiftly to get a first impression. Then whenever I encounter something in the real world, come back to get a deeper understanding. 

@@ -10,6 +10,7 @@
 *.RData
 *.Rhistory
 *.rar
+*.ipynb
 
 # Specific
 /UCLA_EE219/Project 3/
